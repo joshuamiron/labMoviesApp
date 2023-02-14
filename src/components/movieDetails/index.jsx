@@ -7,7 +7,6 @@ import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
 
 const styles = {
-    root: {
         chipSet: {
         display: "flex",
         justifyContent: "center",
@@ -20,9 +19,6 @@ const styles = {
         chipLabel: {
             margin: 0.5,
         },
-    },
-    //Was there a curly brace and comma missing from the tutorial copy-code block?  
-    //I was getting an error until I added the above "}," to close "root".
 };
 
 const MovieDetails = ( props) => {
@@ -65,7 +61,7 @@ const MovieDetails = ( props) => {
       <Paper component="ul" sx={styles.chipSet}>
         <li>
             <Chip label="Production Countries" sx={styles.chipLabel} color="primary" />
-        </li>
+            </li>
 
         {movie.production_countries.map((pc) => (
           <li key={pc.name}>
