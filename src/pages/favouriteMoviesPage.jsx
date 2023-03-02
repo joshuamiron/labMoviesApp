@@ -5,7 +5,6 @@ const FavouriteMoviesPage = (props) => {
     const toDo = () => true;
     // Get movies from local storage.
     const movies = JSON.parse(localStorage.getItem("favourites"));
-    console.log(movies);
 
     return (
         <PageTemplate
