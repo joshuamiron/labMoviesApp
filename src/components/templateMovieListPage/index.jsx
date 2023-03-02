@@ -60,7 +60,7 @@ function MovieListPageTemplate({ movies, title, selectFavourite }) {
         Filter
       </Fab>
       <Drawer
-        anchor="left"
+        anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >

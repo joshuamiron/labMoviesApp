@@ -25,13 +25,14 @@ const styles = {
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  console.log(movie);
+  // console.log(movie);
 
   // Get movies from local storage.
   const favouriteMovies = JSON.parse(localStorage.getItem("favourites"));
-  console.log(favouriteMovies);
+  // console.log(favouriteMovies);
+  
   const favouriteMovieIds = favouriteMovies ? favouriteMovies.map((movie) => movie.id) : [];
-  console.log(favouriteMovieIds);
+  // console.log(favouriteMovieIds);
 
   return (
     <Paper component="div" sx={styles.root}>
