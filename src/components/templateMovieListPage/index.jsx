@@ -13,7 +13,7 @@ const styles = {
   fab: {
     marginTop: 8,
     position: "fixed",
-    top: 2,
+    top: 12,
     right: 2,
   },
 };

@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { getMovieReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const styles = {
   table: {
@@ -16,6 +17,7 @@ const styles = {
     maxWidth: 550,
   },
 };
+
 
 export default function MovieReviews({ movie }) {
   const [reviews, setReviews] = useState([]);

@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
+
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from '../movieReviews'
 
@@ -24,9 +25,15 @@ const styles = {
   chipLabel: {
     margin: 0.5,
   },
-  fab: { 
+ /* fab: { 
     position: "fixed",
     top: 50,
+    right: 2,
+  },*/
+  fab: {
+    marginTop: 8,
+    position: "fixed",
+    top: 12,
     right: 2,
   },
 };
@@ -75,7 +82,10 @@ const MovieDetails = ( {movie}) => {
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Drawer 
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
     </>
