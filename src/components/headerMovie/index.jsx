@@ -49,9 +49,7 @@ const MovieHeader = (props) => {
           ) : null
         }
       />
-
-
-
+      
       <Typography variant="h4" component="h3">
         {movie.title}{"   "}
         <a href={movie.homepage}>

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PageTemplate from '../components/templateMovieListPage'
+import { useQuery } from "react-query";
+import Spinner from "../components/spinner";
 import {getMovies} from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, {
@@ -19,21 +21,19 @@ const genreFiltering = {
 };
 
 const HomePage = (props) => {
-  const [movies, setMovies] = useState([]);
-  const favourites = movies.filter((m) => m.favourite)
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+    const { data, error, isLoading, isError } = useQuery("discover", getMovies);
+    const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );
 
-  localStorage.setItem('favourites', JSON.stringify(favourites))
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-  const addToFavourites = (movieId) => {
-    const updatedMovies = movies.map((m) =>
-      m.id === movieId ? { ...m, favourite: true } : m
-    );
-    setMovies(updatedMovies);
-  };
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
 
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
@@ -44,14 +44,13 @@ const HomePage = (props) => {
     setFilterValues(updatedFilterSet);
   };
 
-  useEffect(() => {
-    getMovies().then((movies) => {
-      setMovies(movies);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  const movies = data ? data.results : [];
   const displayedMovies = filterFunction(movies);
+
+    // Redundant, but necessary to avoid app crashing.
+    const favourites = movies.filter((m) => m.favorite);
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+    const addToFavourites = (movieId) => true;
 
   return (
     <>
@@ -66,7 +65,7 @@ const HomePage = (props) => {
         genreFilter={filterValues[1].value}
       />
     </>
-    
   );
 };
+
 export default HomePage;
