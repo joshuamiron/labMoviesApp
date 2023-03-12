@@ -56,7 +56,7 @@ const HomePage = (props) => {
       <PageTemplate
         title='Discover Movies'
         movies={displayedMovies}
-        action={(movie) =>{
+        action={(movie) => {
           return <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
         }}
       />

@@ -71,8 +71,8 @@ const FavouriteMoviesPage = () => {
         action={(movie) => {
           return (
             <>
-              <RemoveFromFavourites movie={movie}></RemoveFromFavourites>
-              <WriteReview movie={movie}></WriteReview>
+              <RemoveFromFavourites movie={movie} />
+              <WriteReview movie={movie} />
             </>
           );
         }}
