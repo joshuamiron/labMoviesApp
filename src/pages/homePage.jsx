@@ -49,8 +49,6 @@ const HomePage = (props) => {
   const movies = data ? data.results : [];
   const displayedMovies = filterFunction(movies);
 
-    // Redundant, but necessary to avoid app crashing.
-
   return (
     <>
       <PageTemplate

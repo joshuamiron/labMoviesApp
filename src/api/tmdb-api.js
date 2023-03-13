@@ -13,7 +13,7 @@ export const getMovies = () => {
   };
   
   export const getMovie = (args) => {
-    console.log(args)
+    //console.log(args)
     const [, idPart] = args.queryKey;
     const {id} = idPart;
 
@@ -32,8 +32,8 @@ export const getMovies = () => {
   
   export const getGenres = () => {
     return fetch(
-      //`https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US`
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=" + import.meta.env.VITE_TMDB_KEY + "&language-en-US"
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US`
+      //"https://api.themoviedb.org/3/genre/movie/list?api_key=" + import.meta.env.VITE_TMDB_KEY + "&language-en-US"
     ).then ((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -67,18 +67,22 @@ export const getMovies = () => {
     )
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.results);
+        //console.log(json.results);
         return json.results;
       });
   };
 
-  export const getUpcomingMovies = () => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json.results);
-        return json.results;
-      });
-  };
+export const getUpcomingMovies = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
+    ).then((response) => {
+      console.log("Upcoming Movies");
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  })
+  .catch((error) => {
+    throw error
+  });
+};
