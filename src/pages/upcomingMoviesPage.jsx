@@ -8,7 +8,7 @@ import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
-//import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/playListAdd'
 
 const titleFiltering = {
@@ -55,7 +55,12 @@ const UpcomingMoviesPage = () => {
         title='Upcoming Movies'
         movies={displayedMovies}
         action={(movie) => {
-          return <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+          return (
+          <>
+            <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+            <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+          </>
+          );
         }}
       />
       <MovieFilterUI
@@ -68,4 +73,3 @@ const UpcomingMoviesPage = () => {
 };
 
 export default UpcomingMoviesPage;
-  
