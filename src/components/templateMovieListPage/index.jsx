@@ -5,7 +5,7 @@ import MovieList from "../movieList";
 
 const styles = {
   root: {
-    backgroundColor: "#bfbfbf",
+    backgroundColor: "#ffffff",
   },
 };
 

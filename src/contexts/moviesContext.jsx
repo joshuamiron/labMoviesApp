@@ -26,7 +26,6 @@ const MoviesContextProvider = (props) => {
         console.log(updatedPlaylist);
     };
 
-  // We will use this function in a later section
   const removeFromFavourites = (movie) => {
     setFavourites(favourites.filter((mId) => mId !== movie.id));
   }; 
