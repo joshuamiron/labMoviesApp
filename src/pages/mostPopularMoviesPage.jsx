@@ -9,7 +9,7 @@ import MovieFilterUI, {
   genreFilter,
 } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
-import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
+//import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
 const titleFiltering = {
   name: "title",
