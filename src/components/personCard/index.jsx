@@ -27,20 +27,20 @@ const styles = {
 export default function PersonCard({person}) {
   return (
     <Card sx={styles.card}>
-      <CardHeader
-        sx={styles.header}
-        name={
-          <Typography variant="h5" component="p">
-            {person.name}{" "}
-          </Typography>
-        }
-      />
       <CardMedia
         sx={styles.media}
         image={
           person.profile_path
             ? `https://image.tmdb.org/t/p/w500/${person.profile_path}`
             : img
+        }
+      />
+      <CardHeader
+        sx={styles.header}
+        title={
+          <Typography variant="h5" component="p">
+            {person.name}{" "}
+          </Typography>
         }
       />
       <CardContent>

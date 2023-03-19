@@ -34,6 +34,14 @@ export default function MovieCard({movie, action}) {
 
   return (
     <Card sx={styles.card}>
+      <CardMedia
+        sx={styles.media}
+        image={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            : img
+        }
+      />
       <CardHeader
         sx={styles.header}
         avatar={
@@ -47,14 +55,6 @@ export default function MovieCard({movie, action}) {
           <Typography variant="h5" component="p">
             {movie.title}{" "}
           </Typography>
-        }
-      />
-      <CardMedia
-        sx={styles.media}
-        image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : img
         }
       />
       <CardContent>
