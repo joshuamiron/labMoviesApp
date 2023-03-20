@@ -9,12 +9,12 @@ const styles = {
   },
 };
 
-function PeopleListPageTemplate({ people, name, action }) {
+function PeopleListPageTemplate({ people, title, action }) {
 
 return (
     <Grid container sx={styles.root}>
       <Grid item xs={12}>
-        <Header name={name} />
+        <Header title={title} />
       </Grid>
       <Grid item container spacing={5}>
         <PeopleList

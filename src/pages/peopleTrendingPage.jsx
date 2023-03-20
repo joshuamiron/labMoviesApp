@@ -7,7 +7,6 @@ import useFiltering from "../hooks/useFiltering";
 import PersonFilterUI, {
   nameFilter,
 } from "../components/personFilterUI";
-//import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
  const nameFiltering = {
   name: "name",
