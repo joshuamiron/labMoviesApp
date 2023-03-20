@@ -1,4 +1,3 @@
-//import React, {useContext} from "react";
 import React from "react";
 //import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
@@ -24,7 +23,7 @@ const styles = {
   },
 };
 
-export default function PersonCard({person}) {
+export default function PersonCard({person, action}) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -48,7 +47,7 @@ export default function PersonCard({person}) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {person.known_for_department}
+              {person.movie_credits}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -59,6 +58,13 @@ export default function PersonCard({person}) {
           </Grid>
         </Grid>
       </CardContent>
+      <CardActions disableSpacing>
+        <Link to={`/people/${person.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 }

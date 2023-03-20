@@ -20,7 +20,7 @@ import PersonFilterUI, {
   condition: genreFilter,
 }; */
 
-const TrendingPeoplePage = () => {
+const PeopleTrendingPage = () => {
   const { data, error, isLoading, isError } = useQuery("trendingpeople", getTrendingPeople);
    const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -35,14 +35,14 @@ const TrendingPeoplePage = () => {
     return <h1>{error.message}</h1>;
   }
 
-   const changeFilterValues = (type, value) => {
+   /* const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
     const updatedFilterSet =
       type === "name"
         ? [changedFilter, filterValues[1]]
         : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
-  }; 
+  }; */
 
   const people = data ? data.results : [];
   const displayedPeople = filterFunction(people);
@@ -57,4 +57,4 @@ const TrendingPeoplePage = () => {
   );
 };
 
-export default TrendingPeoplePage;
+export default PeopleTrendingPage;
