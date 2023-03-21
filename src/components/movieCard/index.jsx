@@ -31,7 +31,6 @@ export default function MovieCard({movie, action}) {
   } else {
     movie.favourite = false
   }
-
   return (
     <Card sx={styles.card}>
       <CardMedia

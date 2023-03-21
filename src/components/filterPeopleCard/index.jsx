@@ -41,10 +41,10 @@ export default function FilterPeopleCard(props) {
     genres.unshift({ id: "0", name: "All" });
   } */
 
-  const handleUserImput = (e, type, value) => {
+  /*const handleUserImput = (e, type, value) => {
     e.preventDefault()
     props.onUserInput(type, value)
-  };
+  };*/
 
   const handleTextChange = (e, props) => {
     handleChange(e, "title", e.target.value)

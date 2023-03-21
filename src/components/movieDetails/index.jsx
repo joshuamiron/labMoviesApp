@@ -25,11 +25,6 @@ const styles = {
   chipLabel: {
     margin: 0.5,
   },
- /* fab: { 
-    position: "fixed",
-    top: 50,
-    right: 2,
-  },*/
   fab: {
     marginTop: 8,
     position: "fixed",

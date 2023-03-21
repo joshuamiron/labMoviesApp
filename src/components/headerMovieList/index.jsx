@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const Header = (props ) => {
+const Header = (props) => {
   const title = props.title
 
   return (

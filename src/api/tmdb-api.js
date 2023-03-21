@@ -140,6 +140,7 @@ export const getPersonImages = ({queryKey}) => {
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
+      
     }
     return response.json();
   })
@@ -147,3 +148,4 @@ export const getPersonImages = ({queryKey}) => {
     throw error
   });
 };
+
