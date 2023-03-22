@@ -1,5 +1,4 @@
 import React from "react";
-//import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,12 +7,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-//import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
-//import { MoviesContext } from "../../contexts/moviesContext";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -23,7 +19,7 @@ const styles = {
   },
 };
 
-export default function PersonCard({person, action}) {
+export default function PersonCard({person}) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -43,19 +39,15 @@ export default function PersonCard({person, action}) {
         }
       />
       <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {person.movie_credits}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
+        <Typography variant="h6" component="p">
+          <TrendingUpIcon fontSize="small" />
               {"  "} {person.popularity}{" "}
-            </Typography>
-          </Grid>
+        </Typography>
+        <Grid container>
+          <Typography variant="h6" component="p">
+            {person.movie_credits}
+            {console.log(person.movie_credits)}
+          </Typography>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>

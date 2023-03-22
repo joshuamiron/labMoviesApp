@@ -1,11 +1,13 @@
 import React from "react"; 
-import Header from "../headerMovieList";
+//import Header from "../headerMovieList";
+import PersonHeader from "../headerPerson";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { getPersonImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import { Person } from "@mui/icons-material";
 
 const styles = {
   gridListRoot: {
@@ -36,7 +38,7 @@ const TemplatePersonPage = ({ person, children }) => {
 
   return (
     <>
-      <Header person={person} />
+      <PersonHeader person={person} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
       <Grid item xs={3}>
