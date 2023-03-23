@@ -9,7 +9,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import {getGenres} from "../../api/tmdb-api";
+import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
@@ -37,6 +37,7 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
+  
   if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   }
@@ -47,7 +48,8 @@ export default function FilterMoviesCard(props) {
   };
 
   const handleTextChange = (e, props) => {
-    handleChange(e, "title", e.target.value)
+//    handleChange(e, "title", e.target.value)
+handleUserImput(e, "title", e.target.value)
   };
 
   const handleGenreChange = (e) => {

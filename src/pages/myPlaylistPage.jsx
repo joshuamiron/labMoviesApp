@@ -27,7 +27,6 @@ export const genreFiltering = {
 
 const MyPlaylistPage = () => {
   const { playlist: movieIds } = useContext(MoviesContext);
-  console.log(movieIds);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
