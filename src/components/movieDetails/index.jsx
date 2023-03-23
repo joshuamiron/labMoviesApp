@@ -11,6 +11,7 @@ import Fab from "@mui/material/Fab";
 
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from '../movieReviews'
+import { getMovieCredits } from "../../api/tmdb-api";
 
 const styles = {
   chipSet: {
@@ -35,6 +36,7 @@ const styles = {
 
 const MovieDetails = ( {movie}) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
+
 
   return (
     <>
@@ -68,6 +70,37 @@ const MovieDetails = ( {movie}) => {
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
+
+      <br></br>
+
+      <Typography variant="h5" component="h3">
+        Cast
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {movie.cast}
+      </Typography>
+
+      <br></br>
+
+      <Typography variant="h5" component="h3">
+        Crew
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {movie.crew}
+      </Typography>
+
+      <br></br>
+      
+      <Typography variant="h5" component="h3">
+        Similar movies
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {movie.similar}
+      </Typography>
+
       <Fab    
         color="secondary"
         variant="extended"

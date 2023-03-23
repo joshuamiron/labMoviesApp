@@ -66,7 +66,7 @@ export const getMovies = () => {
     )
       .then((res) => res.json())
       .then((json) => {
-        //console.log(json.results);
+        console.log(json.results);
         return json.results;
       });
   };
@@ -83,6 +83,17 @@ export const getUpcomingMovies = () => {
   .catch((error) => {
     throw error
   });
+};
+
+export const getMovieCredits = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json.results);
+      return json.results;
+    });
 };
 
 export const getMostPopularMovies = () => {

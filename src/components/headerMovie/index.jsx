@@ -28,10 +28,10 @@ const MovieHeader = (props) => {
   console.log(movie);
 
   // Get movies from local storage.
-  const favouriteMovies = JSON.parse(localStorage.getItem("favourites"));
-  console.log(favouriteMovies);
+  const movies = JSON.parse(localStorage.getItem("favourites"));
+  console.log(movies);
   
-  const favouriteMovieIds = favouriteMovies ? favouriteMovies.map((movie) => movie.id) : [];
+  const favouriteMovieIds = movies ? movies.map((movie) => movie.id) : [];
   console.log(favouriteMovieIds);
 
   return (

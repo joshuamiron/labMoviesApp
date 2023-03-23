@@ -7,7 +7,6 @@ import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
-import WriteReview from "../components/cardIcons/writeReview";
 
 const titleFiltering = {
   name: "title",
@@ -28,6 +27,7 @@ export const genreFiltering = {
 
 const MyPlaylistPage = () => {
   const { playlist: movieIds } = useContext(MoviesContext);
+  console.log(movieIds);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
@@ -42,6 +42,7 @@ const MyPlaylistPage = () => {
       };
     })
   );
+
   // Check if any of the parallel queries is still loading.
   const isLoading = myPlaylistQueries.find((m) => m.isLoading === true);
 
