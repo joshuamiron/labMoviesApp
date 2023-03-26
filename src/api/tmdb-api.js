@@ -96,6 +96,28 @@ export const getMovieCredits = (id) => {
     });
 };
 
+export const getSimilarMovies = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log(json.results);
+      return json.results;
+    });
+};
+
+export const getRecommendedMovies = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log(json.results);
+      return json.results;
+    });
+};
+
 export const getMostPopularMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
@@ -159,3 +181,13 @@ export const getPersonImages = ({queryKey}) => {
   });
 };
 
+export const getPersonMovieCredits = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}movie_credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json.results);
+      return json.results;
+    });
+};

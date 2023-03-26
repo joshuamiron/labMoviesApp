@@ -11,14 +11,14 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import img from '../../images/film-poster-placeholder.png'
 
 const styles = {
-  card: { maxWidth: 345 },
-  media: { height: 500 },
+  card: { maxWidth: 180 },
+  media: { height: 250 },
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
   },
 };
 
-export default function PersonCard({person}) {
+export default function PersonCardSmall({person}) {
   return (
     <Card sx={styles.card}>
       <CardMedia

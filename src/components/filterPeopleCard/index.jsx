@@ -2,13 +2,13 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
+//import InputLabel from "@mui/material/InputLabel";
+//import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+//import FormControl from "@mui/material/FormControl";
+//import Select from "@mui/material/Select";
 //import {getGenres} from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
@@ -27,27 +27,28 @@ const styles = {
 };
 
 export default function FilterPeopleCard(props) {
-  const {data, error, isLoading, isError} = useQuery("genres", getGenres);
+//  const {data, error, isLoading, isError} = useQuery("genres", getGenres);
+//  const {data, error, isLoading, isError} = useQuery();
 
-  if (isLoading) {
+  /*if (isLoading) {
     return <Spinner />;
-  }
+  }*/
 
-  if (isError) {
+  /*if (isError) {
     return <h1>{error.message}</h1>;
-  }
+  }*/
   /* const genres = data.genres;
   if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   } */
 
-  /*const handleUserImput = (e, type, value) => {
+  const handleUserImput = (e, type, value) => {
     e.preventDefault()
     props.onUserInput(type, value)
-  };*/
+  };
 
   const handleTextChange = (e, props) => {
-    handleChange(e, "title", e.target.value)
+    handleUserImput(e, "name", e.target.value)
   };
 
 /*  const handleGenreChange = (e) => {
@@ -67,7 +68,7 @@ export default function FilterPeopleCard(props) {
           id="filled-search"
           label="Search field"
           type="search"
-          value={props.titleFilter}
+          value={props.nameFilter}
           variant="filled"
           onChange={handleTextChange}
         />

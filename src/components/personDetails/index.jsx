@@ -47,16 +47,6 @@ const PersonDetails = ( {person}) => {
           label={`${person.popularity} (${person.popularity}`}
         />
       </Paper>
-
-      <br></br>
-      
-      <Typography variant="h5" component="h3">
-        Credits
-      </Typography>
-
-      <Typography variant="h6" component="p">
-        {person.credits}
-      </Typography>
     </>
   );
 };

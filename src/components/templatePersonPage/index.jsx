@@ -41,23 +41,12 @@ const TemplatePersonPage = ({ person, children }) => {
       <PersonHeader person={person} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-      <Grid item xs={3}>
-          <div sx={styles.gridListRoot}>
-            <ImageList cols={1}>
-              {images.map((image) => (
-                <ImageListItem
-                  key={image.file_path}
-                  sx={styles.gridListTile}
-                  cols={1}
-                >
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                    alt={image.profile_path}
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          </div>
+        <Grid item xs={3} sx={styles.media}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+            alt={images.profile_path}
+            style={{maxWidth: "100%"}}
+          />
         </Grid>
 
         <Grid item xs={9}>

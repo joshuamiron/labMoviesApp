@@ -15,22 +15,24 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
 
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+
 const styles = {
-  card: { maxWidth: 345 },
-  media: { height: 500 },
+  card: { maxWidth: 180 },
+  media: { height: 250 },
   avatar: {
     backgroundColor: "rgb(255, 0, 0)",
   },
 };
 
-export default function MovieCard({movie, action}) {
+export default function MovieCardSmall({movie, action}) {
   //const {favourites, addToFavourites} = useContext(MoviesContext);
-  const {favourites} = useContext(MoviesContext);
+  const {playlist} = useContext(MoviesContext);
 
-  if (favourites.find((id) => id === movie.id)) {
-    movie.favourite = true;
+  if (playlist.find((id) => id === movie.id)) {
+    movie.playlist = true;
   } else {
-    movie.favourite = false;
+    movie.playlist = false;
   }
 
   return (
@@ -46,34 +48,18 @@ export default function MovieCard({movie, action}) {
       <CardHeader
         sx={styles.header}
         avatar={
-          (movie.favourite ? (
+          (movie.playlist ? (
             <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
+              <PlaylistAddCheckIcon />
             </Avatar>
           ) : null)
         }
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="h6" component="p">
             {movie.title}{" "}
           </Typography>
         }
       />
-      <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardContent>
       <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>

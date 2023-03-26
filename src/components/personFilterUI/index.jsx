@@ -7,9 +7,9 @@ export const nameFilter = function (person, value) {
   return person.name.toLowerCase().search(value.toLowerCase()) !== -1;
 };
 
-/* export const genreFilter = function (movie, value) {
-  const genreId = Number(value);
-  return genreId > 0 ? movie.genre_ids.includes(genreId) : true;
+ /* export const jobFilter = function (person, value) {
+  const jobName = String(value);
+  return jobName;
 }; */
 
 const styles = {

@@ -6,6 +6,7 @@ import PageTemplate from "../components/templatePersonPage";
 import {getPerson} from '../api/tmdb-api'
 import {useQuery} from "react-query";
 import Spinner from '../components/spinner';
+import PersonMovieCredits from "../components/personMovieCredits";
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ if (isError) {
         <>
           <PageTemplate person={person}>
             <PersonDetails person={person} />
+            <br></br>
           </PageTemplate>
         </>
       ) : (

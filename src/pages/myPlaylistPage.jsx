@@ -32,6 +32,8 @@ const MyPlaylistPage = () => {
     [titleFiltering, genreFiltering]
   );
 
+
+  
   // Create an array of queries and run them in parallel.
   const myPlaylistQueries = useQueries(
     movieIds.map((movieId) => {
