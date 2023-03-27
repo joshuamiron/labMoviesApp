@@ -44,7 +44,7 @@ const PersonDetails = ( {person}) => {
       <Paper component="ul" sx={styles.chipSet}>
         <Chip
           icon={<StarRate />}
-          label={`${person.popularity} (${person.popularity}`}
+          label={`${person.popularity}`}
         />
       </Paper>
     </>
