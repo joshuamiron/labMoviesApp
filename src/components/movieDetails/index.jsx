@@ -9,6 +9,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from '../movieReviews'
+import {formatDate} from "../../util";
 
 const styles = {
   chipSet: {
@@ -33,6 +34,7 @@ const styles = {
 
 const MovieDetails = ( {movie}) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
+  const formattedDate = formatDate(movie.release_date);
 
   return (
     <>
@@ -64,7 +66,7 @@ const MovieDetails = ( {movie}) => {
           icon={<StarRate />}
           label={`${movie.vote_average}`}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${formattedDate}`} />
       </Paper>
       
       <Fab    

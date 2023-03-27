@@ -14,6 +14,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
+import {formatDate} from "../../util";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -24,8 +25,9 @@ const styles = {
 };
 
 export default function MovieCard({movie, action}) {
-  //const {favourites, addToFavourites} = useContext(MoviesContext);
   const {favourites} = useContext(MoviesContext);
+  const formattedDate = formatDate(movie.release_date);
+
 
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -43,6 +45,7 @@ export default function MovieCard({movie, action}) {
             : img
         }
       />
+      
       <CardHeader
         sx={styles.header}
         avatar={
@@ -58,22 +61,18 @@ export default function MovieCard({movie, action}) {
           </Typography>
         }
       />
+
       <CardContent>
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {movie.release_date}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
+          <Typography variant="h6" component="p">
+            <CalendarIcon fontSize="small" sx={{paddingRight: 1,}} />
+            {formattedDate}
+          </Typography>
+          <Typography variant="h6" component="p">
+              <StarRateIcon fontSize="small"/>
               {"  "} {movie.vote_average}{" "}
-            </Typography>
-          </Grid>
-        </Grid>
+          </Typography>
       </CardContent>
+      
       <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>

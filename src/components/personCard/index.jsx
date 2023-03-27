@@ -37,12 +37,14 @@ export default function PersonCard({person}) {
           </Typography>
         }
       />
+      
       <CardContent>
         <Typography variant="h6" component="p">
           <TrendingUpIcon fontSize="small" />
               {"  "} {person.popularity}{" "}
         </Typography>
       </CardContent>
+
       <CardActions disableSpacing>
         <Link to={`/people/${person.id}`}>
           <Button variant="outlined" size="medium" color="primary">

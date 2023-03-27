@@ -6,3 +6,9 @@ export function excerpt(string) {
     separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
   });
 }
+
+export function formatDate(dateString) {
+  const options = {year: "numeric", month: "short", day: "numeric"};
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", options);
+}
