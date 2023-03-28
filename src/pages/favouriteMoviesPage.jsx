@@ -8,6 +8,10 @@ import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 const titleFiltering = {
   name: "title",
@@ -63,7 +67,24 @@ const FavouriteMoviesPage = () => {
     setFilterValues(updatedFilterSet);
   };
 
-  return (
+  if (allFavourites.length === 0) {
+    return (
+      <Grid>
+        <Typography variant="h4" style={{textAlign: "center", marginTop: "50px"}}>
+          You haven't added any favourite movies.
+        </Typography>
+        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+          <Link to={`/`}>
+          <Button variant="outlined" size="medium" color="primary">
+            Add some movies
+          </Button>
+        </Link>
+      </Grid>
+    </Grid>
+    );
+  }
+
+else  return (
     <>
       <PageTemplate
         title="Favourite Movies"

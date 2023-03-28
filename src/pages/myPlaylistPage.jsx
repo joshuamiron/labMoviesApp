@@ -7,6 +7,10 @@ import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 const titleFiltering = {
   name: "title",
@@ -32,6 +36,7 @@ const MyPlaylistPage = () => {
     [titleFiltering, genreFiltering]
   );
 
+  
 
   
   // Create an array of queries and run them in parallel.
@@ -65,7 +70,24 @@ const MyPlaylistPage = () => {
     setFilterValues(updatedFilterSet);
   };
 
-  return (
+  if (allPlaylist.length === 0) {
+    return (
+      <Grid>
+        <Typography variant="h4" style={{textAlign: "center", marginTop: "50px"}}>
+          You haven't added any movies to your playlist.
+        </Typography>
+        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+          <Link to={`/movies/upcoming`}>
+          <Button variant="outlined" size="medium" color="primary">
+            Browse upcoming movies
+          </Button>
+        </Link>
+      </Grid>
+    </Grid>
+    );
+  }
+
+  else return (
     <>
       <PageTemplate
         title="My Playlist"
