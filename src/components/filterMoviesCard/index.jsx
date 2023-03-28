@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -61,8 +60,7 @@ handleUserImput(e, "title", e.target.value)
     <Card sx={styles.root} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
-          <FilterAltIcon fontSize="large" />
-          Filter the movies.
+          Search by movie title
         </Typography>
         <TextField
           sx={styles.formControl}
