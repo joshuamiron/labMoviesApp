@@ -6,7 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
-import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import AddToFavourites from "../components/cardIcons/addToFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -84,7 +84,7 @@ const FavouriteMoviesPage = () => {
     );
   }
 
-else  return (
+  else return (
     <>
       <PageTemplate
         title="Favourite Movies"
@@ -92,7 +92,7 @@ else  return (
         action={(movie) => {
           return (
             <>
-              <RemoveFromFavourites movie={movie} />
+              <AddToFavourites movie={movie} />
               <WriteReview movie={movie} />
             </>
           );

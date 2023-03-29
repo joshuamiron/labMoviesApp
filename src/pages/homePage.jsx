@@ -9,7 +9,7 @@ import MovieFilterUI, {
   genreFilter,
 } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
-
+import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
 const titleFiltering = {
   name: "title",
@@ -56,7 +56,12 @@ const HomePage = (props) => {
         title='Discover Movies'
         movies={displayedMovies}
         action={(movie) => {
-          return <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+          return (
+            <>
+              <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+              <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+            </>
+          );
         }}
       />
       <MovieFilterUI

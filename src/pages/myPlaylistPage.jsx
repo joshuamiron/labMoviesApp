@@ -6,7 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
-import RemoveFromPlaylist from "../components/cardIcons/removeFromPlaylist";
+import AddToPlaylist from "../components/cardIcons/addToPlaylist";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -95,7 +95,7 @@ const MyPlaylistPage = () => {
         action={(movie) => {
           return (
             <>
-              <RemoveFromPlaylist movie={movie} />
+              <AddToPlaylist movie={movie} />
             </>
           );
         }}
