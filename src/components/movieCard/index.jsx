@@ -9,9 +9,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
 import {formatDate} from "../../util";
@@ -63,14 +60,12 @@ export default function MovieCard({movie, action}) {
       />
 
       <CardContent>
-          <Typography variant="h6" component="p">
-            <CalendarIcon fontSize="small" sx={{paddingRight: 1,}} />
-            {formattedDate}
-          </Typography>
-          <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small"/>
-              {"  "} {movie.vote_average}{" "}
-          </Typography>
+        <Typography variant="subtitle1" component="p">
+          Release date: <strong>{formattedDate}</strong>
+        </Typography>
+        <Typography variant="subtitle1" component="p">
+            User rating: <strong>{movie.vote_average*10}%</strong>
+        </Typography>
       </CardContent>
       
       <CardActions disableSpacing>

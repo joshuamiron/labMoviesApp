@@ -12,9 +12,15 @@ const AddToFavouritesIcon = ({ movie }) => {
     context.addToFavourites(movie);
   };
 
+  const isMovieFavourited = context.favourites.includes(movie.id);
+
   return (
     <IconButton aria-label="add to favorites" onClick={onUserSelect}>
-      <FavoriteBorderIcon color="primary" fontSize="large" />
+      {isMovieFavourited ? (
+        <FavoriteIcon color="primary" fontSize="large" />
+      ) : (
+        <FavoriteBorderIcon color="primary" fontSize="large" />
+      )}
     </IconButton>
   );
 };
