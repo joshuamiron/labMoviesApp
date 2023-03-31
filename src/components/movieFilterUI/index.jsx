@@ -12,6 +12,23 @@ export const genreFilter = function (movie, value) {
   return genreId > 0 ? movie.genre_ids.includes(genreId) : true;
 };
 
+export const sortFilter = function (movie, value) {
+  const sortOption = value.split(".");
+  switch (sortOption[0]) {
+    case "title":
+      return sortOption[1] === "asc"
+      ? movie.title.localeCompare(movie.title) : movie.title.localeCompare(movie.title) * -1;
+    case "popularity":
+      return sortOption[1] === "asc"
+      ? movie.vote_average - movie.vote_average : movie.vote_average - movie.vote_average * -1;
+    case "releasedate":
+      return sortOption[1] === "asc"
+      ? new Date(movie.release_date) - new Date(movie.release_date) : new Date(movie.release_date) - new Date(movie.release_date) * -1;
+    default:
+      return true;
+  }
+};
+
 const styles = {
   root: {
     backgroundColor: "#bfbfbf",
@@ -24,7 +41,7 @@ const styles = {
   },
 };
 
-const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter }) => {
+const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortFilter }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -46,6 +63,7 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter }) => {
           onUserInput={onFilterValuesChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
+          sortFilter={sortFilter}
         />
       </Drawer>
     </>

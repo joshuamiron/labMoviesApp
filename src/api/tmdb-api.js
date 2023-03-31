@@ -7,11 +7,16 @@ export const getMovies = () => {
       }
       return response.json();
     })
+    .then((data) => {
+      console.log(data); // log the response data
+      return data;
+    })
     .catch((error) => {
       throw error
     });
   };
-  
+
+
   export const getMovie = (args) => {
     //console.log(args)
     const [, idPart] = args.queryKey;

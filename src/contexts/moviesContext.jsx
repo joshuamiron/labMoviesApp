@@ -6,19 +6,6 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} );
   const [favourites, setFavourites] = useState([]);
   const [playlist, setPlaylist] = useState([]);
-  
-  /*const addToFavourites = (movie) => {
-      let updatedFavourites = [...favourites];
-      if (!favourites.includes(movie.id)) {
-          updatedFavourites.push(movie.id);
-      }
-      setFavourites(updatedFavourites);
-      console.log(updatedFavourites);
-  };
-
-  const removeFromFavourites = (movie) => {
-    setFavourites(favourites.filter((mId) => mId !== movie.id));
-  }; */
 
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
@@ -33,19 +20,6 @@ const MoviesContextProvider = (props) => {
     }
     setFavourites(updatedFavourites);
   };
-
-  /*const addToPlaylist = (movie) => {
-      let updatedPlaylist = [...playlist];
-      if (!playlist.includes(movie.id)) {
-          updatedPlaylist.push(movie.id);
-      }
-      setPlaylist(updatedPlaylist);
-      console.log(updatedPlaylist);
-    };
-
-  const removeFromPlaylist = (movie) => {
-    setPlaylist(playlist.filter((mId) => mId !== movie.id));
-  }; */
 
   const addToPlaylist = (movie) => {
     let updatedPlaylist = [...playlist];

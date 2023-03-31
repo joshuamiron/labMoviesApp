@@ -6,7 +6,8 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
-import AddToPlaylist from "../components/cardIcons/addToPlaylist";
+import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -73,8 +74,8 @@ const MyPlaylistPage = () => {
   if (allPlaylist.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "50px"}}>
-          You haven't added any movies to your playlist.
+        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+          There are no movies in your playlist.
         </Typography>
         <Grid style={{textAlign: "center", marginTop: "50px"}}>
           <Link to={`/movies/upcoming`}>
@@ -95,7 +96,8 @@ const MyPlaylistPage = () => {
         action={(movie) => {
           return (
             <>
-              <AddToPlaylist movie={movie} />
+              <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+              <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
             </>
           );
         }}

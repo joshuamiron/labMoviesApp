@@ -11,18 +11,22 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from '../movieReviews'
 import {formatDate} from "../../util";
 
+import Grid from "@mui/material/Grid";
+import CardActions from "@mui/material/CardActions";
+
 const styles = {
   chipSet: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "left",
     alignItems: "center",
     flexWrap: "wrap",
     listStyle: "none",
     padding: 1.5,
-    margin: 0,
+    margin: 0.5,
   },
   chipLabel: {
     margin: 0.5,
+    marginRight: 1.0,
   },
   fab: {
     marginTop: 8,
@@ -36,8 +40,14 @@ const MovieDetails = ( {movie}) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   const formattedDate = formatDate(movie.release_date);
 
+
   return (
     <>
+      <Grid>
+        <CardActions disableSpacing>
+
+        </CardActions>
+      </Grid>
       <Typography variant="h5" component="h3">
         Overview
       </Typography>
@@ -87,4 +97,5 @@ const MovieDetails = ( {movie}) => {
     </>
   );
 };
-export default MovieDetails ;
+
+export default MovieDetails;

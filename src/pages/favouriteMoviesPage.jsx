@@ -6,7 +6,8 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
-import AddToFavourites from "../components/cardIcons/addToFavourites";
+import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
 import WriteReview from "../components/cardIcons/writeReview";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
@@ -70,8 +71,8 @@ const FavouriteMoviesPage = () => {
   if (allFavourites.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "50px"}}>
-          You haven't added any favourite movies.
+        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+          There are no movies in your favourites list.
         </Typography>
         <Grid style={{textAlign: "center", marginTop: "50px"}}>
           <Link to={`/`}>
@@ -92,7 +93,8 @@ const FavouriteMoviesPage = () => {
         action={(movie) => {
           return (
             <>
-              <AddToFavourites movie={movie} />
+              <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+              <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
               <WriteReview movie={movie} />
             </>
           );

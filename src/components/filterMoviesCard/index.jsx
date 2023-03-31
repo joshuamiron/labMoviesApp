@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
-import SortIcon from '@mui/icons-material/Sort';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getGenres } from "../../api/tmdb-api";
@@ -27,6 +26,8 @@ const styles = {
 
 export default function FilterMoviesCard(props) {
   const {data, error, isLoading, isError} = useQuery("genres", getGenres);
+  
+  const {sortFilter, setSortFilter} = useState("popularity.desc");
 
   if (isLoading) {
     return <Spinner />;
@@ -42,8 +43,8 @@ export default function FilterMoviesCard(props) {
   }
 
   const handleUserImput = (e, type, value) => {
-    e.preventDefault()
-    props.onUserInput(type, value)
+    e.preventDefault();
+    props.onUserInput(type, value, sortFilter);
   };
 
   const handleTextChange = (e, props) => {
@@ -53,6 +54,12 @@ handleUserImput(e, "title", e.target.value)
 
   const handleGenreChange = (e) => {
     handleUserImput(e, "genre", e.target.value)
+  };
+
+  const handleSortChange = (e) => {
+    const selectedValue = e.target.value;
+    setSortFilter(selectedValue);
+    handleUserImput(e, "sort", selectedValue)
   };
 
   return (
@@ -71,6 +78,9 @@ handleUserImput(e, "title", e.target.value)
           variant="filled"
           onChange={handleTextChange}
         />
+        <Typography variant="h5" component="h1">
+          Filter by genre
+        </Typography>
         <FormControl sx={styles.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
@@ -88,16 +98,35 @@ handleUserImput(e, "title", e.target.value)
             })}
           </Select>
         </FormControl>
+
+        <Typography variant="h5" component="h1">
+          Sort the movies
+        </Typography>
+        <FormControl sx={styles.formControl}>
+          <InputLabel id="sort-label">Sort by</InputLabel>
+          <Select
+            labelId="sort-label"
+            id="sort-select"
+            value={props.sortFilter}
+            onChange={handleSortChange}
+          >
+            <MenuItem value={"title.desc"}>Title - A to Z</MenuItem>
+            <MenuItem value={"title.asc"}>Title - Z to A</MenuItem>
+            <MenuItem value={"popularity.desc"}>User rating ↓</MenuItem>
+            <MenuItem value={"popularity.asc"}>User rating ↑</MenuItem>
+            <MenuItem value={"releasedate.desc"}>Release date - newest first</MenuItem>
+            <MenuItem value={"releasedate.asc"}>Release date - oldest first</MenuItem>
+
+          </Select>
+        </FormControl>
+
       </CardContent>
     </Card>
     <Card sx={styles.root} variant="outlined">
-        <CardContent>
-          <Typography variant="h5" component="h1">
-            <SortIcon fontSize="large" />
-            Sort the movies.
-          </Typography>
-        </CardContent>
-      </Card>
-      </>
+      <CardContent>
+        
+      </CardContent>
+    </Card>
+    </>
   );
 }
