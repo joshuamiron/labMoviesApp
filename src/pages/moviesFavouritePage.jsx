@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { useQueries } from "react-query";
+
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
-import { useQueries } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
@@ -9,10 +14,6 @@ import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
 import WriteReview from "../components/cardIcons/writeReview";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 
 const titleFiltering = {
   name: "title",
@@ -31,7 +32,7 @@ export const genreFiltering = {
   },
 };
 
-const FavouriteMoviesPage = () => {
+const MoviesFavouritePage = () => {
   const { favourites: movieIds } = useContext(MoviesContext);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -109,4 +110,4 @@ const FavouriteMoviesPage = () => {
   );
 };
 
-export default FavouriteMoviesPage;
+export default MoviesFavouritePage;

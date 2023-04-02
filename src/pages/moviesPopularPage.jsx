@@ -1,9 +1,9 @@
 import React from "react";
 import { useQuery } from "react-query";
 
-import PageTemplate from '../components/templateMovieListPage'
+import PageTemplate from "../components/templateMovieListPage";
+import {getPopularMovies} from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-import {getMovies} from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
@@ -14,16 +14,15 @@ const titleFiltering = {
   value: "",
   condition: titleFilter,
 };
-
 const genreFiltering = {
   name: "genre",
   value: "0",
   condition: genreFilter,
 };
 
-const HomePage = (props) => {
-    const { data, error, isLoading, isError } = useQuery("discover", getMovies);
-    const { filterValues, setFilterValues, filterFunction } = useFiltering(
+const MoviesPopularPage = () => {
+  const { data, error, isLoading, isError } = useQuery("popular", getPopularMovies);
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );
@@ -48,18 +47,17 @@ const HomePage = (props) => {
   const movies = data ? data.results : [];
   const displayedMovies = filterFunction(movies);
 
-
   return (
     <>
       <PageTemplate
-        title='Discover Movies'
+        title='Popular Movies'
         movies={displayedMovies}
         action={(movie) => {
           return (
-            <>
-              <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
-              <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
-            </>
+          <>
+            <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+            <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+          </>
           );
         }}
       />
@@ -72,4 +70,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default MoviesPopularPage;

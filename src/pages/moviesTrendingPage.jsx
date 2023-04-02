@@ -1,13 +1,11 @@
 import React from "react";
-import PageTemplate from "../components/templateMovieListPage";
-import {getMostPopularMovies} from "../api/tmdb-api";
 import { useQuery } from "react-query";
+
+import PageTemplate from "../components/templateMovieListPage";
+import {getTrendingMovies} from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
-import MovieFilterUI, {
-  titleFilter,
-  genreFilter,
-} from "../components/movieFilterUI";
+import MovieFilterUI, { titleFilter, genreFilter, } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
@@ -22,8 +20,8 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const MostPopularMoviesPage = () => {
-  const { data, error, isLoading, isError } = useQuery("popular", getMostPopularMovies);
+const MoviesTrendingPage = () => {
+  const { data, error, isLoading, isError } = useQuery("trending", getTrendingMovies);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
@@ -52,7 +50,7 @@ const MostPopularMoviesPage = () => {
   return (
     <>
       <PageTemplate
-        title='Most Popular Movies'
+        title='Trending Movies'
         movies={displayedMovies}
         action={(movie) => {
           return (
@@ -72,4 +70,4 @@ const MostPopularMoviesPage = () => {
   );
 };
 
-export default MostPopularMoviesPage;
+export default MoviesTrendingPage;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import FilterCard from "../filterMoviesCard";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
+
+import FilterCard from "../filterMoviesCard";
 
 export const titleFilter = function (movie, value) {
   return movie.title.toLowerCase().search(value.toLowerCase()) !== -1;
@@ -12,16 +13,16 @@ export const genreFilter = function (movie, value) {
   return genreId > 0 ? movie.genre_ids.includes(genreId) : true;
 };
 
-export const sortFilter = function (movie, value) {
+export const sortBy = function (movie, value) {
   const sortOption = value.split(".");
   switch (sortOption[0]) {
     case "title":
       return sortOption[1] === "asc"
       ? movie.title.localeCompare(movie.title) : movie.title.localeCompare(movie.title) * -1;
-    case "popularity":
+    case "vote_average":
       return sortOption[1] === "asc"
       ? movie.vote_average - movie.vote_average : movie.vote_average - movie.vote_average * -1;
-    case "releasedate":
+    case "release_date":
       return sortOption[1] === "asc"
       ? new Date(movie.release_date) - new Date(movie.release_date) : new Date(movie.release_date) - new Date(movie.release_date) * -1;
     default:
@@ -41,7 +42,7 @@ const styles = {
   },
 };
 
-const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortFilter }) => {
+const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortBy }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -63,7 +64,7 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortFil
           onUserInput={onFilterValuesChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
-          sortFilter={sortFilter}
+          sortBy={sortBy}
         />
       </Drawer>
     </>

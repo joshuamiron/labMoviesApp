@@ -19,7 +19,7 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const UpcomingMoviesPage = () => {
+const MoviesUpcomingPage = () => {
   const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -69,4 +69,4 @@ const UpcomingMoviesPage = () => {
   );
 };
 
-export default UpcomingMoviesPage;
+export default MoviesUpcomingPage;

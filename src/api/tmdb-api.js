@@ -8,6 +8,7 @@ export const getMovies = () => {
       return response.json();
     })
     .then((data) => {
+      console.log("getMovies called");
       console.log(data); // log the response data
       return data;
     })
@@ -112,18 +113,7 @@ export const getSimilarMovies = (id) => {
     });
 };
 
-export const getRecommendedMovies = (id) => {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      //console.log(json.results);
-      return json.results;
-    });
-};
-
-export const getMostPopularMovies = () => {
+export const getPopularMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
     ).then((response) => {
@@ -132,6 +122,30 @@ export const getMostPopularMovies = () => {
     }
     return response.json();
   })
+  .then((data) => {
+    console.log("getPopularMovies called");
+    console.log(data); // log the response data
+    return data;
+  })
+  .catch((error) => {
+    throw error
+  });
+};
+
+export const getTrendingMovies = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
+    ).then((response) => {
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log("getTrendingMovies called");
+    console.log(data); // log the response data
+    return data;
+  })
   .catch((error) => {
     throw error
   });
@@ -139,7 +153,7 @@ export const getMostPopularMovies = () => {
 
 export const getTrendingPeople = () => {
   return fetch(
-    `https://api.themoviedb.org/3/person/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+    `https://api.themoviedb.org/3/trending/person/week?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=1`
     ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
