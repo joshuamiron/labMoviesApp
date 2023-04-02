@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
-import StarRate from "@mui/icons-material/StarRate";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TheatersIcon from '@mui/icons-material/Theaters';
 import Typography from "@mui/material/Typography";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
@@ -67,16 +68,18 @@ const MovieDetails = ( {movie}) => {
         ))}
       </Paper>
       <Paper component="ul" sx={styles.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip icon={<AccessTimeFilledIcon />} label={`Runtime: ${movie.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
+          label={`Revenue: $${movie.revenue.toLocaleString()}`}
         />
         <Chip
-          icon={<StarRate />}
-          label={`${movie.vote_average}`}
+          icon={<TrendingUpIcon />}
+          label={`User rating: ${movie.vote_average*10}%`}
         />
-        <Chip label={`Released: ${formattedDate}`} />
+        <Chip
+          icon={<TheatersIcon></TheatersIcon>} 
+         label={`Released: ${formattedDate}`} />
       </Paper>
       
       <Fab    

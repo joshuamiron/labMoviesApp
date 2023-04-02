@@ -122,11 +122,6 @@ handleUserImput(e, "title", e.target.value)
 
       </CardContent>
     </Card>
-    <Card sx={styles.root} variant="outlined">
-      <CardContent>
-        
-      </CardContent>
-    </Card>
     </>
   );
 }
