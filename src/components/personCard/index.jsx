@@ -8,6 +8,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+
 import img from '../../images/film-poster-placeholder.png'
 
 const styles = {

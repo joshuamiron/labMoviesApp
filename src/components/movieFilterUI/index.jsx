@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 
-import FilterCard from "../filterMoviesCard";
+import FilterMoviesCard from "../filterMoviesCard";
 
 export const titleFilter = function (movie, value) {
   return movie.title.toLowerCase().search(value.toLowerCase()) !== -1;
@@ -13,18 +13,20 @@ export const genreFilter = function (movie, value) {
   return genreId > 0 ? movie.genre_ids.includes(genreId) : true;
 };
 
-export const sortBy = function (movie, value) {
-  const sortOption = value.split(".");
+ export const sortBy = function (movie, value) {
+  const sortOption = value;
   switch (sortOption[0]) {
-    case "title":
+    case "title.asc":
       return sortOption[1] === "asc"
-      ? movie.title.localeCompare(movie.title) : movie.title.localeCompare(movie.title) * -1;
-    case "vote_average":
+      //? movie.title.localeCompare(movie.title) : movie.title.localeCompare(movie.title) * -1;
+    case "title.desc":
+      return sortOption[1] === "desc"
+    case "vote_average.asc":
       return sortOption[1] === "asc"
-      ? movie.vote_average - movie.vote_average : movie.vote_average - movie.vote_average * -1;
-    case "release_date":
+     // ? movie.vote_average - movie.vote_average : movie.vote_average - movie.vote_average * -1;
+    case "release_date.asc":
       return sortOption[1] === "asc"
-      ? new Date(movie.release_date) - new Date(movie.release_date) : new Date(movie.release_date) - new Date(movie.release_date) * -1;
+     // ? new Date(movie.release_date) - new Date(movie.release_date) : new Date(movie.release_date) - new Date(movie.release_date) * -1;
     default:
       return true;
   }
@@ -60,7 +62,7 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortBy 
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <FilterCard
+        <FilterMoviesCard
           onUserInput={onFilterValuesChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}

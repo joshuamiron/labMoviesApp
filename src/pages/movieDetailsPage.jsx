@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import MovieDetails from "../components/movieDetails";
 import SimilarMovies from "../components/similarMovies";
 //import MovieCredits from "../components/movieCredits";

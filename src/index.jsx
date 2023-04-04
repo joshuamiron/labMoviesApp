@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import SiteHeader from './components/siteHeader'
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -17,6 +19,7 @@ import MoviesTrendingPage from "./pages/moviesTrendingPage";
 import PersonPage from "./pages/personDetailsPage";
 import PeopleTrendingPage from './pages/peopleTrendingPage';
 import MyPlaylistPage from './pages/myPlaylistPage';
+import MyFantasyMoviesForm from './pages/myFantasyMoviesForm';
 
 
 const queryClient = new QueryClient({
@@ -29,9 +32,13 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => {
+const App = ( {children} ) => {
   return (
+
     <QueryClientProvider client={queryClient}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {children}
+      </LocalizationProvider>
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
@@ -48,6 +55,7 @@ const App = () => {
             <Route path="/people/trending" element={<PeopleTrendingPage />} />
             <Route path="/people/:id" element={<PersonPage />} />
             <Route path="/movies/myplaylist" element={<MyPlaylistPage />} />
+            <Route path="/movies/myfantasymovies" element={<MyFantasyMoviesForm />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
