@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const ListHeader = (props) => {
+const Header = (props) => {
   const title = props.title
 
   return (
@@ -35,4 +35,4 @@ const ListHeader = (props) => {
   );
 };
 
-export default ListHeader;
+export default Header;

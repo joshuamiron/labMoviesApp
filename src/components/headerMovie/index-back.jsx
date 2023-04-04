@@ -20,7 +20,7 @@ const styles = {
     padding: 1.5,
   },
   avatar: {
-    backgroundColor: "secondary",
+    backgroundColor: "rgb(255, 0, 0)",
   },
 };
 
@@ -39,12 +39,15 @@ const MovieHeader = (props) => {
 
   return (
     <Paper component="div" sx={styles.root}>
+      <IconButton aria-label="go back">
+        <ArrowBackIcon color="primary" fontSize="large" />
+      </IconButton>
 
       <CardHeader
         avatar={
           favourites.includes(movie.id) ? (
             <Avatar sx={styles.avatar}>
-              <FavoriteIcon color="secondary"/>
+              <FavoriteIcon />
             </Avatar>
           ) : null
         }
@@ -59,6 +62,9 @@ const MovieHeader = (props) => {
         <span>{`${movie.tagline}`} </span>
       </Typography>
 
+      <IconButton aria-label="go forward">
+        <ArrowForwardIcon color="primary" fontSize="large" />
+      </IconButton>
     </Paper>
   );
 };

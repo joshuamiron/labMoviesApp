@@ -20,5 +20,5 @@ const genres = [
       label: "Comedy",
     },
   ];
-    export default genres
+export default genres
   

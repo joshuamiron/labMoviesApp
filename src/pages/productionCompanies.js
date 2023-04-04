@@ -1,24 +1,24 @@
 const productionCompanies = [
     {
-      value: 5,
+      value: 4,
       label: "Paramount",
     },
     {
-      value: 4,
+      value: 3,
       label: "MGM",
     },
     {
-      value: 3,
+      value: 2,
       label: "Warner Bros.",
     },
     {
-      value: 2,
-      label: "Amazon",
+      value: 1,
+      label: "Amazon Prime Video",
     },
     {
       value: 0,
       label: "Netflix",
     },
   ];
-    export default productionCompanies
+export default productionCompanies
   

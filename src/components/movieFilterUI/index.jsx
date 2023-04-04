@@ -13,6 +13,11 @@ export const genreFilter = function (movie, value) {
   return genreId > 0 ? movie.genre_ids.includes(genreId) : true;
 };
 
+export const studioFilter = function (movie, value) {
+  const studioId = Number(value);
+  return studioId > 0 ? movie.studio_ids.includes(studioId) : true;
+};
+
  export const sortBy = function (movie, value) {
   const sortOption = value;
   switch (sortOption[0]) {
@@ -44,7 +49,7 @@ const styles = {
   },
 };
 
-const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortBy }) => {
+const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, studioFilter, sortBy }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -66,6 +71,7 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, sortBy 
           onUserInput={onFilterValuesChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
+          studioFilter={studioFilter}
           sortBy={sortBy}
         />
       </Drawer>

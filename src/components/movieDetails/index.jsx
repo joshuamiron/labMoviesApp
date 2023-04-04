@@ -45,11 +45,6 @@ const MovieDetails = ( {movie}) => {
 
   return (
     <>
-      <Grid>
-        <CardActions disableSpacing>
-
-        </CardActions>
-      </Grid>
       <Typography variant="h5" component="h3">
         Overview
       </Typography>

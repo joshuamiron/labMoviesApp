@@ -6,7 +6,7 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} );
   const [favourites, setFavourites] = useState([]);
   const [playlist, setPlaylist] = useState([]);
-  const [fantasyMovies, setFantasyMovies] = useState([]);
+  const [madeupMovies, setMyMadeupMovies] = useState([]);
 
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
@@ -40,8 +40,9 @@ const MoviesContextProvider = (props) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
 
-  const addFantasyMovie = (movie, overview) => {
-    setMyFantasyMovies( {...fantasyMovies, [movie.id]: overview } )
+  const addMadeupMovie = (movie, overview) => {
+    let updatedMadeupMovies = [...madeupMovies];
+    setMyMadeupMovies( updatedMadeupMovies );
   };
 
   return (
@@ -52,7 +53,7 @@ const MoviesContextProvider = (props) => {
         addReview,
         playlist,
         addToPlaylist,
-        addFantasyMovie,
+        addMadeupMovie,
       }}
     >
       {props.children}

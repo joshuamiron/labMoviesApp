@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
-import AddToPlaylistIcon from "@mui/icons-material/PlayListAdd";
+import AddToPlaylistIcon from "@mui/icons-material/PlaylistAdd";
 import RemoveFromPlaylistIcon from "@mui/icons-material/PlaylistRemove";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Avatar from "@mui/material/Avatar";

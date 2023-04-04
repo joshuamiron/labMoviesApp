@@ -28,7 +28,7 @@ const styles = {
 
 export default function FilterMoviesCard(props) {
   const {data, error, isLoading, isError} = useQuery("genres", getGenres);
-  
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -42,6 +42,8 @@ export default function FilterMoviesCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
+
+
   const handleUserImput = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value);
@@ -53,6 +55,10 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleUserImput(e, "genre", e.target.value)
+  };
+
+  const handleStudioChange = (e) => {
+    handleUserImput(e, "studio", e.target.value)
   };
 
   const handleSortChange = (e) => {
@@ -85,6 +91,27 @@ export default function FilterMoviesCard(props) {
             id="genre-select"
             value={props.genreFilter}
             onChange={handleGenreChange}
+          >
+            {genres.map((genre) => {
+              return (
+                <MenuItem key={genre.id} value={genre.id}>
+                  {genre.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+
+        <Typography variant="h5" component="h1">
+          Filter by studio
+        </Typography>
+        <FormControl sx={styles.formControl}>
+          <InputLabel id="studio-label">Studio</InputLabel>
+          <Select
+            labelId="studio-label"
+            id="studio-select"
+            value={props.studioFilter}
+            onChange={handleStudioChange}
           >
             {genres.map((genre) => {
               return (
