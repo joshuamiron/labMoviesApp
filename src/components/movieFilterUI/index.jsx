@@ -17,7 +17,8 @@ export const releaseYearFilter = function (movie, value) {
   return movie.release_date.substring(0, 4).search(value) !== -1;
 };
 
- export const sortBy = function (movie, value) {
+
+ /* export const sortBy = function (movie, value) {
   const sortOption = value;
   switch (sortOption[0]) {
     case "title.asc":
@@ -34,7 +35,34 @@ export const releaseYearFilter = function (movie, value) {
     default:
       return true;
   }
+}; */
+
+  export const sortBy = function (movie, value) {
+  switch (sortOrder) {
+    case "title-asc":
+      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      return movie.title;
+    case "title-desc":
+      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      return movie.title;
+    case "vote_average-asc":
+      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      return movie.vote_average;
+    case "vote_average-desc":
+      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      return movie.vote_average;
+    //case "release_date-asc":
+    //  return new Date(movie.relase_date);
+    //case "release_date-desc":
+    //  return new Date(movie.release_date);
+    default:
+      console.log("Switch statemetn in movieFilterUI called - default");
+      return true;
+  }
 };
+
+console.log("movieFilterUI says");
+console.log(sortBy.sortOrder);
 
 const styles = {
   root: {
@@ -48,7 +76,7 @@ const styles = {
   },
 };
 
-const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, releaseYearFilter, sortBy }) => {
+const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, releaseYearFilter, sortOrder, onSortOrderChange }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -71,6 +99,8 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, release
           titleFilter={titleFilter}
           genreFilter={genreFilter}
           releaseYearFilter={releaseYearFilter}
+          sortOrder={sortOrder}
+          onSortOrderChange={onSortOrderChange}
           sortBy={sortBy}
         />
       </Drawer>

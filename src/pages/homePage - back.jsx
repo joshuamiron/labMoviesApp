@@ -1,5 +1,4 @@
-//import React from "react";
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 
 import PageTemplate from '../components/templateMovieListPage'
@@ -29,13 +28,11 @@ const releaseYearFiltering = {
 };
 
 const HomePage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("discover", getMovies);
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+    const { data, error, isLoading, isError } = useQuery("discover", getMovies);
+    const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
-  
-  const [sortOrder, setSortOrder] = useState("title-asc");
 
   if (isLoading) {
     return <Spinner />;
@@ -46,18 +43,17 @@ const HomePage = (props) => {
   }
 
   const changeFilterValues = (type, value) => {
-    console.log("changeFilterValues called on homePage");
   const changedFilter = { name: type, value: value };
     
    switch(type) {
       case "title":
         console.log("title");
-        console.log(changedFilter);
+        console.log(filterValues[1]);
         setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
         break;
       case "genre":
         console.log("genre");
-        console.log(changedFilter);
+        console.log(filterValues[0]);
         setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
         break;
       case "releaseYear":
@@ -74,8 +70,8 @@ const HomePage = (props) => {
     setFilterValues(updatedFilterSet);
   };  */
 
+  const sort_by = (field, reverse, primer) => {
 
-   const sort_by = (field, reverse, primer) => {
     const key = primer ?
       function(x) {
         return primer(x[field])
@@ -87,19 +83,14 @@ const HomePage = (props) => {
     reverse = !reverse ? 1 : -1;
   
     return function(a, b) {
-      return reverse * (key(a) > key(b) ? 1 : -1);
-//      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
     }
   }
-  console.log("sort_by happened on homePage");
-  console.log(sort_by.field);
 
   const movies = data ? data.results : [];
   
   console.log("Current sort");
-  console.log(sortOrder);
-    
-  /*switch("sortOrder")
+  switch("title-asc")
    {
     case "title-asc":
       movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
@@ -114,39 +105,12 @@ const HomePage = (props) => {
       movies.sort(sort_by('rating', true, parseInt) );
       break;    
       
-   }*/
+   }
 
   console.log("About to sort");
-
   movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);
 
-  
-  switch("sortOrder")
-  {
-   case "title-asc":
-    displayedMovies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-    setSortOrder(displayedMovies);
-    console.log("title-asc");
-    console.log(sortOrder);
-    break;
-   case "title-desc":
-    displayedMovies.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-    console.log("title-desc");
-    console.log(sortOrder);
-    break;
-   case "vote_average-asc":
-    displayedMovies.sort(sort_by('rating', false, parseInt) );
-    console.log("vote_average-asc");
-    console.log(sortOrder);
-    break;
-   case "vote_average-desc":
-    displayedMovies.sort(sort_by('rating', true, parseInt) );
-    console.log("vote_average-desc");
-    console.log(sortOrder);
-    break;    
-     
-  }
 
   return (
     <>
@@ -167,8 +131,6 @@ const HomePage = (props) => {
         titleFilter={filterValues[0].value}
         genreFilter={filterValues[1].value}
         releaseYearFilter={filterValues[2].value}
-        sortOrder={sortOrder}
-        onSortOrderChange={setSortOrder}
       />
     </>
   );

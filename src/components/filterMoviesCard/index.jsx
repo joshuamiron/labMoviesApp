@@ -42,14 +42,14 @@ export default function FilterMoviesCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
-
-
   const handleUserInput = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value);
+    console.log("handleUserInput called on filterMoviesCard");
+    console.log(value);
   };
 
-  const handleTextChange = (e, props) => {
+  const handleTitleTextChange = (e, props) => {
     handleUserInput(e, "title", e.target.value)
   };
 
@@ -61,9 +61,24 @@ export default function FilterMoviesCard(props) {
     handleUserInput(e, "releaseYear", e.target.value)
   };
 
+  /* const handleUserInputSort = (e, type, value) => {
+    e.preventDefault();
+    props.onSortOrderChange(type, value);
+  };
+
+  const handleSortChange = (e) => {
+    handleUserInputSort(e, "sort", e.target.value)
+    console.log("handleSortChange called on filterMoviesCard");
+  };*/
+
   const handleSortChange = (e) => {
     handleUserInput(e, "sort", e.target.value)
+    console.log("handleSortChange called on filterMoviesCard");
+    console.log(e.target.value);
   };
+
+//  <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
+//  <MenuItem value={"release_date-asc"}>Release date - oldest first</MenuItem>
 
   return (
     <>
@@ -79,7 +94,7 @@ export default function FilterMoviesCard(props) {
           type="search"
           value={props.titleFilter}
           variant="filled"
-          onChange={handleTextChange}
+          onChange={handleTitleTextChange}
         />
         <Typography variant="h5" component="h1">
           Filter by genre
@@ -123,15 +138,13 @@ export default function FilterMoviesCard(props) {
           <Select
             labelId="sort-label"
             id="sort-select"
-            value={props.sortFilter}
+            value={props.sortOrder}
             onChange={handleSortChange}
           >
-            <MenuItem value={"title.desc"}>Title - A to Z</MenuItem>
-            <MenuItem value={"title.asc"}>Title - Z to A</MenuItem>
-            <MenuItem value={"vote_average.desc"}>User rating ↓</MenuItem>
-            <MenuItem value={"vote_average.asc"}>User rating ↑</MenuItem>
-            <MenuItem value={"release_date.desc"}>Release date - newest first</MenuItem>
-            <MenuItem value={"release_date.asc"}>Release date - oldest first</MenuItem>
+            <MenuItem value={"title-asc"}>Title - A to Z</MenuItem>
+            <MenuItem value={"title-desc"}>Title - Z to A</MenuItem>
+            <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
+            <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
           </Select>
         </FormControl>
 
