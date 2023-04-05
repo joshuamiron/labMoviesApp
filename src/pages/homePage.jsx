@@ -5,7 +5,7 @@ import PageTemplate from '../components/templateMovieListPage'
 import Spinner from "../components/spinner";
 import {getMovies} from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
-import MovieFilterUI, { titleFilter, genreFilter, } from "../components/movieFilterUI";
+import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
@@ -21,11 +21,17 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
+const releaseYearFiltering = {
+  name: "releaseYear",
+  value: "",
+  condition: releaseYearFilter,
+};
+
 const HomePage = (props) => {
     const { data, error, isLoading, isError } = useQuery("discover", getMovies);
     const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
-    [titleFiltering, genreFiltering]
+    [titleFiltering, genreFiltering, releaseYearFiltering]
   );
 
   if (isLoading) {
@@ -37,15 +43,63 @@ const HomePage = (props) => {
   }
 
   const changeFilterValues = (type, value) => {
-    const changedFilter = { name: type, value: value };
-    const updatedFilterSet =
+  const changedFilter = { name: type, value: value };
+    
+   switch(type) {
+      case "title":
+        console.log("title");
+        console.log(filterValues[1]);
+        setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
+        break;
+      case "genre":
+        console.log("genre");
+        console.log(filterValues[0]);
+        setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
+        break;
+      case "releaseYear":
+        console.log("release year");
+        console.log(changedFilter);
+        setFilterValues([filterValues[0], filterValues[1], changedFilter]);
+        break;
+    } 
+  };
+      /* const updatedFilterSet =
       type === "title"
         ? [changedFilter, filterValues[1]]
         : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
-  };
+  };  */
+
+  const sort_by = (field, reverse, primer) => {
+
+    const key = primer ?
+      function(x) {
+        return primer(x[field])
+      } :
+      function(x) {
+        return x[field]
+      };
+  
+    reverse = !reverse ? 1 : -1;
+  
+    return function(a, b) {
+      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    }
+  }
 
   const movies = data ? data.results : [];
+  //console.log("Current sort");
+   /*switch("Title AZ")
+   {
+    case "Title AZ":
+      movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+      break;
+    case "UserRating":
+      movies.sort(sort_by('rating', false, parseInt) );
+      break;    
+   }*/
+  console.log("About to sort");
+  movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);
 
 
@@ -67,6 +121,7 @@ const HomePage = (props) => {
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
         genreFilter={filterValues[1].value}
+        releaseYearFilter={filterValues[2].value}
       />
     </>
   );

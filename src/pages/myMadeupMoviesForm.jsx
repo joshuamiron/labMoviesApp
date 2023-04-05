@@ -128,7 +128,7 @@ const MyMadeupMoviesForm = ({ movie }) => {
             )}
           />
           {errors.title && (
-            <Typography variant="h6" component="p">
+            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
               {errors.title.message}
             </Typography>
           )}
@@ -156,11 +156,13 @@ const MyMadeupMoviesForm = ({ movie }) => {
               />
             )}
           />
+          <br></br>
           {errors.overview && (
-            <Typography variant="h6" component="p">
+            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
               {errors.overview.message}
             </Typography>
           )}
+          <br></br>
           <Controller
             control={control}
             name="genre"
@@ -204,11 +206,14 @@ const MyMadeupMoviesForm = ({ movie }) => {
               />
             )}
           />
-          {errors.releasedate && (
-            <Typography variant="h6" component="p">
-              {errors.releasedate.message}
+          <br></br>
+          {errors.runtime && (
+            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
+              {errors.runtime.message}
             </Typography>
           )}
+          <br></br>
+
           <Controller
             control={control}
             name="productioncompany"
@@ -231,7 +236,8 @@ const MyMadeupMoviesForm = ({ movie }) => {
               </TextField>
             )}
           />
-
+          <br></br>
+          <br></br>
           <Controller
             name="releasedate"
             control={control}
@@ -254,12 +260,13 @@ const MyMadeupMoviesForm = ({ movie }) => {
               </LocalizationProvider>
             )}
           />
+          <br></br>
         {errors.releasedate && (
-          <Typography variant="h6" component="p">
+          <Typography variant="subtitle2" component="p" style={{color: "red"}}>
             {errors.releasedate.message}
           </Typography>
         )}
-        
+        <br></br>
 
         <Box sx={styles.buttons}>
           <Button

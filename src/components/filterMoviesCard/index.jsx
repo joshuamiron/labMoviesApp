@@ -44,25 +44,25 @@ export default function FilterMoviesCard(props) {
 
 
 
-  const handleUserImput = (e, type, value) => {
+  const handleUserInput = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value);
   };
 
   const handleTextChange = (e, props) => {
-    handleUserImput(e, "title", e.target.value)
+    handleUserInput(e, "title", e.target.value)
   };
 
   const handleGenreChange = (e) => {
-    handleUserImput(e, "genre", e.target.value)
+    handleUserInput(e, "genre", e.target.value)
   };
 
-  const handleStudioChange = (e) => {
-    handleUserImput(e, "studio", e.target.value)
+  const handleReleaseYearChange = (e) => {
+    handleUserInput(e, "releaseYear", e.target.value)
   };
 
   const handleSortChange = (e) => {
-    handleUserImput(e, "sort", e.target.value)
+    handleUserInput(e, "sort", e.target.value)
   };
 
   return (
@@ -75,7 +75,7 @@ export default function FilterMoviesCard(props) {
         <TextField
           sx={styles.formControl}
           id="filled-search"
-          label="Search field"
+          label="Title"
           type="search"
           value={props.titleFilter}
           variant="filled"
@@ -103,25 +103,17 @@ export default function FilterMoviesCard(props) {
         </FormControl>
 
         <Typography variant="h5" component="h1">
-          Filter by studio
+          Search by release year
         </Typography>
-        <FormControl sx={styles.formControl}>
-          <InputLabel id="studio-label">Studio</InputLabel>
-          <Select
-            labelId="studio-label"
-            id="studio-select"
-            value={props.studioFilter}
-            onChange={handleStudioChange}
-          >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+        <TextField
+          sx={styles.formControl}
+          id="filled-search-year"
+          label="YYYY"
+          type="search"
+          value={props.releaseYearFilter}
+          variant="filled"
+          onChange={handleReleaseYearChange}
+        />
 
         <Typography variant="h5" component="h1">
           Sort the movies
