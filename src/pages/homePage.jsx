@@ -89,7 +89,7 @@ const HomePage = (props) => {
 
   //movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);
-  console.log("Eric");
+
   const sort_by = (field, reverse, primer) => {
     const key = primer ?
       function(x) {
