@@ -18,6 +18,8 @@ export const releaseYearFilter = function (movie, value) {
 };
 
 
+
+
  /* export const sortBy = function (movie, value) {
   const sortOption = value;
   switch (sortOption[0]) {

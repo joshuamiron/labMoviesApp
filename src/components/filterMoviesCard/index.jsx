@@ -46,10 +46,10 @@ export default function FilterMoviesCard(props) {
     e.preventDefault();
     props.onUserInput(type, value);
     console.log("handleUserInput called on filterMoviesCard");
-    console.log(value);
   };
 
   const handleTitleTextChange = (e, props) => {
+    console.log(e);
     handleUserInput(e, "title", e.target.value)
   };
 
@@ -61,20 +61,10 @@ export default function FilterMoviesCard(props) {
     handleUserInput(e, "releaseYear", e.target.value)
   };
 
-  /* const handleUserInputSort = (e, type, value) => {
+  const handleSortChange = (e) => {
+    console.log("handleSortChange called on filterMoviesCard to " + e.target.value);
     e.preventDefault();
-    props.onSortOrderChange(type, value);
-  };
-
-  const handleSortChange = (e) => {
-    handleUserInputSort(e, "sort", e.target.value)
-    console.log("handleSortChange called on filterMoviesCard");
-  };*/
-
-  const handleSortChange = (e) => {
-    handleUserInput(e, "sort", e.target.value)
-    console.log("handleSortChange called on filterMoviesCard");
-    console.log(e.target.value);
+    props.onSortOrderChange(e.target.value);
   };
 
 //  <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>

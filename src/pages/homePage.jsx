@@ -10,6 +10,7 @@ import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../c
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
+
 const titleFiltering = {
   name: "title",
   value: "",
@@ -28,14 +29,16 @@ const releaseYearFiltering = {
   condition: releaseYearFilter,
 };
 
+
+
 const HomePage = (props) => {
   const { data, error, isLoading, isError } = useQuery("discover", getMovies);
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+  const {filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
   
-  const [sortOrder, setSortOrder] = useState("title-asc");
+ const [sortOrder, setSortOrder] = useState("title-asc");
 
   if (isLoading) {
     return <Spinner />;
@@ -44,7 +47,7 @@ const HomePage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-
+  
   const changeFilterValues = (type, value) => {
     console.log("changeFilterValues called on homePage");
   const changedFilter = { name: type, value: value };
@@ -65,6 +68,7 @@ const HomePage = (props) => {
         console.log(changedFilter);
         setFilterValues([filterValues[0], filterValues[1], changedFilter]);
         break;
+
     } 
   };
       /* const updatedFilterSet =
@@ -75,7 +79,18 @@ const HomePage = (props) => {
   };  */
 
 
-   const sort_by = (field, reverse, primer) => {
+
+  
+
+  const movies = data ? data.results : [];
+  
+  //console.log("Current sort " + sortOrder);
+  
+
+  //movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+  const displayedMovies = filterFunction(movies);
+  console.log("Eric");
+  const sort_by = (field, reverse, primer) => {
     const key = primer ?
       function(x) {
         return primer(x[field])
@@ -88,66 +103,30 @@ const HomePage = (props) => {
   
     return function(a, b) {
       return reverse * (key(a) > key(b) ? 1 : -1);
-//      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+  //      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
     }
   }
-  console.log("sort_by happened on homePage");
-  console.log(sort_by.field);
-
-  const movies = data ? data.results : [];
-  
-  console.log("Current sort");
-  console.log(sortOrder);
-    
-  /*switch("sortOrder")
-   {
-    case "title-asc":
-      movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-      break;
-    case "title-desc":
-      movies.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-      break;
-    case "vote_average-asc":
-      movies.sort(sort_by('rating', false, parseInt) );
-      break;
-    case "vote_average-desc":
-      movies.sort(sort_by('rating', true, parseInt) );
-      break;    
-      
-   }*/
-
-  console.log("About to sort");
-
-  movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-  const displayedMovies = filterFunction(movies);
-
-  
-  switch("sortOrder")
-  {
-   case "title-asc":
-    displayedMovies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-    setSortOrder(displayedMovies);
-    console.log("title-asc");
-    console.log(sortOrder);
-    break;
-   case "title-desc":
-    displayedMovies.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-    console.log("title-desc");
-    console.log(sortOrder);
-    break;
-   case "vote_average-asc":
-    displayedMovies.sort(sort_by('rating', false, parseInt) );
-    console.log("vote_average-asc");
-    console.log(sortOrder);
-    break;
-   case "vote_average-desc":
-    displayedMovies.sort(sort_by('rating', true, parseInt) );
-    console.log("vote_average-desc");
-    console.log(sortOrder);
-    break;    
-     
-  }
-
+  const changeSortOrder = (value) => {
+      console.log("changeSortOrder called on homePage to " + value);
+      //sortOrder = value;
+      switch(value)
+      {
+      case "title-asc":
+        displayedMovies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+        break;
+      case "title-desc":
+        console.log("Home Page - Sort Switch - title-desc");
+        displayedMovies.sort(sort_by('title', true, (a) => a.toUpperCase()) );
+        break;
+      case "vote_average-asc":
+        displayedMovies.sort(sort_by('rating', false, parseInt) );
+        break;
+      case "vote_average-desc":
+        displayedMovies.sort(sort_by('rating', true, parseInt) );
+        break;    
+        
+      }
+  };
   return (
     <>
       <PageTemplate
@@ -168,7 +147,7 @@ const HomePage = (props) => {
         genreFilter={filterValues[1].value}
         releaseYearFilter={filterValues[2].value}
         sortOrder={sortOrder}
-        onSortOrderChange={setSortOrder}
+        onSortOrderChange={changeSortOrder}
       />
     </>
   );
