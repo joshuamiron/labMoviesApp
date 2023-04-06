@@ -71,21 +71,19 @@ const HomePage = (props) => {
 
     } 
   };
+
+  //-------- The original filter   --------//
       /* const updatedFilterSet =
       type === "title"
         ? [changedFilter, filterValues[1]]
         : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
   };  */
-
-
-
-  
+  //-------------------------------------//
 
   const movies = data ? data.results : [];
   
   //console.log("Current sort " + sortOrder);
-  
 
   //movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);

@@ -17,28 +17,6 @@ export const releaseYearFilter = function (movie, value) {
   return movie.release_date.substring(0, 4).search(value) !== -1;
 };
 
-
-
-
- /* export const sortBy = function (movie, value) {
-  const sortOption = value;
-  switch (sortOption[0]) {
-    case "title.asc":
-      return sortOption[1] === "asc"
-      //? movie.title.localeCompare(movie.title) : movie.title.localeCompare(movie.title) * -1;
-    case "title.desc":
-      return sortOption[1] === "desc"
-    case "vote_average.asc":
-      return sortOption[1] === "asc"
-     // ? movie.vote_average - movie.vote_average : movie.vote_average - movie.vote_average * -1;
-    case "release_date.asc":
-      return sortOption[1] === "asc"
-     // ? new Date(movie.release_date) - new Date(movie.release_date) : new Date(movie.release_date) - new Date(movie.release_date) * -1;
-    default:
-      return true;
-  }
-}; */
-
   export const sortBy = function (movie, value) {
   switch (sortOrder) {
     case "title-asc":
