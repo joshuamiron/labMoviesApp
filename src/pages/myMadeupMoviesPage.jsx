@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import MovieIcon from '@mui/icons-material/Movie';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
 import Header from "../components/headerList";
 import MyMadeupMoviesForm from "./myMadeupMoviesForm";
@@ -29,12 +30,6 @@ const styles = {
       right: 2,
 
     },
-    media: { height: 300 },
-    formControl: {
-      margin: 1,
-      minWidth: 220,
-      backgroundColor: "rgb(255, 255, 255)",
-    },
   };
 
 const MyMadeupMoviesPage = () => {
@@ -50,15 +45,14 @@ const MyMadeupMoviesPage = () => {
       <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
         <ListItem alignItems="flex-start" secondaryAction={
           <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon color="secondary" />
           </IconButton>
         }>
-        <ListItemAvatar>
-          <Avatar>
-            <MovieIcon />
+        <ListItemAvatar >
+          <Avatar >
+            <LocalMoviesIcon color="primary"/>
           </Avatar>
         </ListItemAvatar>
-
         <ListItemText
           primary="Title"
           secondary={
@@ -77,63 +71,6 @@ const MyMadeupMoviesPage = () => {
         />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start" secondaryAction={
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        }>
-        <ListItemAvatar>
-          <Avatar>
-            <MovieIcon />
-          </Avatar>
-        </ListItemAvatar>
-
-        <ListItemText
-          primary="Title"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Genre?
-              </Typography>
-              {" Movie overview"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start" secondaryAction={
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        }>
-        <ListItemAvatar>
-          <Avatar>
-            <MovieIcon />
-          </Avatar>
-        </ListItemAvatar>
-
-        <ListItemText
-          primary="Title"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Genre?
-              </Typography>
-              {" Movie overview"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
     </List>
     </Grid> 
     <Fab

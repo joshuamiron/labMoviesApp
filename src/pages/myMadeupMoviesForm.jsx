@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import InputAdornment from '@mui/material/InputAdornment';
 
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -16,10 +17,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-
 import { MoviesContext } from "../contexts/moviesContext";
-import genres from "./genreCategories"; //need to add this
-import productionCompanies from "./productionCompanies"; //need to add this
+import genres from "./genreCategories"; //need to add this from real genres endpoint
+import productionCompanies from "./productionCompanies"; //need to figure out how to create a production companies endpoint
 
 const styles = {
   root: {
@@ -36,28 +36,30 @@ const styles = {
   },
 };
 
-const MyMadeupMoviesForm = ({ movie }) => {
+const MyMadeupMoviesForm = () => {
   const defaultValues = {
     id: "",
-    title: "",        // author: "",
-    overview: "",     // review: "", probably more like review text?
-    agree: false,     // what's this?  checking that the first two are filled in?
-    genre: "3",      // rating: "3",
+    //title: "",       
+    overview: "",    
+    agree: false,  // what's this for? validation?   
+    //genre: "3",      
     releasedate: "",
     runtime: "",
-    productioncompany: "3",
+    //productioncompany: "3",
   };
+
   const {
     control,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm(defaultValues);
-  const navigate = useNavigate();
-  const context = useContext(MoviesContext);
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState(3);
-  const [productionCompany, setProductionCompany] = useState(3);
+    } = useForm(defaultValues);
+
+    const navigate = useNavigate();
+    const context = useContext(MoviesContext);
+    //const [title, setTitle] = useState("");
+    const [genre, setGenre] = useState(3);
+    const [productionCompany, setProductionCompany] = useState(3);
 
   const [open, setOpen] = useState(false);
 
@@ -69,9 +71,9 @@ const MyMadeupMoviesForm = ({ movie }) => {
     setProductionCompany(event.target.value);
   };
 
-  /* const handleTitleChange = (event) => {
+   const handleTitleChange = (event) => {
     setTitle(event.target.value);
-  }; */
+  }; 
 
   const handleSnackClose = (event) => {
     setOpen(false);
@@ -110,7 +112,7 @@ const MyMadeupMoviesForm = ({ movie }) => {
             </Typography>
           </Alert>
         </Snackbar>
-        <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} >
           <Controller
             name="title"
             control={control}
@@ -122,10 +124,10 @@ const MyMadeupMoviesForm = ({ movie }) => {
                 variant="outlined"
                 margin="normal"
                 required
-                onChange={onChange}
                 value={value}
-                id="title"
+                onChange={onChange}
                 label="Movie title"
+                id="title"
                 autoFocus
               />
             )}
@@ -145,11 +147,10 @@ const MyMadeupMoviesForm = ({ movie }) => {
             defaultValue=""
             render={({ field: { onChange, value } }) => (
               <TextField
+                sx={{ width: "40ch" }}
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
-                sx={{ width: "40ch" }}
                 value={value}
                 onChange={onChange}
                 label="Overview text"
@@ -205,6 +206,7 @@ const MyMadeupMoviesForm = ({ movie }) => {
                 value={value}
                 id="runtime"
                 label="Runtime"
+                helperText="In minutes, numbers only please"
                 inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
               />
             )}
