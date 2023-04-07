@@ -37,8 +37,9 @@ const styles = {
     },
   };
 
-const MyMadeupMoviesPage = ( props ) => {
+const MyMadeupMoviesPage = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const { madeupMovies } = useContext(MoviesContext);
 
   return (
     <>
@@ -59,7 +60,7 @@ const MyMadeupMoviesPage = ( props ) => {
         </ListItemAvatar>
 
         <ListItemText
-          primary="Made up movie 1"
+          primary="Title"
           secondary={
             <React.Fragment>
               <Typography
@@ -68,9 +69,9 @@ const MyMadeupMoviesPage = ( props ) => {
                 variant="body2"
                 color="text.primary"
               >
-                Ali Connors
+                Genre?
               </Typography>
-              {" Made up movie 1 desciption"}
+              {" Movie overview"}
             </React.Fragment>
           }
         />
@@ -88,7 +89,7 @@ const MyMadeupMoviesPage = ( props ) => {
         </ListItemAvatar>
 
         <ListItemText
-          primary="Summer BBQ"
+          primary="Title"
           secondary={
             <React.Fragment>
               <Typography
@@ -97,9 +98,9 @@ const MyMadeupMoviesPage = ( props ) => {
                 variant="body2"
                 color="text.primary"
               >
-                to Scott, Alex, Jennifer
+                Genre?
               </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
+              {" Movie overview"}
             </React.Fragment>
           }
         />
@@ -117,7 +118,7 @@ const MyMadeupMoviesPage = ( props ) => {
         </ListItemAvatar>
 
         <ListItemText
-          primary="Oui Oui"
+          primary="Title"
           secondary={
             <React.Fragment>
               <Typography
@@ -126,9 +127,9 @@ const MyMadeupMoviesPage = ( props ) => {
                 variant="body2"
                 color="text.primary"
               >
-                Sandra Adams
+                Genre?
               </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
+              {" Movie overview"}
             </React.Fragment>
           }
         />

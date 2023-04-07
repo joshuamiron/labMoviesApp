@@ -40,16 +40,18 @@ export default function PersonCard({person}) {
       />
       
       <CardContent>
-        <Typography variant="h6" component="p">
-          <TrendingUpIcon fontSize="small" />
-              {"  "} {person.popularity}{" "}
+        <Typography variant="subtitle1" component="p">
+          Popularity: <strong>{person.popularity*10}</strong>
+        </Typography>
+        <Typography variant="subtitle1" component="p">
+          Known for: <strong>{person.known_for_department}</strong>
         </Typography>
       </CardContent>
 
       <CardActions disableSpacing>
         <Link to={`/people/${person.id}`}>
           <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+            More Info
           </Button>
         </Link>
       </CardActions>

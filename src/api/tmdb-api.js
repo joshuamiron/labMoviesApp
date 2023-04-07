@@ -151,6 +151,8 @@ export const getTrendingMovies = () => {
   });
 };
 
+//-------- People ---------------
+
 export const getTrendingPeople = () => {
   return fetch(
     `https://api.themoviedb.org/3/trending/person/week?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=1`
@@ -202,7 +204,7 @@ export const getPersonImages = ({queryKey}) => {
 
 export const getPersonMovieCredits = (id) => {
   return fetch(
-    `https://api.themoviedb.org/3/person/${id}movie_credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
   )
     .then((res) => res.json())
     .then((json) => {

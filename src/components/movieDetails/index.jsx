@@ -54,15 +54,14 @@ const MovieDetails = ( {movie}) => {
         {movie.homepage ? (
           <a href={movie.homepage} target="_blank">
         <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
-          Visit movie website
+          {`Visit ${movie.title}'s hompage`}
         </Button>
         </a>
         ) : null }
-
       </Typography>
       <Paper component="ul" sx={styles.chipSet}>
         <Grid container spacing={1}>
-          <Grid items xs={12} sx={styles.chipSet}>
+          <Grid item xs={12} sx={styles.chipSet}>
             <li>
               <Chip label="Genres" sx={styles.chipLabel} color="primary" />
             </li>
@@ -74,7 +73,7 @@ const MovieDetails = ( {movie}) => {
           </Grid>
         </Grid>
         <Grid container spacing={1}>
-          <Grid items xs={12} sx={styles.chipSet}>
+          <Grid item xs={12} sx={styles.chipSet}>
             <Chip 
               icon={<AccessTimeFilledIcon />} 
               label={`Runtime: ${movie.runtime} min.`} sx={styles.chipLabel} />

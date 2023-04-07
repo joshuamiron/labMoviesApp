@@ -20,23 +20,23 @@ export const releaseYearFilter = function (movie, value) {
   export const sortBy = function (movie, value) {
   switch (sortOrder) {
     case "title-asc":
-      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
       return movie.title;
     case "title-desc":
-      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
       return movie.title;
     case "vote_average-asc":
-      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
       return movie.vote_average;
     case "vote_average-desc":
-      console.log(`Switch statemetn in movieFilterUI called ${sortOrder} : ${movie.title}`);
+      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
       return movie.vote_average;
     //case "release_date-asc":
     //  return new Date(movie.relase_date);
     //case "release_date-desc":
     //  return new Date(movie.release_date);
     default:
-      console.log("Switch statemetn in movieFilterUI called - default");
+      console.log("Switch statement in movieFilterUI called - default");
       return true;
   }
 };

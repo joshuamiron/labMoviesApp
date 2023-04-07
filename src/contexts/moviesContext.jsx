@@ -40,8 +40,11 @@ const MoviesContextProvider = (props) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
 
-  const addMadeupMovie = (movie, overview) => {
-    let updatedMadeupMovies = [...madeupMovies];
+  const addMadeupMovie = (madeupMovie) => {
+    let updatedMadeupMovies = ([...madeupMovies, { ...madeupMovie, id: madeupMovies.length }]);
+    //updatedMadeupMovies.push(madeupMovie.id);
+    console.log(`${madeupMovie.title} added`);
+    console.log(`Made-up movies is now ${updatedMadeupMovies}`);
     setMyMadeupMovies( updatedMadeupMovies );
   };
 

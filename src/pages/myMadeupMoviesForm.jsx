@@ -38,13 +38,14 @@ const styles = {
 
 const MyMadeupMoviesForm = ({ movie }) => {
   const defaultValues = {
+    id: "",
     title: "",        // author: "",
     overview: "",     // review: "", probably more like review text?
     agree: false,     // what's this?  checking that the first two are filled in?
     genre: "3",      // rating: "3",
     releasedate: "",
     runtime: "",
-    productionCompany: "3",
+    productioncompany: "3",
   };
   const {
     control,
@@ -54,7 +55,7 @@ const MyMadeupMoviesForm = ({ movie }) => {
   } = useForm(defaultValues);
   const navigate = useNavigate();
   const context = useContext(MoviesContext);
-  //const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [genre, setGenre] = useState(3);
   const [productionCompany, setProductionCompany] = useState(3);
 
@@ -68,22 +69,22 @@ const MyMadeupMoviesForm = ({ movie }) => {
     setProductionCompany(event.target.value);
   };
 
-  /*const handleTitleChange = (event) => {
+  /* const handleTitleChange = (event) => {
     setTitle(event.target.value);
-  };*/
+  }; */
 
   const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/mymadeupmoviespage");
   };
 
-  const onSubmit = (madeupmovie) => {
-    //madeupmovie.movieId = id;
-    //madeupmovie.title = title;
-    madeupmovie.genre = genre;
-    madeupmovie.productionCompany = productionCompany;
-    context.addMadeupMovie(movie, madeupmovie);
-    console.log(madeupmovie);
+  const onSubmit = (madeupMovie) => {
+    //madeupMovie.movieId = id;
+    //madeupMovie.title = title;
+    madeupMovie.genre = genre;
+    madeupMovie.productionCompany = productionCompany;
+    context.addMadeupMovie(madeupMovie);
+    console.log(madeupMovie);
     setOpen(true);
   };
 
