@@ -26,11 +26,13 @@ const styles = {
     maxWidth: 345,
   },
   media: { height: 300 },
-
   formControl: {
     margin: 1,
     minWidth: 220,
     backgroundColor: "rgb(255, 255, 255)",
+  },
+  submit: {
+    marginRight: 2,
   },
 };
 

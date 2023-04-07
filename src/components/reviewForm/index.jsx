@@ -147,7 +147,7 @@ const ReviewForm = ({ movie }) => {
           )}
         />
 
-        <Box sx={styles.buttons}>
+        <Box >
           <Button
             type="submit"
             variant="contained"
