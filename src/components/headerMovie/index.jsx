@@ -52,9 +52,7 @@ const MovieHeader = (props) => {
       
       <Typography variant="h4" component="h3">
         {movie.title}{"   "}
-        <a href={movie.homepage}>
-          <HomeIcon color="primary" fontSize="large"/>
-        </a>
+
         <br />
         <span>{`${movie.tagline}`} </span>
       </Typography>

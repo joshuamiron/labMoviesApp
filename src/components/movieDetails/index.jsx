@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
@@ -10,7 +10,8 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import Grid from "@mui/material/Grid";
-import CardActions from "@mui/material/CardActions";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Button from "@mui/material/Button";
 
 import MovieReviews from '../movieReviews'
 import {formatDate} from "../../util";
@@ -48,34 +49,48 @@ const MovieDetails = ( {movie}) => {
       <Typography variant="h5" component="h3">
         Overview
       </Typography>
-
       <Typography variant="h6" component="p">
         {movie.overview}
-      </Typography>
+        {movie.homepage ? (
+          <a href={movie.homepage} target="_blank">
+        <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
+          Visit movie website
+        </Button>
+        </a>
+        ) : null }
 
+      </Typography>
       <Paper component="ul" sx={styles.chipSet}>
-        <li>
-          <Chip label="Genres" sx={styles.chipLabel} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name}  />
-          </li>
-        ))}
-      </Paper>
-      <Paper component="ul" sx={styles.chipSet}>
-        <Chip icon={<AccessTimeFilledIcon />} label={`Runtime: ${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`Revenue: $${movie.revenue.toLocaleString()}`}
-        />
-        <Chip
-          icon={<TrendingUpIcon />}
-          label={`User rating: ${movie.vote_average*10}%`}
-        />
-        <Chip
-          icon={<TheatersIcon></TheatersIcon>} 
-         label={`Released: ${formattedDate}`} />
+        <Grid container spacing={1}>
+          <Grid items xs={12} sx={styles.chipSet}>
+            <li>
+              <Chip label="Genres" sx={styles.chipLabel} color="primary" />
+            </li>
+            {movie.genres.map((g) => (
+            <li key={g.name}>
+              <Chip label={g.name} sx={styles.chipLabel} />
+            </li>
+          ))}
+          </Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid items xs={12} sx={styles.chipSet}>
+            <Chip 
+              icon={<AccessTimeFilledIcon />} 
+              label={`Runtime: ${movie.runtime} min.`} sx={styles.chipLabel} />
+            <Chip
+              icon={<MonetizationIcon />}
+              label={`Revenue: $${movie.revenue.toLocaleString()}`} sx={styles.chipLabel}
+            />
+            <Chip
+              icon={<TrendingUpIcon />}
+              label={`User rating: ${movie.vote_average*10}%`} sx={styles.chipLabel}
+            />
+            <Chip
+              icon={<TheatersIcon></TheatersIcon>} 
+            label={`Released: ${formattedDate}`} sx={styles.chipLabel} />
+          </Grid>
+        </Grid>
       </Paper>
       
       <Fab    

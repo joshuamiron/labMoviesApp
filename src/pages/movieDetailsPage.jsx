@@ -35,9 +35,9 @@ if (isError) {
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie}/>
             <br></br>
-            <SimilarMovies movie={movie}/>
-            <br></br>
             <AllMoviePosters movie={movie}/>
+            <br></br>
+            <SimilarMovies movie={movie}/>
           </PageTemplate>
         </>
       ) : (
