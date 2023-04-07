@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Paper from "@mui/material/Paper";
 import { useQuery } from "react-query";
 
-import { getMovieImages } from "../../api/tmdb-api";
+import { getPersonImages } from "../../api/tmdb-api";
 
 const styles = {
     media: { 
@@ -13,11 +13,11 @@ const styles = {
      },
   };
 
-const AllMoviePosters = ( {movie}) => {
+const AllPersonPhotos = ( {person}) => {
 
     const {data, error, isLoading, isError} = useQuery(
-        ["images", {id: movie.id}],
-        getMovieImages
+        ["images", {id: person.id}],
+        getPersonImages,
       );
       
       if (isLoading) {
@@ -28,13 +28,13 @@ const AllMoviePosters = ( {movie}) => {
         return <h1>{error.message}</h1>;
       }
 
-      const images = data.posters
+      const images = data.profiles
 
   return (
     <>
       <Paper>
         <Typography variant="h6" component="h3">
-            Other posters for this movie:
+            Other photos:
         </Typography>
         <br></br>
         <div style={{overflowX: "scroll"}}>
@@ -45,7 +45,7 @@ const AllMoviePosters = ( {movie}) => {
                    <a href={`https://image.tmdb.org/t/p/original/${image.file_path}`}>
                         <img 
                             src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                            alt={image.poster_path}
+                            alt={image.profile_path}
                             style={{ maxWidth: "auto", height: "100%"}}
                         />
                     </a>
@@ -58,4 +58,4 @@ const AllMoviePosters = ( {movie}) => {
     </>
   );
 };
-export default AllMoviePosters ;
+export default AllPersonPhotos ;
