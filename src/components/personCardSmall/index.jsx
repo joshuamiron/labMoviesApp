@@ -32,7 +32,7 @@ export default function PersonCardSmall({person}) {
       <CardHeader
         sx={styles.header}
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="subtitle1" component="p">
             {person.name}{" "}
           </Typography>
         }

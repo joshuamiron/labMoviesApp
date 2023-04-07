@@ -72,6 +72,50 @@ const HomePage = (props) => {
     } 
   };
 
+  function changeSortOrder(value) {
+    setSortOrder(value);
+  }
+
+  const sort_by = (field, reverse, primer) => {
+    const key = primer ?
+      function(x) {
+        return primer(x[field])
+      } :
+      function(x) {
+        return x[field]
+        
+      };
+  
+    reverse = !reverse ? 1 : -1;
+  
+    return function(a, b) {
+      //console.log(`Comparing ${key(a)} and ${key(b)}`);
+      return reverse * (key(a) > key(b) ? 1 : -1);
+   //     return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    }
+  }
+
+  const sortMovies = (value, movieList) => {
+      console.log("Sort Order called on homePage to " + value);
+      //sortOrder = value;
+      switch(value)
+      {
+      case "title-asc":
+        movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+        break;
+      case "title-desc":
+        console.log("Home Page - Sort Switch - title-desc");
+        movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
+        break;
+      case "vote_average-asc":
+        movieList.sort(sort_by('vote_average', false, parseFloat) );
+        break;
+      case "vote_average-desc":
+        movieList.sort(sort_by('vote_average', true, parseFloat) );
+        break;    
+        
+      }
+  };
   //-------- The original filter   --------//
       /* const updatedFilterSet =
       type === "title"
@@ -88,43 +132,8 @@ const HomePage = (props) => {
   //movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);
 
-  const sort_by = (field, reverse, primer) => {
-    const key = primer ?
-      function(x) {
-        return primer(x[field])
-      } :
-      function(x) {
-        return x[field]
-      };
-  
-    reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
-      return reverse * (key(a) > key(b) ? 1 : -1);
-  //      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
-    }
-  }
-  const changeSortOrder = (value) => {
-      console.log("changeSortOrder called on homePage to " + value);
-      //sortOrder = value;
-      switch(value)
-      {
-      case "title-asc":
-        displayedMovies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-        break;
-      case "title-desc":
-        console.log("Home Page - Sort Switch - title-desc");
-        displayedMovies.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-        break;
-      case "vote_average-asc":
-        displayedMovies.sort(sort_by('rating', false, parseInt) );
-        break;
-      case "vote_average-desc":
-        displayedMovies.sort(sort_by('rating', true, parseInt) );
-        break;    
-        
-      }
-  };
+  sortMovies(sortOrder, displayedMovies);
+
   return (
     <>
       <PageTemplate

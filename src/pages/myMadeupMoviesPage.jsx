@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 
 import Header from "../components/headerList";
 import MyMadeupMoviesForm from "./myMadeupMoviesForm";
+import { MoviesContext } from "../contexts/moviesContext";
 
 const styles = {
     root: {

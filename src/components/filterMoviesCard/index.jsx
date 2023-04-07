@@ -67,9 +67,6 @@ export default function FilterMoviesCard(props) {
     props.onSortOrderChange(e.target.value);
   };
 
-//  <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
-//  <MenuItem value={"release_date-asc"}>Release date - oldest first</MenuItem>
-
   return (
     <>
     <Card sx={styles.root} variant="outlined">
@@ -135,6 +132,8 @@ export default function FilterMoviesCard(props) {
             <MenuItem value={"title-desc"}>Title - Z to A</MenuItem>
             <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
             <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
+            {/* <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
+            <MenuItem value={"release_date-asc"}>Release date - oldest first</MenuItem> */}
           </Select>
         </FormControl>
 

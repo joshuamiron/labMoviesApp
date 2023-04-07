@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import MovieDetails from "../components/movieDetails";
 import SimilarMovies from "../components/similarMovies";
+import AllMoviePosters from "../components/movieAllPosters"
 //import MovieCredits from "../components/movieCredits";
 import PageTemplate from "../components/templateMoviePage";
 //import useMovie from "../hooks/useMovie";
@@ -35,6 +36,8 @@ if (isError) {
             <MovieDetails movie={movie}/>
             <br></br>
             <SimilarMovies movie={movie}/>
+            <br></br>
+            <AllMoviePosters movie={movie}/>
           </PageTemplate>
         </>
       ) : (

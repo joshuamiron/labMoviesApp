@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+
 import img from '../../images/film-poster-placeholder.png'
 import {formatDate} from "../../util";
 
@@ -32,7 +33,7 @@ export default function MovieCard({movie, action}) {
       <CardHeader
         sx={styles.header}
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="h5" component="p" sx={{ maxWidth: "100%"}}>
             {movie.title}{" "}
           </Typography>
         }
