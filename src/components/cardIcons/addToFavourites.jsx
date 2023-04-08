@@ -3,13 +3,6 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { MoviesContext } from "../../contexts/moviesContext";
-import Avatar from "@mui/material/Avatar";
-
-const styles = {
-  avatar: {
-  //backgroundColor: "rgb(255, 0, 0, .50)",
-  },
-};
 
 const AddToFavouritesIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
@@ -19,18 +12,16 @@ const AddToFavouritesIcon = ({ movie }) => {
     context.addToFavourites(movie);
   };
 
+    //---- Check if the movie is already in the favourites list
   const isMovieFavourited = context.favourites.includes(movie.id);
 
+    //---- If the movie is in the favourites list, show the remove button. Otherwise show the add button.
   return (
     <IconButton aria-label="add to favorites" onClick={onUserSelect}>
       {isMovieFavourited ? (
-        <Avatar sx={styles.avatar}>
-          <FavoriteIcon color="secondary" fontSize="medium" />
-        </Avatar>
+        <FavoriteIcon color="secondary" fontSize="medium" />
       ) : (
-        <Avatar sx={styles.avatar}>
-          <FavoriteBorderIcon color="white" fontSize="medium" />
-        </Avatar>
+        <FavoriteBorderIcon color="primary" fontSize="medium" />
       )}
     </IconButton>
   );

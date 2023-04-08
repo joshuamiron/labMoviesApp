@@ -2,14 +2,9 @@ import React from "react";
 import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
 
-//import ImageList from "@mui/material/ImageList";
-//import ImageListItem from "@mui/material/ImageListItem";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import { getMovieImages } from "../../api/tmdb-api";
-
-//import img from '../../images/film-poster-placeholder.png'
-//import Paper from "@mui/material/Paper";
 
 const styles = {
   gridListRoot: {

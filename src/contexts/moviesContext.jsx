@@ -36,18 +36,23 @@ const MoviesContextProvider = (props) => {
     setPlaylist(updatedPlaylist);
   };
   
-  const addReview = (movie, review) => {
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = (review) => {
+    const newId = myReviews.length + 1;
+    console.log("myReviews length is " + myReviews.length);
+    const newReview = { ...review, id: newId};
+    myReviews.push( newReview );
+    setMyReviews( myReviews );
   };
 
-  const addMadeupMovie = (movie) => {
-    //let updatedMadeupMovies = ([...madeupMovies, { ...madeupMovie, id: madeupMovies.length }]);
-    let updatedMadeupMovies = [...madeupMovies];
-    updatedMadeupMovies.push(movie);
-    setMyMadeupMovies( updatedMadeupMovies );
-    console.log(`Made up movie ${movie.title} added`);
-    console.log(`Made-up movies is now ${JSON.stringify(updatedMadeupMovies)}`);
-  };
+   const addMadeupMovie = (movie) => {
+    const newId = madeupMovies.length + 1;
+    console.log("madeupMovies length is " + madeupMovies.length);
+    const newMovie = { ...movie, id: newId};
+    madeupMovies.push( newMovie );
+    setMyMadeupMovies( madeupMovies );
+    console.log(`Made up movie ${newMovie.title} added with an ID of ${newMovie.id}`);
+    console.log(`Made-up movies is now ${JSON.stringify(madeupMovies)} `);
+  }; 
 
   return (
     <MoviesContext.Provider
@@ -58,6 +63,7 @@ const MoviesContextProvider = (props) => {
         playlist,
         addToPlaylist,
         addMadeupMovie,
+        madeupMovies,
       }}
     >
       {props.children}

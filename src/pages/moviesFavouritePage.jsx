@@ -10,7 +10,6 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
-//import MovieFilterUI, { titleFilter } from "../components/movieFilterUI";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";

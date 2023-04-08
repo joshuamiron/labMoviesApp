@@ -4,12 +4,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import Snackbar from "@mui/material/Snackbar";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import InputAdornment from '@mui/material/InputAdornment';
 
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -17,26 +15,22 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { MoviesContext } from "../contexts/moviesContext";
+import { MoviesContext } from "../../contexts/moviesContext";
 import genres from "./genreCategories"; //need to add this from real genres endpoint
 import productionCompanies from "./productionCompanies"; //need to figure out how to create a production companies endpoint
 
 const styles = {
-  root: {
-    maxWidth: 345,
-  },
-  media: { height: 300 },
+  root: { maxWidth: 345 },
   formControl: {
     margin: 1,
     minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "background-paper",
   },
-  submit: {
-    marginRight: 2,
-  },
+  submit: { marginRight: 2 },
 };
 
-const MyMadeupMoviesForm = () => {
+//---------- Set initial values for the form
+const madeupMoviesForm = () => {
   const defaultValues = {
     id: "",
     //title: "",       
@@ -71,9 +65,9 @@ const MyMadeupMoviesForm = () => {
     setProductionCompany(event.target.value);
   };
 
-   const handleTitleChange = (event) => {
+   /* const handleTitleChange = (event) => {
     setTitle(event.target.value);
-  }; 
+  }; */
 
   const handleSnackClose = (event) => {
     setOpen(false);
@@ -86,6 +80,7 @@ const MyMadeupMoviesForm = () => {
     madeupMovie.genre = genre;
     madeupMovie.productionCompany = productionCompany;
     context.addMadeupMovie(madeupMovie);
+    console.log("Form page says: ");
     console.log(madeupMovie);
     setOpen(true);
   };
@@ -112,7 +107,7 @@ const MyMadeupMoviesForm = () => {
             </Typography>
           </Alert>
         </Snackbar>
-        <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} >
+        <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
           <Controller
             name="title"
             control={control}
@@ -129,6 +124,7 @@ const MyMadeupMoviesForm = () => {
                 label="Movie title"
                 id="title"
                 autoFocus
+                helperText="Title is required"
               />
             )}
           />
@@ -218,7 +214,6 @@ const MyMadeupMoviesForm = () => {
             </Typography>
           )}
           <br></br>
-
           <Controller
             control={control}
             name="productioncompany"
@@ -250,7 +245,7 @@ const MyMadeupMoviesForm = () => {
             defaultValue=""
             render={({ field: { onChange, value } }) => (
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker  // this should be a date picker
+                <DatePicker
                   sx={{ width: "40ch" }}
                   variant="outlined"
                   margin="normal"
@@ -259,8 +254,6 @@ const MyMadeupMoviesForm = () => {
                   value={value}
                   id="releasedate"
                   label="Release date"
-                  autoFocus
-                  inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
                 />
               </LocalizationProvider>
             )}
@@ -272,7 +265,6 @@ const MyMadeupMoviesForm = () => {
           </Typography>
         )}
         <br></br>
-
         <Box sx={styles.buttons}>
           <Button
             type="submit"
@@ -298,10 +290,9 @@ const MyMadeupMoviesForm = () => {
           </Button>
         </Box>
       </form>
-
       </CardContent>
     </Card>
   );
 };
 
-export default MyMadeupMoviesForm; 
+export default madeupMoviesForm; 
