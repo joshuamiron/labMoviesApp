@@ -15,7 +15,8 @@ import Button from "@mui/material/Button";
 
 import MovieReviews from '../movieReviews'
 import {formatDate} from "../../util";
-
+import AddToFavouritesIcon from '../cardIcons/addToFavourites'
+import PlaylistAddIcon from '../cardIcons/addToPlaylist'
 
 const styles = {
   chipSet: {
@@ -25,10 +26,10 @@ const styles = {
     flexWrap: "wrap",
     listStyle: "none",
     padding: 1.5,
-    margin: 0.5,
+    marginTop: 0.5,
   },
   chipLabel: {
-    margin: 0.5,
+    marginTop: 0.5,
     marginRight: 1.0,
   },
   fab: {
@@ -43,33 +44,32 @@ const MovieDetails = ( {movie}) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   const formattedDate = formatDate(movie.release_date);
 
-
   return (
     <>
-      <Typography variant="h5" component="h3">
-        Overview
-      </Typography>
-      <Typography variant="h6" component="p">
-        {movie.overview}
-        {movie.homepage ? (
-          <a href={movie.homepage} target="_blank">
-        <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
-          {`Visit ${movie.title}'s hompage`}
-        </Button>
-        </a>
-        ) : null }
-      </Typography>
+      <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+      <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
       <Paper component="ul" sx={styles.chipSet}>
+        <Typography variant="h6" component="h3">
+          Overview
+        </Typography>
+        <Typography variant="body2" component="p">
+          {movie.overview}
+          {movie.homepage ? (
+            <a href={movie.homepage} target="_blank">
+          <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
+            {`Visit ${movie.title}'s hompage`}
+          </Button>
+          </a>
+          ) : null }
+        </Typography>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
-            <li>
-              <Chip label="Genres" sx={styles.chipLabel} color="primary" />
-            </li>
-            {movie.genres.map((g) => (
-            <li key={g.name}>
-              <Chip label={g.name} sx={styles.chipLabel} />
-            </li>
-          ))}
+            <Typography sx={styles.chipLabel} >Genres:</Typography>
+              {movie.genres.map((g) => (
+              <li key={g.name}>
+                <Chip label={g.name} sx={styles.chipLabel} />
+              </li>
+            ))}
           </Grid>
         </Grid>
         <Grid container spacing={1}>
@@ -91,7 +91,6 @@ const MovieDetails = ( {movie}) => {
           </Grid>
         </Grid>
       </Paper>
-      
       <Fab    
         color="secondary"
         variant="extended"

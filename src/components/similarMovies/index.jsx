@@ -22,19 +22,19 @@ const SimilarMovies = ( {movie}) => {
             Similar movies (based on keywords and genres):
         </Typography>
         <br></br>
-        <div style={{overflowX: "scroll"}}>
+          <div style={{overflowX: "scroll"}}>
             <Grid container sx={{ display: "inline-flex", flexWrap: "nowrap" }}>
-            {similarMovies.map((movie) => (
+              {similarMovies.map((movie) => (
                 <Grid item key={movie.id} sx={{flex: "0 0 auto"}}>
-                <div style={{width: 200}}>
-                <MovieCardSmall action={(movie) => {
-                    return <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
-                    }} movie={movie}  />
-                    </div>
+                  <div style={{width: 200}}>
+                    <MovieCardSmall action={(movie) => {
+                        return <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+                        }} movie={movie}  />
+                  </div>
                 </Grid>
-            ))}
+              ))}
             </Grid>
-        </div>
+          </div>
       </Paper>
     </>
   );

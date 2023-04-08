@@ -1,14 +1,8 @@
 import React, {useContext} from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
+import Grid from "@mui/material/Grid";
 
-import Avatar from "@mui/material/Avatar";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CardHeader from "@mui/material/CardHeader";
 import { MoviesContext } from "../../contexts/moviesContext";
 
 const styles = {
@@ -18,9 +12,6 @@ const styles = {
     alignItems: "center",
     flexWrap: "wrap",
     padding: 1.5,
-  },
-  avatar: {
-    backgroundColor: "secondary",
   },
 };
 
@@ -39,24 +30,14 @@ const MovieHeader = (props) => {
 
   return (
     <Paper component="div" sx={styles.root}>
-
-      <CardHeader
-        avatar={
-          favourites.includes(movie.id) ? (
-            <Avatar sx={styles.avatar}>
-              <FavoriteIcon color="secondary"/>
-            </Avatar>
-          ) : null
-        }
-      />
-      
-      <Typography variant="h4" component="h3">
-        {movie.title}{"   "}
-
-        <br />
-        <span>{`${movie.tagline}`} </span>
-      </Typography>
-
+      <Grid>
+        <Typography variant="h4" component="h3" style={{textAlign: "center"}}>
+          {movie.title}
+        </Typography>
+        <Typography style={{textAlign: "center"}}>
+          {`${movie.tagline}`}
+        </Typography>
+      </Grid>
     </Paper>
   );
 };

@@ -1,4 +1,3 @@
-//import React from "react";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
@@ -9,7 +8,6 @@ import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
-
 
 const titleFiltering = {
   name: "title",
@@ -29,16 +27,14 @@ const releaseYearFiltering = {
   condition: releaseYearFilter,
 };
 
-
-
-const HomePage = (props) => {
+const HomePage = () => {
   const { data, error, isLoading, isError } = useQuery("discover", getMovies);
   const {filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
   
- const [sortOrder, setSortOrder] = useState("title-asc");
+ const [sortOrder, setSortOrder] = useState("");
 
   if (isLoading) {
     return <Spinner />;
@@ -89,15 +85,12 @@ const HomePage = (props) => {
     reverse = !reverse ? 1 : -1;
   
     return function(a, b) {
-      //console.log(`Comparing ${key(a)} and ${key(b)}`);
       return reverse * (key(a) > key(b) ? 1 : -1);
-   //     return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
     }
   }
 
   const sortMovies = (value, movieList) => {
       console.log("Sort Order called on homePage to " + value);
-      //sortOrder = value;
       switch(value)
       {
       case "title-asc":
@@ -127,9 +120,6 @@ const HomePage = (props) => {
 
   const movies = data ? data.results : [];
   
-  //console.log("Current sort " + sortOrder);
-
-  //movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
   const displayedMovies = filterFunction(movies);
 
   sortMovies(sortOrder, displayedMovies);

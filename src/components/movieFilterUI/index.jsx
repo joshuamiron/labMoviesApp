@@ -17,37 +17,7 @@ export const releaseYearFilter = function (movie, value) {
   return movie.release_date.substring(0, 4).search(value) !== -1;
 };
 
-  export const sortBy = function (movie, value) {
-  switch (sortOrder) {
-    case "title-asc":
-      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
-      return movie.title;
-    case "title-desc":
-      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
-      return movie.title;
-    case "vote_average-asc":
-      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
-      return movie.vote_average;
-    case "vote_average-desc":
-      console.log(`Switch statement in movieFilterUI called ${sortOrder} : ${movie.title}`);
-      return movie.vote_average;
-    //case "release_date-asc":
-    //  return new Date(movie.relase_date);
-    //case "release_date-desc":
-    //  return new Date(movie.release_date);
-    default:
-      console.log("Switch statement in movieFilterUI called - default");
-      return true;
-  }
-};
-
-console.log("movieFilterUI says");
-console.log(sortBy.sortOrder);
-
 const styles = {
-  root: {
-    backgroundColor: "#bfbfbf",
-  },
   fab: {
     marginTop: 8,
     position: "fixed",
@@ -81,7 +51,6 @@ const MovieFilterUI = ({ onFilterValuesChange, titleFilter, genreFilter, release
           releaseYearFilter={releaseYearFilter}
           sortOrder={sortOrder}
           onSortOrderChange={onSortOrderChange}
-          sortBy={sortBy}
         />
       </Drawer>
     </>

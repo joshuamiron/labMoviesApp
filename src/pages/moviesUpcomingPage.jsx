@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 import PageTemplate from "../components/templateMovieListPage";
@@ -34,6 +34,9 @@ const MoviesUpcomingPage = () => {
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
 
+  //---- Set the initial sort to nothing
+  const [sortOrder, setSortOrder] = useState("");
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -61,36 +64,64 @@ const MoviesUpcomingPage = () => {
       console.log(changedFilter);
       setFilterValues([filterValues[0], filterValues[1], changedFilter]);
       break;
-  } 
-};
-/*    const updatedFilterSet =
-      type === "title"
-        ? [changedFilter, filterValues[1]]
-        : [filterValues[0], changedFilter];
-    setFilterValues(updatedFilterSet);
-  }; */
+    } 
+  };
+
+  function changeSortOrder(value) {
+    setSortOrder(value);
+  }
 
   const sort_by = (field, reverse, primer) => {
-
     const key = primer ?
       function(x) {
         return primer(x[field])
       } :
       function(x) {
         return x[field]
+        
       };
-  
+
     reverse = !reverse ? 1 : -1;
-  
+
     return function(a, b) {
-      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+      return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
+  const sortMovies = (value, movieList) => {
+    console.log("Sort Order called on homePage to " + value);
+    switch(value)
+    {
+    case "title-asc":
+      movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+      break;
+    case "title-desc":
+      console.log("Home Page - Sort Switch - title-desc");
+      movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
+      break;
+    case "vote_average-asc":
+      movieList.sort(sort_by('vote_average', false, parseFloat) );
+      break;
+    case "vote_average-desc":
+      movieList.sort(sort_by('vote_average', true, parseFloat) );
+      break;    
+      
+    }
+  };
+  //-------- The original filter   --------//
+    /* const updatedFilterSet =
+    type === "title"
+      ? [changedFilter, filterValues[1]]
+      : [filterValues[0], changedFilter];
+  setFilterValues(updatedFilterSet);
+  };  */
+  //-------------------------------------//
+
   const movies = data ? data.results : [];
-  console.log("About to sort");
-  movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+  
   const displayedMovies = filterFunction(movies);
+
+  sortMovies(sortOrder, displayedMovies);
 
   return (
     <>
@@ -111,6 +142,8 @@ const MoviesUpcomingPage = () => {
         titleFilter={filterValues[0].value}
         genreFilter={filterValues[1].value}
         releaseYearFilter={filterValues[2].value}
+        sortOrder={sortOrder}
+        onSortOrderChange={changeSortOrder}
       />
     </>
   );

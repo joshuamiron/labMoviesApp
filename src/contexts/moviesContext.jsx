@@ -36,12 +36,8 @@ const MoviesContextProvider = (props) => {
     setPlaylist(updatedPlaylist);
   };
   
-  const addReview = (review) => {
-    const newId = myReviews.length + 1;
-    console.log("myReviews length is " + myReviews.length);
-    const newReview = { ...review, id: newId};
-    myReviews.push( newReview );
-    setMyReviews( myReviews );
+  const addReview = (movie, review) => {
+    setMyReviews( {...myReviews, [movie.id]: review } )
   };
 
    const addMadeupMovie = (movie) => {

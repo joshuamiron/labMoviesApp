@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,8 +12,9 @@ import img from '../../images/film-poster-placeholder.png'
 import {formatDate} from "../../util";
 
 const styles = {
-  card: { maxWidth: 345 },
-  media: { height: 500 },
+ // card: { maxWidth: 400 },
+ card: { width: "auto", height: "auto" },
+  media: { height: 500, width: "100%" },
 };
 
 export default function MovieCard({movie, action}) {
