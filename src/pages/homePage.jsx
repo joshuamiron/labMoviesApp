@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Grid from "@mui/material/Grid";
+import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from '../components/templateMovieListPage'
 import Spinner from "../components/spinner";
@@ -8,6 +10,14 @@ import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
+
+const styles = {
+  pagination: {
+    marginTop: 2,
+    size: "large",
+    justifyContent: "right",
+  },
+};
 
 const titleFiltering = {
   name: "title",
@@ -28,12 +38,19 @@ const releaseYearFiltering = {
 };
 
 const HomePage = () => {
-  const { data, error, isLoading, isError } = useQuery("discover", getMovies);
+
+  const [page, setPage] = useState(1);
+
+  const { data, error, isLoading, isError } = useQuery(["discover", page], () =>
+  getMovies(page)
+  );
+  
   const {filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
-  
+ 
+  //---- Set the initial sort to nothing
  const [sortOrder, setSortOrder] = useState("");
 
   if (isLoading) {
@@ -45,7 +62,6 @@ const HomePage = () => {
   }
   
   const changeFilterValues = (type, value) => {
-    console.log("changeFilterValues called on homePage");
   const changedFilter = { name: type, value: value };
     
    switch(type) {
@@ -90,14 +106,12 @@ const HomePage = () => {
   }
 
   const sortMovies = (value, movieList) => {
-      console.log("Sort Order called on homePage to " + value);
       switch(value)
       {
       case "title-asc":
         movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
         break;
       case "title-desc":
-        console.log("Home Page - Sort Switch - title-desc");
         movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
         break;
       case "vote_average-asc":
@@ -138,6 +152,14 @@ const HomePage = () => {
           );
         }}
       />
+      <Grid item container spacing={1} sx={styles.pagination}>
+        <Pagination
+          count={100}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+          size="large"
+        />
+      </Grid>
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}

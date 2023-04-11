@@ -45,7 +45,6 @@ const TemplateMoviePage = ({ movie, children }) => {
             style={{maxWidth: "100%"}}
           />
         </Grid>
-
         <Grid item xs={9}>
           {children}
         </Grid>

@@ -13,7 +13,7 @@ import {formatDate} from "../../util";
 
 const styles = {
  // card: { maxWidth: 400 },
- card: { width: "auto", height: "auto" },
+  card: { width: "auto", height: "auto" },
   media: { height: 500, width: "100%" },
 };
 

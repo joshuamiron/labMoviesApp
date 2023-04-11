@@ -67,10 +67,6 @@ const MyMadeupMoviesPage = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { madeupMovies } = useContext(MoviesContext); // Get the current array of madeupMovies from moviesContext
   
-  const handleDeleteMovie = (id) => {
-    const newMadeupMovies = madeupMovies.filter((movie) => movie.id !== id);
-    setMadeupMovies(newMadeupMovies);
-  }
   //------ If there are no made up movies in the array in moviesContext
   if (madeupMovies.length === 0) {
     return (
@@ -111,7 +107,7 @@ const MyMadeupMoviesPage = () => {
           {madeupMovies.map(movie => (
             <React.Fragment key={movie.id}>
             <ListItem alignItems="flex-start" secondaryAction={
-              <IconButton edge="end" aria-label="delete">
+              <IconButton edge="end" aria-label="delete" >
                 <DeleteIcon color="secondary" />
               </IconButton>
             }>
@@ -164,7 +160,7 @@ const MyMadeupMoviesPage = () => {
         onClose={() => setDrawerOpen(false)}
       >
         <div style={{ overlowY: 'auto'}}>
-          <MyMadeupMoviesForm>
+          <MyMadeupMoviesForm style={{ overlowY: 'auto'}}>
           </MyMadeupMoviesForm>
         </div>
       </Drawer>

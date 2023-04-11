@@ -8,6 +8,7 @@ const MoviesContextProvider = (props) => {
   const [playlist, setPlaylist] = useState([]);
   const [madeupMovies, setMyMadeupMovies] = useState([]);
 
+
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
     if (updatedFavourites.includes(movie.id)) {
@@ -42,12 +43,14 @@ const MoviesContextProvider = (props) => {
 
    const addMadeupMovie = (movie) => {
     const newId = madeupMovies.length + 1;
-    console.log("madeupMovies length is " + madeupMovies.length);
     const newMovie = { ...movie, id: newId};
     madeupMovies.push( newMovie );
     setMyMadeupMovies( madeupMovies );
-    console.log(`Made up movie ${newMovie.title} added with an ID of ${newMovie.id}`);
-    console.log(`Made-up movies is now ${JSON.stringify(madeupMovies)} `);
+  }; 
+
+  const deleteMadeupMovie = (movie) => {
+    madeupMovies = madeupMovies.filter((movie) => movie.id !== movie.id);
+    setMyMadeupMovies( madeupMovies );
   }; 
 
   return (
@@ -60,6 +63,7 @@ const MoviesContextProvider = (props) => {
         addToPlaylist,
         addMadeupMovie,
         madeupMovies,
+        deleteMadeupMovie,
       }}
     >
       {props.children}

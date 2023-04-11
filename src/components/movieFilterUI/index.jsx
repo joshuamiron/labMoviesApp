@@ -14,7 +14,8 @@ export const genreFilter = function (movie, value) {
 };
 
 export const releaseYearFilter = function (movie, value) {
-  return movie.release_date.substring(0, 4).search(value) !== -1;
+  //return movie.release_date.substring(0, 4).search(value) !== -1;
+  return movie.title.toLowerCase().search(value.toLowerCase()) !== -1;
 };
 
 const styles = {
