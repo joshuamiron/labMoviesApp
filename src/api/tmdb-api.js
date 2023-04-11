@@ -151,16 +151,23 @@ export const getTrendingMovies = () => {
   });
 };
 
-//-------- People ---------------
+//----------------------------//
+//-------- People ------------//
+//----------------------------
 
-export const getTrendingPeople = () => {
+export const getTrendingPeople = (page = 1) => {
   return fetch(
-    `https://api.themoviedb.org/3/trending/person/week?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+    `https://api.themoviedb.org/3/trending/person/week?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=${page}`
     ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
     }
     return response.json();
+  })
+  .then((data) => {
+    console.log("getTrendingPeople called");
+    console.log(data); // log the response data
+    return data;
   })
   .catch((error) => {
     throw error

@@ -1,30 +1,42 @@
-import React from "react";
-import PageTemplate from "../components/templatePeopleListPage";
-import {getTrendingPeople} from "../api/tmdb-api";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import Spinner from "../components/spinner";
-import useFiltering from "../hooks/useFiltering";
-import PersonFilterUI, {
-  nameFilter,
-//  jobFilter,
-} from "../components/personFilterUI";
+import Grid from "@mui/material/Grid";
+import Pagination from '@mui/material/Pagination';
 
- const nameFiltering = {
-  name: "name",
-  value: "",
-  condition: nameFilter,
+import PageTemplate from "../components/templatePeopleListPage";
+import Spinner from "../components/spinner";
+import {getTrendingPeople} from "../api/tmdb-api";
+import useFiltering from "../hooks/useFiltering";
+import PersonFilterUI, {nameFilter} from "../components/personFilterUI";
+
+const styles = {
+  pagination: {
+    marginTop: 2,
+    size: "large",
+    justifyContent: "right",
+  },
 };
-/* const jobFiltering = {
-  name: "job",
-  value: "0",
-  condition: jobFilter,
-};*/
+
+const nameFiltering = {
+name: "name",
+value: "",
+condition: nameFilter,
+};
 
 const PeopleTrendingPage = () => {
-  const { data, error, isLoading, isError } = useQuery("trendingpeople", getTrendingPeople);
+  
+  //---- Set initial page
+  const [page, setPage] = useState(1);
+
+  //---- Pass page to getMovies API endpoint
+  const { data, error, isLoading, isError } = useQuery(["trendingpeople", page], () =>
+  getTrendingPeople(page)
+  );
+  
+  //const { data, error, isLoading, isError } = useQuery("trendingpeople", getTrendingPeople);
+
    const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
- //   [nameFiltering, jobFiltering]
     [nameFiltering]
   ); 
 
@@ -46,6 +58,7 @@ const PeopleTrendingPage = () => {
   };
 
   const people = data ? data.results : [];
+
   const displayedPeople = filterFunction(people);
 
   return (
@@ -54,6 +67,14 @@ const PeopleTrendingPage = () => {
         title='Trending People'
         people={displayedPeople}
       />
+      <Grid item container spacing={1} sx={styles.pagination}>
+        <Pagination
+          count={100}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+          size="large"
+        />
+      </Grid>
       <PersonFilterUI
         onFilterValuesChange={changeFilterValues}
         nameFilter={filterValues[0].value}

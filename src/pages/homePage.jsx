@@ -39,10 +39,12 @@ const releaseYearFiltering = {
 
 const HomePage = () => {
 
+  //---- Set initial page
   const [page, setPage] = useState(1);
 
+  //---- Pass page to getMovies API endpoint
   const { data, error, isLoading, isError } = useQuery(["discover", page], () =>
-  getMovies(page)
+    getMovies(page)
   );
   
   const {filterValues, setFilterValues, filterFunction } = useFiltering(
