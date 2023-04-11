@@ -134,7 +134,7 @@ const MyMadeupMoviesPage = () => {
                       <Typography sx={styles.detailLabel}>
                         {`Releases ${new Date(movie.releasedate).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}`}
                       </Typography>
-                    </Grid>
+                     </Grid>
                   </Grid>
                   {` ${movie.overview}`}
                 </React.Fragment>

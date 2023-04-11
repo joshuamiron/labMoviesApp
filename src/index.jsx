@@ -19,7 +19,6 @@ import PeopleTrendingPage from './pages/peopleTrendingPage';
 import MyPlaylistPage from './pages/myPlaylistPage';
 import MyMadeupMoviesPage from './pages/myMadeupMoviesPage';
 
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

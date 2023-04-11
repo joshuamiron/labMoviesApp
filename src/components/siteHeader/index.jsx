@@ -27,24 +27,26 @@ const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = () => {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState(null);
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [movieAnchorEl, setMovieAnchorEl] = useState(null);
+  const [tvAnchorEl, setTVAnchorEl] = useState(null);
+  const [peopleAnchorEl, setPeopleAnchorEl] = useState(null);
+  
   const open = Boolean(anchorEl);
+  const movieOpen = Boolean(movieAnchorEl);
+  const tvOpen = Boolean(tvAnchorEl);
+  const peopleOpen = Boolean(peopleAnchorEl);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  /* const menuOptions = [
+  //----- Un-nested menu items (Home)
+  const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming"},
-    { label: "Favorites", path: "/movies/favourites" },
-    { label: "My Playlist", path: "/movies/myplaylist" },
-    { label: "Popular Movies", path: "/movies/popular" },
-    { label: "Made Up Movies", path: "/movies/mymadeupmoviespage" },
-    { label: "Trending Movies", path: "/movies/trending" },
-    { label: "Trending People", path: "/people/trending" },
-  ]; */
+  ];
 
+  //----- All menu items displayed as a flat list for mobile
   const mobileMenuOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming"},
@@ -56,8 +58,8 @@ const SiteHeader = () => {
     { label: "Trending People", path: "/people/trending" },
   ]; 
 
+  //----- Menu items nexted by category into drop down menus
   const movieMenuOptions = [
-    { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming"},
     { label: "Favorites", path: "/movies/favourites" },
     { label: "My Playlist", path: "/movies/myplaylist" },
@@ -71,7 +73,7 @@ const SiteHeader = () => {
   ];
 
   const peopleMenuOptions = [
-    { label: "Home", path: "/" },
+    //{ label: "Home", path: "/" },
     { label: "Trending People", path: "/people/trending" },
   ];
 
@@ -83,11 +85,28 @@ const SiteHeader = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  //------ handleClick for Movies
+  const handleMovieClick = (event) => {
+    setMovieAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleMovieClose = () => {
+    setMovieAnchorEl(null);
+  };
+
+  //------ handleClick for TV
+  const handleTVClick = (event) => {
+    setTVAnchorEl(event.currentTarget);
+  };
+  const handleTVClose = () => {
+    setTVAnchorEl(null);
+  };
+
+  //------ handleClick for People
+  const handlePeopleClick = (event) => {
+    setPeopleAnchorEl(event.currentTarget);
+  };
+  const handlePeopleClose = () => {
+    setPeopleAnchorEl(null);
   };
 
   return (
@@ -139,7 +158,7 @@ const SiteHeader = () => {
             </>
           ) : (
             <>
-              {/*{menuOptions.map((opt) => (
+              {menuOptions.map((opt) => (
                 <Button
                   key={opt.label}
                   color="inherit"
@@ -147,18 +166,37 @@ const SiteHeader = () => {
                 >
                   {opt.label}
                 </Button>
-              ))}*/}
+              ))}
+
               <Grid>
                 <Button
-                  onClick={handleClick} color="inherit">
+                  onClick={handleMovieClick} color="inherit">
                     Movies
                 </Button>
                 <Menu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
+                  anchorEl={movieAnchorEl}
+                  open={movieOpen}
+                  onClose={handleMovieClose}
                 >
                   {movieMenuOptions.map((opt) => (
+                    <MenuItem 
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+                </Menu>
+                <Button
+                  onClick={handleTVClick} color="inherit">
+                    TV Shows
+                </Button>
+                <Menu
+                  anchorEl={tvAnchorEl}
+                  open={tvOpen}
+                  onClose={handleTVClose}
+                >
+                  {tvMenuOptions.map((opt) => (
                     <MenuItem 
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}>
@@ -167,13 +205,13 @@ const SiteHeader = () => {
                   ))}
                 </Menu>
                 <Button
-                  onClick={handleClick} color="inherit">
+                  onClick={handlePeopleClick} color="inherit">
                     People
                 </Button>
                 <Menu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
+                  anchorEl={peopleAnchorEl}
+                  open={peopleOpen}
+                  onClose={handlePeopleClose}
                 >
                   {peopleMenuOptions.map((opt) => (
                     <MenuItem 
@@ -182,8 +220,9 @@ const SiteHeader = () => {
                         {opt.label}
                     </MenuItem>
                   ))}
-                </Menu>         
+                </Menu>
               </Grid>
+
             </>
           )}
         </Toolbar>
