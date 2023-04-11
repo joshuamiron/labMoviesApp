@@ -13,7 +13,6 @@ const styles = {
   pagination: {
     marginTop: 2,
     size: "large",
-    justifyContent: "right",
   },
 };
 
