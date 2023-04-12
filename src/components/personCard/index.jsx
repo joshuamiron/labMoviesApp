@@ -13,7 +13,6 @@ import img from '../../images/film-poster-placeholder.png'
 const styles = {
   card: { maxWidth: 345 },
   media: { height: 500 },
-  button: { marginLeft: 1 },
 };
 
 export default function PersonCard({person, action}) {
@@ -48,7 +47,7 @@ export default function PersonCard({person, action}) {
       <CardActions disableSpacing>
       {action(person)}
         <Link to={`/people/${person.id}`}>
-          <Button variant="outlined" size="medium" color="primary"  sx={styles.button}>
+          <Button variant="text" size="medium" color="primary"  sx={styles.button}>
             More Info
           </Button>
         </Link>

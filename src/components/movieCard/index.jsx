@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import img from '../../images/film-poster-placeholder.png'
 import {formatDate} from "../../util";
@@ -15,7 +16,6 @@ const styles = {
  // card: { maxWidth: 400 },
   card: { width: "auto", height: "auto" },
   media: { height: 500, width: "100%" },
-  button: { marginLeft: 1 },
 };
 
 export default function MovieCard({movie, action}) {
@@ -53,7 +53,7 @@ export default function MovieCard({movie, action}) {
       <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary" sx={styles.button}>
+          <Button variant="text" size="medium" color="primary" >
             More Info
           </Button>
         </Link>

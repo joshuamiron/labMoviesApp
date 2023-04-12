@@ -10,5 +10,4 @@ const TVShowList = ({tvShows, action}) => {
   ));
   return tvShowCards;
 };
-console.log("hello");
 export default TVShowList;

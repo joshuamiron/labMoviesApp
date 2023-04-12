@@ -22,7 +22,6 @@ export const getMovies = (page = 1) => {
   };
 
   export const getMovie = (args) => {
-    //console.log(args)
     const [, idPart] = args.queryKey;
     const {id} = idPart;
 
@@ -178,10 +177,9 @@ export const getTrendingPeople = (page = 1) => {
 };
 
 export const getPerson = (args) => {
-  //console.log(args)
   const [, idPart] = args.queryKey;
   const {id} = idPart;
-
+  console.log(id);
   return fetch(
     `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
   ).then((response) => {
@@ -252,7 +250,6 @@ export const getTVShows = (page = 1) => {
 };
 
 export const getTVShow = (args) => {
-  //console.log(args)
   const [, idPart] = args.queryKey;
   const {id} = idPart;
 

@@ -20,7 +20,7 @@ const nameFiltering = {
   };
 
 const PeopleFavouritePage = () => {
-  const { favouritePeople: peopleIds } = useContext(MoviesContext);
+  const { favouritePeople: personIds } = useContext(MoviesContext);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering]
@@ -28,7 +28,7 @@ const PeopleFavouritePage = () => {
 
    // Create an array of queries and run them in parallel.
    const favouritePeopleQueries = useQueries(
-    peopleIds.map((personId) => {
+    personIds.map((personId) => {
       return {
         queryKey: ["person", { id: personId }],
         queryFn: getPerson,
@@ -39,7 +39,7 @@ const PeopleFavouritePage = () => {
   const isLoading = favouritePeopleQueries.find((p) => p.isLoading === true);
 
   //---- Set the initial sort to nothing
-  const [sortOrder, setSortOrder] = useState("");
+  //const [sortOrder, setSortOrder] = useState("");
   
   if (isLoading) {
     return <Spinner />;
@@ -52,58 +52,22 @@ const PeopleFavouritePage = () => {
 
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
+  
+    switch(type) {
+      case "name":
+        console.log("name");
+        console.log(filterValues[1]);
+        setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
+        break;
+    } 
+  };
 
-  const updatedFilterSet =
-    type === "name"
-      ? [changedFilter, filterValues[1]]
-      : [filterValues[0], changedFilter];
+  /*  const updatedFilterSet =
+      type === "title"
+        ? [changedFilter, filterValues[1]]
+        : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
-  };
-
-  function changeSortOrder(value) {
-    setSortOrder(value);
-  }
-
-  const sort_by = (field, reverse, primer) => {
-    const key = primer ?
-      function(x) {
-        return primer(x[field])
-      } :
-      function(x) {
-        return x[field]
-        
-      };
-  
-    reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
-      return reverse * (key(a) > key(b) ? 1 : -1);
-    }
-  }
-
-  const sortPeople = (value, personList) => {
-    switch(value)
-    {
-    case "title-asc":
-      personList.sort(sort_by('name', false, (a) => a.toUpperCase()) );
-      break;
-    case "title-desc":
-      personList.sort(sort_by('name', true, (a) => a.toUpperCase()) );
-      break;
-    case "popularity-asc":
-      personList.sort(sort_by('popularity', false, parseFloat) );
-      break;
-    case "popularity-desc":
-      personList.sort(sort_by('popularity', true, parseFloat) );
-      break;    
-    }
-  };
-
-  const people = data ? data.results : [];
-
-  const displayedPeople = filterFunction(people);
-
-  sortPeople(sortOrder, displayedPeople);
+  }; */
 
   if (allFavouritePeople.length === 0) {
     return (
@@ -137,9 +101,7 @@ const PeopleFavouritePage = () => {
       />
       <PersonFilterUI
         onFilterValuesChange={changeFilterValues}
-        nameilter={filterValues[0].value}
-        sortOrder={sortOrder}
-        onSortOrderChange={changeSortOrder}
+        nameFilter={filterValues[0].value}
       />
     </>
   );
