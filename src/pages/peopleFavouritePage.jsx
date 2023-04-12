@@ -20,7 +20,7 @@ const nameFiltering = {
   };
 
 const PeopleFavouritePage = () => {
-  const { favouritePeople: personIds } = useContext(MoviesContext);
+  const { favouritePeople: peopleIds } = useContext(MoviesContext);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering]
@@ -28,7 +28,7 @@ const PeopleFavouritePage = () => {
 
    // Create an array of queries and run them in parallel.
    const favouritePeopleQueries = useQueries(
-   personIds.map((personId) => {
+    peopleIds.map((personId) => {
       return {
         queryKey: ["person", { id: personId }],
         queryFn: getPerson,

@@ -9,7 +9,6 @@ const MoviesContextProvider = (props) => {
   const [madeupMovies, setMyMadeupMovies] = useState([]);
   const [favouritePeople, setFavouritePeople] = useState([]);
 
-
   const addToFavourites = (movie) => {
     let updatedFavourites = [...favourites];
     if (updatedFavourites.includes(movie.id)) {
