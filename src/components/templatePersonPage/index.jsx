@@ -2,9 +2,9 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { useQuery } from "react-query";
 
-import { getPersonImages } from "../../api/tmdb-api";
 import PersonHeader from "../headerPerson";
 import Spinner from '../spinner'
+import { getPersonImages } from "../../api/tmdb-api";
 
 const styles = {
   gridListRoot: {
@@ -45,7 +45,6 @@ const TemplatePersonPage = ({ person, children }) => {
             style={{maxWidth: "100%"}}
           />
         </Grid>
-
         <Grid item xs={9}>
           {children}
         </Grid>

@@ -13,12 +13,10 @@ import img from '../../images/film-poster-placeholder.png'
 const styles = {
   card: { maxWidth: 345 },
   media: { height: 500 },
-  avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
-  },
+  button: { marginLeft: 1 },
 };
 
-export default function PersonCard({person}) {
+export default function PersonCard({person, action}) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -40,7 +38,7 @@ export default function PersonCard({person}) {
       
       <CardContent>
         <Typography variant="subtitle1" component="p">
-          Popularity: <strong>{person.popularity*10}</strong>
+          Popularity: <strong>{person.popularity}</strong>
         </Typography>
         <Typography variant="subtitle1" component="p">
           Known for: <strong>{person.known_for_department}</strong>
@@ -48,8 +46,9 @@ export default function PersonCard({person}) {
       </CardContent>
 
       <CardActions disableSpacing>
+      {action(person)}
         <Link to={`/people/${person.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" size="medium" color="primary"  sx={styles.button}>
             More Info
           </Button>
         </Link>

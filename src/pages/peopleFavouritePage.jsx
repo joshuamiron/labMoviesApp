@@ -1,63 +1,62 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import React, { useContext } from "react";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Pagination from '@mui/material/Pagination';
+import { useQueries } from "react-query";
 
 import PageTemplate from "../components/templatePeopleListPage";
+import { MoviesContext } from "../contexts/moviesContext";
+import {getPerson} from '../api/tmdb-api'
 import Spinner from "../components/spinner";
-import { getTrendingPeople } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import PersonFilterUI, {nameFilter} from "../components/personFilterUI";
 import AddToFavouritePeopleIcon from '../components/cardIcons/addToFavouritePeople'
 
-const styles = {
-  paginationContainer: {
-    marginTop: 2,
-    size: "large",
-    justifyContent: "right",
-    color: "primary",
-  },
-};
-
 const nameFiltering = {
-name: "name",
-value: "",
-condition: nameFilter,
-};
+  name: "name",
+  value: "",
+  condition: nameFilter,
+  };
 
-const PeopleTrendingPage = () => {
-  
-  //---- Set initial page
-  const [page, setPage] = useState(1);
-
-  //---- Pass page to getTrendingPeople API endpoint
-  const { data, error, isLoading, isError } = useQuery(["trendingpeople", page], () =>
-  getTrendingPeople(page)
-  );
-  
-   const { filterValues, setFilterValues, filterFunction } = useFiltering(
+const PeopleFavouritePage = () => {
+  const { favouritePeople: personIds } = useContext(MoviesContext);
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering]
-  ); 
+  );
+
+   // Create an array of queries and run them in parallel.
+   const favouritePeopleQueries = useQueries(
+   personIds.map((personId) => {
+      return {
+        queryKey: ["person", { id: personId }],
+        queryFn: getPerson,
+      };
+    })
+  );
+  // Check if any of the parallel queries is still loading.
+  const isLoading = favouritePeopleQueries.find((p) => p.isLoading === true);
 
   //---- Set the initial sort to nothing
   const [sortOrder, setSortOrder] = useState("");
-
+  
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+  const allFavouritePeople = favouritePeopleQueries.map((q) => q.data);
+  const displayPeople = allFavouritePeople
+    ? filterFunction(allFavouritePeople)
+    : [];
 
-    const changeFilterValues = (type, value) => {
+  const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
 
-    const updatedFilterSet =
-      type === "name"
-        ? [changedFilter, filterValues[1]]
-        : [filterValues[0], changedFilter];
+  const updatedFilterSet =
+    type === "name"
+      ? [changedFilter, filterValues[1]]
+      : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
   };
 
@@ -106,11 +105,28 @@ const PeopleTrendingPage = () => {
 
   sortPeople(sortOrder, displayedPeople);
 
-  return (
+  if (allFavouritePeople.length === 0) {
+    return (
+      <Grid>
+        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+          There are no people in your favourites list.
+        </Typography>
+        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+          <Link to={`/peopleTrendingPage`}>
+          <Button variant="outlined" size="medium" color="primary">
+            Add some people
+          </Button>
+        </Link>
+      </Grid>
+    </Grid>
+    );
+  }
+
+  else return (
     <>
       <PageTemplate
-        title='Trending People'
-        people={displayedPeople}
+        title="Favourite People"
+        people={displayPeople}
         action={(person) => {
           return (
             <>
@@ -119,17 +135,9 @@ const PeopleTrendingPage = () => {
           );
         }}
       />
-      <Grid item container spacing={1} sx={styles.paginationContainer}>
-        <Pagination
-          count={100}
-          page={page}
-          onChange={(event, value) => setPage(value)}
-          color="primary"
-        />
-      </Grid>
       <PersonFilterUI
         onFilterValuesChange={changeFilterValues}
-        nameFilter={filterValues[0].value}
+        nameilter={filterValues[0].value}
         sortOrder={sortOrder}
         onSortOrderChange={changeSortOrder}
       />
@@ -137,4 +145,4 @@ const PeopleTrendingPage = () => {
   );
 };
 
-export default PeopleTrendingPage;
+export default PeopleFavouritePage;

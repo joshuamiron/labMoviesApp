@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Grid from "@mui/material/Grid";
+import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from "../components/templateMovieListPage";
-import Spinner from "../components/spinner";
 import {getUpcomingMovies} from "../api/tmdb-api";
+import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
+
+const styles = {
+  paginationContainer: {
+    marginTop: 2,
+    size: "large",
+    justifyContent: "right",
+
+  },
+};
 
 const titleFiltering = {
   name: "title",
@@ -28,7 +39,15 @@ const releaseYearFiltering = {
 };
 
 const MoviesUpcomingPage = () => {
-  const { data, error, isLoading, isError } = useQuery("upcoming", getUpcomingMovies);
+  
+   //---- Set initial page
+  const [page, setPage] = useState(1);
+
+  //---- Pass page to getMovies API endpoint
+  const { data, error, isLoading, isError } = useQuery(["upcoming", page], () =>
+    getUpcomingMovies(page)
+  );
+  
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
@@ -89,7 +108,6 @@ const MoviesUpcomingPage = () => {
   }
 
   const sortMovies = (value, movieList) => {
-    console.log("Sort Order called on homePage to " + value);
     switch(value)
     {
     case "title-asc":
@@ -108,6 +126,7 @@ const MoviesUpcomingPage = () => {
       
     }
   };
+
   //-------- The original filter   --------//
     /* const updatedFilterSet =
     type === "title"
@@ -137,6 +156,15 @@ const MoviesUpcomingPage = () => {
           );
         }}
       />
+       <Grid item container spacing={1} sx={styles.paginationContainer}>
+        <Pagination
+          count={100}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+          size="large"
+          color="primary"
+        />
+      </Grid>
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}

@@ -12,7 +12,7 @@ import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
 
 const styles = {
-  pagination: {
+  paginationContainer: {
     marginTop: 2,
     size: "large",
     justifyContent: "right",
@@ -53,7 +53,7 @@ const HomePage = () => {
   );
  
   //---- Set the initial sort to nothing
- const [sortOrder, setSortOrder] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
 
   if (isLoading) {
     return <Spinner />;
@@ -108,23 +108,23 @@ const HomePage = () => {
   }
 
   const sortMovies = (value, movieList) => {
-      switch(value)
-      {
-      case "title-asc":
-        movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-        break;
-      case "title-desc":
-        movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-        break;
-      case "vote_average-asc":
-        movieList.sort(sort_by('vote_average', false, parseFloat) );
-        break;
-      case "vote_average-desc":
-        movieList.sort(sort_by('vote_average', true, parseFloat) );
-        break;    
-        
-      }
+    switch(value)
+    {
+    case "title-asc":
+      movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+      break;
+    case "title-desc":
+      movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
+      break;
+    case "vote_average-asc":
+      movieList.sort(sort_by('vote_average', false, parseFloat) );
+      break;
+    case "vote_average-desc":
+      movieList.sort(sort_by('vote_average', true, parseFloat) );
+      break;    
+    }
   };
+
   //-------- The original filter   --------//
       /* const updatedFilterSet =
       type === "title"
@@ -154,12 +154,12 @@ const HomePage = () => {
           );
         }}
       />
-      <Grid item container spacing={1} sx={styles.pagination}>
+      <Grid item container spacing={1} sx={styles.paginationContainer}>
         <Pagination
           count={100}
           page={page}
           onChange={(event, value) => setPage(value)}
-          size="large"
+          color="primary"
         />
       </Grid>
       <MovieFilterUI

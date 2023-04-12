@@ -1,21 +1,14 @@
 import React, { useState } from "react";
-import FilterCard from "../filterPeopleCard";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
+
+import FilterCard from "../filterPeopleCard";
 
 export const nameFilter = function (person, value) {
   return person.name.toLowerCase().search(value.toLowerCase()) !== -1;
 };
 
- /* export const jobFilter = function (person, value) {
-  const jobName = String(value);
-  return jobName;
-}; */
-
 const styles = {
-  root: {
-    backgroundColor: "#bfbfbf",
-  },
   fab: {
     marginTop: 8,
     position: "fixed",
@@ -24,7 +17,7 @@ const styles = {
   },
 };
 
-const PersonFilterUI = ({ onFilterValuesChange, nameFilter}) => {
+const PersonFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -45,6 +38,8 @@ const PersonFilterUI = ({ onFilterValuesChange, nameFilter}) => {
         <FilterCard
           onUserInput={onFilterValuesChange}
           nameFilter={nameFilter}
+          sortOrder={sortOrder}
+          onSortOrderChange={onSortOrderChange}
         />
       </Drawer>
     </>

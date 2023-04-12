@@ -56,16 +56,19 @@ const SiteHeader = () => {
     { label: "Made Up Movies", path: "/movies/mymadeupmoviespage" },
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Trending People", path: "/people/trending" },
+    { label: "Favourite People", path: "/people/favourite" },
   ]; 
 
   //----- Menu items nexted by category into drop down menus
   const movieMenuOptions = [
+    { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming"},
+    { label: "Popular Movies", path: "/movies/popular" },
+    { label: "Trending Movies", path: "/movies/trending" },
     { label: "Favorites", path: "/movies/favourites" },
     { label: "My Playlist", path: "/movies/myplaylist" },
-    { label: "Popular Movies", path: "/movies/popular" },
-    { label: "Made Up Movies", path: "/movies/mymadeupmoviespage" },
-    { label: "Trending Movies", path: "/movies/trending" },
+    { label: "My Made Up Movies", path: "/movies/mymadeupmoviespage" },
+
   ];
 
   const tvMenuOptions = [
@@ -75,6 +78,7 @@ const SiteHeader = () => {
   const peopleMenuOptions = [
     //{ label: "Home", path: "/" },
     { label: "Trending People", path: "/people/trending" },
+    { label: "Favourite People", path: "/people/favourite" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -158,7 +162,7 @@ const SiteHeader = () => {
             </>
           ) : (
             <>
-              {menuOptions.map((opt) => (
+              {/*{menuOptions.map((opt) => (
                 <Button
                   key={opt.label}
                   color="inherit"
@@ -166,7 +170,7 @@ const SiteHeader = () => {
                 >
                   {opt.label}
                 </Button>
-              ))}
+              ))}*/}
 
               <Grid>
                 <Button

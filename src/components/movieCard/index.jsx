@@ -15,6 +15,7 @@ const styles = {
  // card: { maxWidth: 400 },
   card: { width: "auto", height: "auto" },
   media: { height: 500, width: "100%" },
+  button: { marginLeft: 1 },
 };
 
 export default function MovieCard({movie, action}) {
@@ -51,15 +52,20 @@ export default function MovieCard({movie, action}) {
       
       <CardActions disableSpacing>
         {action(movie)}
+        <Link to={`/movies/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary" sx={styles.button}>
+            More Info
+          </Button>
+        </Link>
       </CardActions>
 
-      <CardActions disableSpacing>
+      {/*<CardActions disableSpacing>
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info
           </Button>
         </Link>
-      </CardActions>
+      </CardActions>*/}
 
     </Card>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-//import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -22,7 +21,7 @@ const styles = {
   formControl: {
     margin: 1,
     minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "background-paper",
   },
 };
 
@@ -45,11 +44,9 @@ export default function FilterMoviesCard(props) {
   const handleUserInput = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value);
-    console.log("handleUserInput called on filterMoviesCard");
   };
 
   const handleTitleTextChange = (e, props) => {
-    console.log(e);
     handleUserInput(e, "title", e.target.value)
   };
 
@@ -62,7 +59,6 @@ export default function FilterMoviesCard(props) {
   };
 
   const handleSortChange = (e) => {
-    console.log("handleSortChange called on filterMoviesCard to " + e.target.value);
     e.preventDefault();
     props.onSortOrderChange(e.target.value);
   };

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Grid from "@mui/material/Grid";
+import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
@@ -8,6 +10,15 @@ import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from '../components/cardIcons/addToPlaylist'
+
+const styles = {
+  paginationContainer: {
+    marginTop: 2,
+    size: "large",
+    justifyContent: "right",
+
+  },
+};
 
 const titleFiltering = {
   name: "title",
@@ -28,11 +39,22 @@ const releaseYearFiltering = {
 };
 
 const MoviesPopularPage = () => {
-  const { data, error, isLoading, isError } = useQuery("popular", getPopularMovies);
+
+   //---- Set initial page
+   const [page, setPage] = useState(1);
+
+   //---- Pass page to getMovies API endpoint
+   const { data, error, isLoading, isError } = useQuery(["popular", page], () =>
+    getPopularMovies(page)
+   );
+  
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
+
+  //---- Set the initial sort to nothing
+  const [sortOrder, setSortOrder] = useState("");
 
   if (isLoading) {
     return <Spinner />;
@@ -61,14 +83,12 @@ const MoviesPopularPage = () => {
       console.log(changedFilter);
       setFilterValues([filterValues[0], filterValues[1], changedFilter]);
       break;
-  } 
-};
-  /*const updatedFilterSet =
-      type === "title"
-        ? [changedFilter, filterValues[1]]
-        : [filterValues[0], changedFilter];
-    setFilterValues(updatedFilterSet);
-  };*/
+    } 
+  };
+
+  function changeSortOrder(value) {
+    setSortOrder(value);
+  }
 
   const sort_by = (field, reverse, primer) => {
 
@@ -83,14 +103,42 @@ const MoviesPopularPage = () => {
     reverse = !reverse ? 1 : -1;
   
     return function(a, b) {
-      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+      return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
+  const sortMovies = (value, movieList) => {
+    switch(value)
+    {
+    case "title-asc":
+      movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+      break;
+    case "title-desc":
+      movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
+      break;
+    case "vote_average-asc":
+      movieList.sort(sort_by('vote_average', false, parseFloat) );
+      break;
+    case "vote_average-desc":
+      movieList.sort(sort_by('vote_average', true, parseFloat) );
+      break;    
+    }
+  };
+
+  //-------- The original filter   --------//
+      /* const updatedFilterSet =
+      type === "title"
+        ? [changedFilter, filterValues[1]]
+        : [filterValues[0], changedFilter];
+    setFilterValues(updatedFilterSet);
+  };  */
+  //-------------------------------------//
+
   const movies = data ? data.results : [];
-  console.log("About to sort");
-  movies.sort(sort_by('title', false, (a) => a.toUpperCase()) );
+
   const displayedMovies = filterFunction(movies);
+
+  sortMovies(sortOrder, displayedMovies);
 
   return (
     <>
@@ -106,11 +154,22 @@ const MoviesPopularPage = () => {
           );
         }}
       />
+      <Grid item container spacing={1} sx={styles.paginationContainer}>
+        <Pagination
+          count={100}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+          size="large"
+          color="primary"
+        />
+      </Grid>
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
         genreFilter={filterValues[1].value}
         releaseYearFilter={filterValues[2].value}
+        sortOrder={sortOrder}
+        onSortOrderChange={changeSortOrder}
       />
     </>
   );

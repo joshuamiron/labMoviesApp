@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "../headerList";
 import Grid from "@mui/material/Grid";
+
+import Header from "../headerList";
 import PeopleList from "../peopleList";
 
 const styles = {
   root: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "background-paper",
   },
 };
 
