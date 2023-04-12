@@ -120,18 +120,18 @@ const MyMadeupMoviesPage = () => {
               primary={movie.title}
               secondary={
                 <React.Fragment>
-                  <Grid container spacing={1} >
-                    <Grid item xs={12} sx={styles.details}>
-                      <Typography  sx={styles.detailLabel}>
+                  <Grid container spacing={1} component="span">
+                    <Grid item xs={12} sx={styles.details} component="span">
+                      <Typography  sx={styles.detailLabel} component="span">
                         {getGenreName(movie.genre)}
                       </Typography>
-                      <Typography sx={styles.detailLabel}>
+                      <Typography sx={styles.detailLabel} component="span">
                         {getProductionCompanyName(movie.productionCompany)}
                       </Typography>
-                      <Typography sx={styles.detailLabel}>
+                      <Typography sx={styles.detailLabel} component="span">
                         {`${movie.runtime} min.`}
                       </Typography>
-                      <Typography sx={styles.detailLabel}>
+                      <Typography sx={styles.detailLabel} component="span">
                         {`Releases ${new Date(movie.releasedate).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}`}
                       </Typography>
                      </Grid>
