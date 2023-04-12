@@ -57,6 +57,7 @@ const SiteHeader = () => {
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Trending People", path: "/people/trending" },
     { label: "Favourite People", path: "/people/favourite" },
+    { label: "TV Shows", path: "/tv/shows" },
   ]; 
 
   //----- Menu items nexted by category into drop down menus
@@ -72,7 +73,7 @@ const SiteHeader = () => {
   ];
 
   const tvMenuOptions = [
-    { label: "Home", path: "/" },
+    { label: "TV Shows", path: "/tv/shows" },
   ];
 
   const peopleMenuOptions = [
