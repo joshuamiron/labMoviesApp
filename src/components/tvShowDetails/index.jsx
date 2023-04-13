@@ -93,12 +93,13 @@ const TVShowDetails = ( {tv}) => {
             <Chip
               icon={<TodayIcon />} 
               label={`First air date: ${formattedStartDate}`} sx={styles.chipLabel} />
-            </Grid>
             <Chip
               icon={<EventBusyIcon />}
               label={`Last air date: ${formattedEndDate}`} sx={styles.chipLabel}
             />
           </Grid>
+
+        </Grid>
       </Paper>
     </>
   );
