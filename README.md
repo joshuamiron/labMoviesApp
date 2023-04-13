@@ -198,8 +198,9 @@ I don't believe it requires credentials.
 [People_Pagination]: ./images/People_Pagination.png
 [People_Filtering]: ./images/People_Filtering.png
 [People_Favourite]: ./images/People_Favourite.png
+[Person_Details]: ./images/Person_Details.png
 
-[imMovies_Upcomingage5]: ./images/Movies_Upcoming.png
+[Movies_Upcoming]: ./images/Movies_Upcoming.png
 [Movies_Trending]: ./images/Movies_Trending_with_some_tagged.png
 [Movies_sorting_1]: ./images/Movies_sorting_by_average_vote.png
 [Movies_sorting_2]: ./images/Movies_sorting_alphabetically.png
