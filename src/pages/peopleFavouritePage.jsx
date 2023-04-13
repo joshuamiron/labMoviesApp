@@ -78,7 +78,7 @@ const PeopleFavouritePage = () => {
           There are no people in your favourites list.
         </Typography>
         <Grid style={{textAlign: "center", marginTop: "50px"}}>
-          <Link to={`/peopleTrendingPage`}>
+          <Link to={`/people/trending`}>
           <Button variant="outlined" size="medium" color="primary">
             Add some people
           </Button>
