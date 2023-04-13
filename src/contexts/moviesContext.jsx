@@ -48,11 +48,11 @@ const MoviesContextProvider = (props) => {
     setMyMadeupMovies( madeupMovies );
   }; 
 
-  const deleteMadeupMovie = (movie) => {
-    madeupMovies = madeupMovies.filter((movie) => movie.id !== movie.id);
-    setMyMadeupMovies( madeupMovies );
-  }; 
-
+  const deleteMadeupMovie = (movieId) => {
+    const updatedMadeupMovies = madeupMovies.filter(movie => movie.id !== movieId);
+    setMyMadeupMovies(updatedMadeupMovies);
+  };
+  
   const addToFavouritePeople = (person) => {
     let updatedFavouritePeople = [...favouritePeople];
     if (updatedFavouritePeople.includes(person.id)) {

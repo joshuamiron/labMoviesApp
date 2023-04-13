@@ -66,6 +66,13 @@ const getProductionCompanyName = (productionCompanyId) => {
 const MyMadeupMoviesPage = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { madeupMovies } = useContext(MoviesContext); // Get the current array of madeupMovies from moviesContext
+
+  const context = useContext(MoviesContext);
+
+  //------ pass the selected movie ID to MoviesContext to filter it out of the array and update the array
+  const handleDelete = (madeupMovie) => {
+    context.deleteMadeupMovie(madeupMovie.id);
+  };
   
   //------ If there are no made up movies in the array in moviesContext
   if (madeupMovies.length === 0) {
@@ -107,7 +114,7 @@ const MyMadeupMoviesPage = () => {
           {madeupMovies.map(movie => (
             <React.Fragment key={movie.id}>
             <ListItem alignItems="flex-start" secondaryAction={
-              <IconButton edge="end" aria-label="delete" >
+              <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(movie)} >
                 <DeleteIcon color="secondary" />
               </IconButton>
             }>

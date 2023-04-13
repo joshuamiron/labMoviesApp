@@ -33,13 +33,10 @@ const styles = {
 const madeupMoviesForm = () => {
   const defaultValues = {
     id: "",
-    //title: "",       
     overview: "",    
-    agree: false,  // what's this for? validation?   
-    //genre: "3",      
+    agree: false,
     releasedate: "",
     runtime: "",
-    //productioncompany: "3",
   };
 
   const {
@@ -51,39 +48,32 @@ const madeupMoviesForm = () => {
 
     const navigate = useNavigate();
     const context = useContext(MoviesContext);
-    //const [title, setTitle] = useState("");
     const [genre, setGenre] = useState(3);
     const [productionCompany, setProductionCompany] = useState(3);
 
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
-  const handleGenreChange = (event) => {
-    setGenre(event.target.value);
-  };
+    const handleGenreChange = (event) => {
+      setGenre(event.target.value);
+    };
 
-  const handleProductionCompanyChange = (event) => {
-    setProductionCompany(event.target.value);
-  };
+    const handleProductionCompanyChange = (event) => {
+      setProductionCompany(event.target.value);
+    };
 
-   /* const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  }; */
+    const handleSnackClose = (event) => {
+      setOpen(false);
+      navigate("/movies/mymadeupmoviespage");
+    };
 
-  const handleSnackClose = (event) => {
-    setOpen(false);
-    navigate("/movies/mymadeupmoviespage");
-  };
-
-  const onSubmit = (madeupMovie) => {
-    //madeupMovie.movieId = id;
-    //madeupMovie.title = title;
-    madeupMovie.genre = genre;
-    madeupMovie.productionCompany = productionCompany;
-    context.addMadeupMovie(madeupMovie);
-    console.log("Form page says: ");
-    console.log(madeupMovie);
-    setOpen(true);
-  };
+    const onSubmit = (madeupMovie) => {
+      madeupMovie.genre = genre;
+      madeupMovie.productionCompany = productionCompany;
+      context.addMadeupMovie(madeupMovie);
+      console.log("Form page says: ");
+      console.log(madeupMovie);
+      setOpen(true);
+    };
 
   return (
     <Card sx={styles.root} variant="outlined">
