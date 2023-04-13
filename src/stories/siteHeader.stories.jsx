@@ -3,7 +3,7 @@ import SiteHeader from "../components/siteHeader";
 import { MemoryRouter } from "react-router";
 
 export default {
-  title: "App Header",
+  title: "Site Header",
   component: SiteHeader,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,

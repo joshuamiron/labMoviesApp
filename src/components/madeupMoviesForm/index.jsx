@@ -30,7 +30,7 @@ const styles = {
 };
 
 //---------- Set initial values for the form
-const madeupMoviesForm = () => {
+const MadeupMoviesForm = () => {
   const defaultValues = {
     id: "",
     overview: "",    
@@ -285,4 +285,4 @@ const madeupMoviesForm = () => {
   );
 };
 
-export default madeupMoviesForm; 
+export default MadeupMoviesForm; 
