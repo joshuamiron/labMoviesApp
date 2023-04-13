@@ -8,7 +8,7 @@ export const nameFilter = function (tv, value) {
   return tv.name.toLowerCase().search(value.toLowerCase()) !== -1;
 };
 
-export const genreFilter = function (tv, value) {
+/*export const genreFilter = function (tv, value) {
   const genreId = Number(value);
   return genreId > 0 ? tv.genre_ids.includes(genreId) : true;
 };
@@ -21,7 +21,7 @@ export const firstAirDateFilter = function (tv, value) {
     return tv.first_air_date.substring(0, 4).search(value) !== -1;
   }
   //return movie.release_date.substring(0, 4).search(value) !== -1;
-};
+};*/
 
 const styles = {
   fab: {
@@ -32,8 +32,9 @@ const styles = {
   },
 };
 
-const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, genreFilter, firstAirDateFilter, sortOrder, onSortOrderChange }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+//const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, genreFilter, firstAirDateFilter, sortOrder, onSortOrderChange }) => {
+  const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange }) => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <>
@@ -53,8 +54,6 @@ const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, genreFilter, firstAi
         <FilterTVShowsCard
           onUserInput={onFilterValuesChange}
           nameFilter={nameFilter}
-          genreFilter={genreFilter}
-          firstAirDateFilter={firstAirDateFilter}
           sortOrder={sortOrder}
           onSortOrderChange={onSortOrderChange}
         />

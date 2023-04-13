@@ -4,21 +4,21 @@ import AddToPlaylistIcon from "@mui/icons-material/PlaylistAdd";
 import RemoveFromPlaylistIcon from "@mui/icons-material/PlaylistRemove";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-const PlaylistAddIcon = ({ movie }) => {
+const TVPlaylistAddIcon = ({ tv }) => {
   const context = useContext(MoviesContext);
 
   const onUserSelect = (e) => {
     e.preventDefault();
-    context.addToPlaylist(movie);
+    context.addToTVPlaylist(tv);
   };
 
-  //---- Check if the movie is already in the playlist
-  const isMovieInPlaylist = context.playlist.includes(movie.id);
+  //---- Check if the show is already in the playlist
+  const isShowInPlaylist = context.playlist.includes(tv.id);
 
-  //---- If the movie is in the playlist, show the remove button. Otherwise show the add button.
+  //---- If the show is in the playlist, show the remove button. Otherwise show the add button.
   return (
     <IconButton aria-label="add to playlist" onClick={onUserSelect}>
-      {isMovieInPlaylist ? (
+      {isShowInPlaylist ? (
           <RemoveFromPlaylistIcon color="secondary" fontSize="medium" />
       ) : (
         <AddToPlaylistIcon color="primary" fontSize="medium" />
@@ -27,4 +27,4 @@ const PlaylistAddIcon = ({ movie }) => {
   );
 };
 
-export default PlaylistAddIcon;
+export default TVPlaylistAddIcon;

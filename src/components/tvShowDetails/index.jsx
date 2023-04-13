@@ -5,16 +5,14 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import TheatersIcon from '@mui/icons-material/Theaters';
-import NavigationIcon from "@mui/icons-material/Navigation";
-//import Fab from "@mui/material/Fab";
-import Drawer from "@mui/material/Drawer";
+import TodayIcon from '@mui/icons-material/Today';
+import EventBusyIcon from '@mui/icons-material/EventBusy';
+import PublicIcon from '@mui/icons-material/Public';
 
-//import MovieReviews from '../movieReviews'
 import {formatDate} from "../../util";
+import {getCountryName} from "../../util";
+
 import AddToFavouritesIcon from '../cardIcons/addToFavourites'
 import PlaylistAddIcon from '../cardIcons/addToPlaylist'
 
@@ -41,8 +39,9 @@ const styles = {
 };
 
 const TVShowDetails = ( {tv}) => {
-  const [drawerOpen, setDrawerOpen] = useState(false); // New
-  const formattedDate = formatDate(tv.first_air_date);
+  const formattedStartDate = formatDate(tv.first_air_date);
+  const formattedEndDate = formatDate(tv.last_air_date);
+  const formattedCountryName = getCountryName(tv.origin_country);
 
   return (
     <>
@@ -74,22 +73,32 @@ const TVShowDetails = ( {tv}) => {
         </Grid>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
+            <Typography sx={styles.chipLabel} >Languages:</Typography>
+              {tv.languages.map((l) => (
+              <li key={l}>
+                <Chip label={l} sx={styles.chipLabel} />
+              </li>
+            ))}
+          </Grid>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sx={styles.chipSet}>
             <Chip 
-              icon={<AccessTimeFilledIcon />} 
-              label={`Runtime: ${tv.runtime} min.`} sx={styles.chipLabel} />
-            <Chip
-              icon={<MonetizationIcon />}
-              label={`Revenue: $${tv.revenue}`} sx={styles.chipLabel}
-            />
+              icon={<PublicIcon />} 
+              label={`Origin: ${formattedCountryName}`} sx={styles.chipLabel} />
             <Chip
               icon={<TrendingUpIcon />}
               label={`User rating: ${tv.vote_average*10}%`} sx={styles.chipLabel}
             />
             <Chip
-              icon={<TheatersIcon></TheatersIcon>} 
-            label={`Released: ${formattedDate}`} sx={styles.chipLabel} />
+              icon={<TodayIcon />} 
+              label={`First air date: ${formattedStartDate}`} sx={styles.chipLabel} />
+            </Grid>
+            <Chip
+              icon={<EventBusyIcon />}
+              label={`Last air date: ${formattedEndDate}`} sx={styles.chipLabel}
+            />
           </Grid>
-        </Grid>
       </Paper>
     </>
   );

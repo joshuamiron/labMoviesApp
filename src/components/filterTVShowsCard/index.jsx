@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useQuery } from "react-query";
 
-import { getGenres } from "../../api/tmdb-api";
+//import { getGenres } from "../../api/tmdb-api";
 import Spinner from '../spinner'
 
 const styles = {
@@ -26,7 +26,7 @@ const styles = {
 };
 
 export default function FilterTVShowsCard(props) {
-  const {data, error, isLoading, isError} = useQuery("genres", getGenres);
+  /*const {data, error, isLoading, isError} = useQuery("genres", getGenres);
 
   if (isLoading) {
     return <Spinner />;
@@ -39,7 +39,7 @@ export default function FilterTVShowsCard(props) {
   const genres = data.genres;
   if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
-  }
+  }*/
 
   const handleUserInput = (e, type, value) => {
     e.preventDefault();
@@ -50,13 +50,13 @@ export default function FilterTVShowsCard(props) {
     handleUserInput(e, "name", e.target.value)
   };
 
-  const handleGenreChange = (e) => {
+  /* const handleGenreChange = (e) => {
     handleUserInput(e, "genre", e.target.value)
-  };
+  }; 
 
   const handleFirstAirDateChange = (e) => {
     handleUserInput(e, "firstAirDate", e.target.value)
-  };
+  };*/
 
   const handleSortChange = (e) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function FilterTVShowsCard(props) {
           variant="filled"
           onChange={handleNameTextChange}
         />
-        <Typography variant="h5" component="h1">
+        {/*<Typography variant="h5" component="h1">
           Filter by genre
         </Typography>
         <FormControl sx={styles.formControl}>
@@ -98,20 +98,20 @@ export default function FilterTVShowsCard(props) {
               );
             })}
           </Select>
-        </FormControl>
+          </FormControl>
 
         <Typography variant="h5" component="h1">
           Search by first air date
         </Typography>
         <TextField
           sx={styles.formControl}
-          id="filled-search-year"
+          id="filled-first-air-date"
           label="YYYY"
           type="search"
           value={props.firstAirDateFilter}
           variant="filled"
           onChange={handleFirstAirDateChange}
-        />
+        />*/}
 
         <Typography variant="h5" component="h1">
           Sort the TV shows

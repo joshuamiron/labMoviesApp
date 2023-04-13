@@ -43,8 +43,8 @@ export default function TVShowCard({tv, action}) {
 
       <CardContent>
         <Typography variant="subtitle1" component="p">
-          Release date: <strong>{formattedDate}</strong>
-        </Typography>
+          First air date: <strong>{formattedDate}</strong>
+      </Typography>
         <Typography variant="subtitle1" component="p">
             User rating: <strong>{tv.vote_average*10}%</strong>
         </Typography>
@@ -58,15 +58,6 @@ export default function TVShowCard({tv, action}) {
           </Button>
         </Link>
       </CardActions>
-
-      {/*<CardActions disableSpacing>
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info
-          </Button>
-        </Link>
-      </CardActions>*/}
-
     </Card>
   );
 }

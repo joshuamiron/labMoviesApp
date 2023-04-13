@@ -31,13 +31,13 @@ const SiteHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [movieAnchorEl, setMovieAnchorEl] = useState(null);
   const [myStuffAnchorEl, setMyStuffAnchorEl] = useState(null);
-  //const [tvAnchorEl, setTVAnchorEl] = useState(null);
+  const [tvAnchorEl, setTVAnchorEl] = useState(null);
   const [peopleAnchorEl, setPeopleAnchorEl] = useState(null);
   
   const open = Boolean(anchorEl);
   const movieOpen = Boolean(movieAnchorEl);
   const myStuffOpen = Boolean(myStuffAnchorEl);
-  //const tvOpen = Boolean(tvAnchorEl);
+  const tvOpen = Boolean(tvAnchorEl);
   const peopleOpen = Boolean(peopleAnchorEl);
 
   const theme = useTheme();
@@ -59,7 +59,7 @@ const SiteHeader = () => {
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Trending People", path: "/people/trending" },
     { label: "Favourite People", path: "/people/favourites" },
-    //{ label: "TV Shows", path: "/tv/shows" },
+    { label: "TV Shows", path: "/tv/shows" },
   ]; 
 
   //----- Menu items nexted by category into drop down menus
@@ -77,9 +77,9 @@ const SiteHeader = () => {
 
   ];
 
-  /*const tvMenuOptions = [
+  const tvMenuOptions = [
     { label: "TV Shows", path: "/tv/shows" },
-  ];*/
+  ];
 
   const peopleMenuOptions = [
     //{ label: "Home", path: "/" },
@@ -222,7 +222,7 @@ const SiteHeader = () => {
                     </MenuItem>
                   ))}
                   </Menu>
-                {/*<Button
+                <Button
                   onClick={handleTVClick} color="inherit">
                     TV Shows
                 </Button>
@@ -238,7 +238,7 @@ const SiteHeader = () => {
                         {opt.label}
                     </MenuItem>
                   ))}
-                  </Menu>*/}
+                  </Menu>
                 <Button
                   onClick={handlePeopleClick} color="inherit">
                     People
