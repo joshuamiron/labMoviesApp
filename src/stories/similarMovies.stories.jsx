@@ -1,15 +1,14 @@
 import React from "react";
-import MovieCard from "../components/movieCard";
+import SimilarMovies from "../components/similarMovies";
 import SampleMovie from "./sampleMovieData";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
-import AddToPlaylistIcon from "@mui/icons-material/PlaylistAdd";
 
 export default {
-  title: "Movies/MovieCard",
-  component: MovieCard,
+  title: "Movies/SimilarMovies",
+  component: SimilarMovies,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
     (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
@@ -18,7 +17,7 @@ export default {
 
 export const Basic = () => {
   return (
-    <MovieCard
+    <SimilarMovies
       movie={SampleMovie}
       action={(movie) => <AddToFavouritesIcon movie={movie} />}
       taging={(movie) => null}
@@ -26,15 +25,3 @@ export const Basic = () => {
   );
 };
 Basic.storyName = "Default";
-
-export const Exceptional = () => {
-  const sampleNoPoster = { ...SampleMovie, poster_path: undefined };
-  return (
-    <MovieCard
-      movie={sampleNoPoster}
-      action={(movie) => <AddToFavouritesIcon movie={movie} />}
-      taging={(movie) => null}
-    />
-  );
-};
-Exceptional.storyName = "exception";

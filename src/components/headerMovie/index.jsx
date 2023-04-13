@@ -17,7 +17,6 @@ const styles = {
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  console.log(movie);
   
   const {favourites} = useContext(MoviesContext);
 

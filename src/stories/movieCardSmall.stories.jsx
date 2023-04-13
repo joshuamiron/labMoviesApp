@@ -1,15 +1,14 @@
 import React from "react";
-import MovieCard from "../components/movieCard";
+import MovieCardSmall from "../components/movieCardSmall";
 import SampleMovie from "./sampleMovieData";
 import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
-import AddToPlaylistIcon from "@mui/icons-material/PlaylistAdd";
 
 export default {
-  title: "Movies/MovieCard",
-  component: MovieCard,
+  title: "Movies/MovieCardSmall",
+  component: MovieCardSmall,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
     (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
@@ -18,7 +17,7 @@ export default {
 
 export const Basic = () => {
   return (
-    <MovieCard
+    <MovieCardSmall
       movie={SampleMovie}
       action={(movie) => <AddToFavouritesIcon movie={movie} />}
       taging={(movie) => null}
@@ -30,7 +29,7 @@ Basic.storyName = "Default";
 export const Exceptional = () => {
   const sampleNoPoster = { ...SampleMovie, poster_path: undefined };
   return (
-    <MovieCard
+    <MovieCardSmall
       movie={sampleNoPoster}
       action={(movie) => <AddToFavouritesIcon movie={movie} />}
       taging={(movie) => null}

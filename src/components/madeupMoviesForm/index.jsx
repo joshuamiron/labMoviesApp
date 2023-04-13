@@ -29,8 +29,8 @@ const styles = {
   submit: { marginRight: 2 },
 };
 
-//---------- Set initial values for the form
 const MadeupMoviesForm = () => {
+  //---------- Set initial values for the form
   const defaultValues = {
     id: "",
     overview: "",    
