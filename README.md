@@ -26,6 +26,7 @@ __Name:__ Joshua Miron
 #### Upcoming Movies
 
 > Lists movies from the Upcoming movies endpoint of TMDB, paginating to 100 pages
+
 > Movies can be tagged and untagged via the same icon button, with the button changing color and icon depending on its state.
 
 ![][Movies_Upcoming]
@@ -39,6 +40,7 @@ __Name:__ Joshua Miron
 #### Trending Movies
 
 > Similar to Upcoming, but using a different endpoint.
+
 > Note that a couple of the movies have been tagged as both favourites and in playlist.
 
 ![][Movies_Trending]
@@ -46,6 +48,7 @@ __Name:__ Joshua Miron
 #### Movie Sorting
 
 > Movies can be sorted and filtered by a few different criteria.  The filters are cumulative.  The sort sorts whatever is in view.
+
 > Sorting by vote_average.
 
 ![][Movies_sorting_1]
@@ -69,7 +72,9 @@ __Name:__ Joshua Miron
 #### Enhanced Movie Details
 
 > Re-laid out the information and added some data points.
+
 > Enabled the user to tag the movie as favourite or playlist here in the same manner as on the cards.  
+
 > Included a conditionally displayed home page link that opens a new browser tab, appended to the overview if the endpoint returns a homepage.
 
 ![][Movie_details]
@@ -97,6 +102,7 @@ __Name:__ Joshua Miron
 #### People List
 
 > There is no discover/person endpoint so I chose to use trending/person to populate my page.
+
 > Lists 20 people at a time, paginating to 100 pages.
 
 ![][People_Pagination]
@@ -114,6 +120,7 @@ __Name:__ Joshua Miron
 #### Person Details
 
 > A person details page was added. A person can be tagged as a favorite on the details page.
+
 > If the endpoint returns a homepage for the person, it is appended as a link to the end of the Overview, opening the page in a new browser tab.
 
 ![][Person_Details]
