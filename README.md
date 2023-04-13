@@ -80,7 +80,7 @@ __Name:__ Joshua Miron
 
 ![][Made_up_movie_form]
 
-> Opted for a different design for displaying the save made up movie back to the user.  The made up movies can be deleted.
+> I opted for a different design for displaying the save made up movie back to the user.  The made up movies can be deleted.
 
 ![][Made_up_movie_page]
 
@@ -110,6 +110,13 @@ __Name:__ Joshua Miron
 > Similar to movies, people can be favorited in any view and there is a favourites page.
 
 ![][People_Favourite]
+
+#### Person Details
+
+> A person details page was added. A person can be tagged as a favorite on the details page.
+> If the endpoint returns a homepage for the person, it is appended as a link to the end of the Overview, opening the page in a new browser tab.
+
+![][Person_Details]
 
 ## Storybook.
 
