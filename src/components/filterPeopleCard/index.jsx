@@ -56,10 +56,10 @@ export default function FilterPeopleCard(props) {
           />
 
           <Typography variant="h5" component="h1">
-            Sort by name
+            Sort people
           </Typography>
           <FormControl sx={styles.formControl}>
-            <InputLabel id="sort-label">Sort by</InputLabel>
+            <InputLabel id="sort-label">Choose sort</InputLabel>
             <Select
               labelId="sort-label"
               id="sort-select"

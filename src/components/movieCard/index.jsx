@@ -7,7 +7,6 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import img from '../../images/film-poster-placeholder.png'
 import {formatDate} from "../../util";
