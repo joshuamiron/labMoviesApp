@@ -41,8 +41,6 @@ __Name:__ Joshua Miron
 
 > Similar to Upcoming, but using a different endpoint.
 
-> Note that a couple of the movies have been tagged as both favourites and in playlist.
-
 ![][Movies_Trending]
 
 #### Movie Sorting
