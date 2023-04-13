@@ -58,7 +58,7 @@ const SiteHeader = () => {
     { label: "Made Up Movies", path: "/movies/mymadeupmoviespage" },
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Trending People", path: "/people/trending" },
-    { label: "Favourite People", path: "/people/favourite" },
+    { label: "Favourite People", path: "/people/favourites" },
     //{ label: "TV Shows", path: "/tv/shows" },
   ]; 
 
@@ -84,7 +84,7 @@ const SiteHeader = () => {
   const peopleMenuOptions = [
     //{ label: "Home", path: "/" },
     { label: "Trending People", path: "/people/trending" },
-    { label: "Favourite People", path: "/people/favourite" },
+    { label: "Favourite People", path: "/people/favourites" },
   ];
 
   const handleMenuSelect = (pageURL) => {

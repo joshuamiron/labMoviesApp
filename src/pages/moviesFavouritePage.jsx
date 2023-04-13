@@ -41,6 +41,8 @@ const releaseYearFiltering = {
 
 const MoviesFavouritePage = () => {
   const { favourites: movieIds } = useContext(MoviesContext);
+  console.log(movieIds);
+  
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
@@ -55,6 +57,7 @@ const MoviesFavouritePage = () => {
       };
     })
   );
+
   // Check if any of the parallel queries is still loading.
   const isLoading = favouriteMovieQueries.find((m) => m.isLoading === true);
 

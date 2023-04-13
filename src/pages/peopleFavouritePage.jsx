@@ -7,7 +7,7 @@ import { useQueries } from "react-query";
 
 import PageTemplate from "../components/templatePeopleListPage";
 import { MoviesContext } from "../contexts/moviesContext";
-import {getPerson} from '../api/tmdb-api'
+import { getPerson } from '../api/tmdb-api'
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import PersonFilterUI, {nameFilter} from "../components/personFilterUI";
@@ -21,13 +21,15 @@ const nameFiltering = {
 
 const PeopleFavouritePage = () => {
   const { favouritePeople: personIds } = useContext(MoviesContext);
+  console.log(personIds);
+
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering]
   );
 
-   // Create an array of queries and run them in parallel.
-   const favouritePeopleQueries = useQueries(
+  // Create an array of queries and run them in parallel.
+  const favouritePeopleQueries = useQueries(
     personIds.map((personId) => {
       return {
         queryKey: ["person", { id: personId }],
@@ -35,6 +37,8 @@ const PeopleFavouritePage = () => {
       };
     })
   );
+ console.log(personIds);
+
   // Check if any of the parallel queries is still loading.
   const isLoading = favouritePeopleQueries.find((p) => p.isLoading === true);
 
@@ -55,8 +59,6 @@ const PeopleFavouritePage = () => {
   
     switch(type) {
       case "name":
-        console.log("name");
-        console.log(filterValues[1]);
         setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
         break;
     } 

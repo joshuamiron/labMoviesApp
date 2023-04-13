@@ -13,14 +13,24 @@ const MoviesContextProvider = (props) => {
     let updatedFavourites = [...favourites];
     if (updatedFavourites.includes(movie.id)) {
       updatedFavourites = updatedFavourites.filter((mId) => mId !== movie.id);
-      console.log(`${updatedFavourites} removed`);
-      console.log(`Favourites are now ${updatedFavourites}`);
+      console.log(`${movie.title} removed from favourites. Favourites are now ${updatedFavourites}`);
     } else {
       updatedFavourites.push(movie.id);
-      console.log(`${updatedFavourites} added`);
-      console.log(`Favourites are now ${updatedFavourites}`);
+      console.log(`${movie.title} added to favourites. Favourites are now ${updatedFavourites}`);
     }
     setFavourites(updatedFavourites);
+  };
+
+  const addToFavouritePeople = (person) => {
+    let updatedFavouritePeople = [...favouritePeople];
+    if (updatedFavouritePeople.includes(person.id)) {
+      updatedFavouritePeople = updatedFavouritePeople.filter((pId) => pId !== person.id);
+      console.log(`${person.name} removed from favourites. Favourites are now ${updatedFavouritePeople}`);
+    } else {
+      updatedFavouritePeople.push(person.id);
+      console.log(`${person.name} added to favourites. Favourites are now ${updatedFavouritePeople}`);
+    }
+    setFavouritePeople(updatedFavouritePeople);
   };
 
   const addToPlaylist = (movie) => {
@@ -53,20 +63,7 @@ const MoviesContextProvider = (props) => {
     setMyMadeupMovies(updatedMadeupMovies);
   };
   
-  const addToFavouritePeople = (person) => {
-    let updatedFavouritePeople = [...favouritePeople];
-    if (updatedFavouritePeople.includes(person.id)) {
-      updatedFavouritePeople = updatedFavouritePeople.filter((pId) => pId !== person.id);
-      console.log(`${updatedFavouritePeople} removed`);
-      console.log(`Favourites are now ${updatedFavouritePeople}`);
-    } else {
-      updatedFavouritePeople.push(person.id);
-      console.log(`${updatedFavouritePeople} added`);
-      console.log(`Favourites are now ${updatedFavouritePeople}`);
-    }
-    setFavouritePeople(updatedFavouritePeople);
-  };
-
+  
   return (
     <MoviesContext.Provider
       value={{
