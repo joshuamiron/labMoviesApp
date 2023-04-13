@@ -55,7 +55,7 @@ const SiteHeader = () => {
     { label: "Favorites", path: "/movies/favourites" },
     { label: "My Playlist", path: "/movies/myplaylist" },
     { label: "Popular Movies", path: "/movies/popular" },
-    { label: "Made Up Movies", path: "/movies/mymadeupmoviespage" },
+    { label: "Made Up Movies", path: "/movies/mymadeupmovies" },
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Trending People", path: "/people/trending" },
     { label: "Favourite People", path: "/people/favourites" },
@@ -73,7 +73,7 @@ const SiteHeader = () => {
   const myStuffMenuOptions = [
     { label: "Favorites", path: "/movies/favourites" },
     { label: "My Playlist", path: "/movies/myplaylist" },
-    { label: "My Made Up Movies", path: "/movies/mymadeupmoviespage" },
+    { label: "My Made Up Movies", path: "/movies/mymadeupmovies" },
 
   ];
 

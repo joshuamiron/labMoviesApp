@@ -52,7 +52,7 @@ const App = ( {children} ) => {
             <Route path="/people/trending" element={<PeopleTrendingPage />} />
             <Route path="/people/:id" element={<PersonPage />} />
             <Route path="/movies/myplaylist" element={<MyPlaylistPage />} />
-            <Route path="/movies/mymadeupmoviespage" element={<MyMadeupMoviesPage />} />
+            <Route path="/movies/mymadeupmovies" element={<MyMadeupMoviesPage />} />
             <Route path="/people/favourites" element={<PeopleFavouritePage />} />
             <Route path="/tv/shows" element={<TVListPage />} />
             <Route path="/tv/:id" element={<TVShowPage />} />
