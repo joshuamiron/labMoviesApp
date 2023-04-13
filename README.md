@@ -29,7 +29,6 @@ __Name:__ Joshua Miron
 > Movies can be tagged and untagged via the same icon button, with the button changing color and icon depending on its state.
 
 ![][Movies_Upcoming]
-![][Movies_Upcoming]
 
 #### Popular Movies
 
