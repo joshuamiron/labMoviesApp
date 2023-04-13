@@ -123,6 +123,22 @@ __Name:__ Joshua Miron
 
 ![][Person_Details]
 
+#### TV Show List
+
+> Lists 20 people at a time, paginating to 100 pages from the discover/tv endpoint.
+
+> Can be filterd by name or sorted alphabetically or by user rating (vote_average).
+
+![][TVShows_Discover]
+
+#### TV Show Details
+
+> A TV show details page was added.
+
+> If the endpoint returns a homepage for the TV show, it is appended as a link to the end of the Overview, opening the page in a new browser tab.
+
+![][TVShow_Details]
+
 ## Storybook.
 
 #### Revised site header
@@ -213,3 +229,6 @@ I don't believe it requires credentials.
 [Empty_state_Playlist]: ./images/Empty_state_Playlist.png
 [Empty_state_Madeup_movies]: ./images/Empty_state_Madeup_movies.png
 [Empty_state_Favorite_movies]: ./images/Empty_state_Favorite_movies.png
+
+[TVShow_Details]: ./images/TVShow_Details.png
+[TVShows_Discover]: ./images/TVShows_Discover.png
