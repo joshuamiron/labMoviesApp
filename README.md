@@ -39,28 +39,28 @@ __Name:__ Joshua Miron
 #### Trending Movies
 
 > Similar to Upcoming, but using a different endpoint.
+> Note that a couple of the movies have been tagged as both favourites and in playlist.
 
 ![][Movies_Trending]
 
 #### Movie Sorting
 
 > Movies can be sorted and filtered by a few different criteria.  The filters are cumulative.  The sort sorts whatever is in view.
+> Sorting by vote_average.
 
 ![][Movies_sorting_1]
 
-> Sorting by vote_average.
+> Sorting by alphabetically.
 
 ![][Movies_sorting_2]
 
-> Sorting by alphabetically.
+> Filtering by release year.
 
 ![][Movies_filtering_1]
 
-> Filtering by release year.
-
 #### My Playlist
 
-> We began to stub out the tagging of movies during class exercises, but didn't actually create a playlist page.  Here is the playlist page.
+> We began to stub out the tagging of movies during class exercises, but didn't actually create a playlist page.  Here is the playlist page.  Two of the three are also favorited.
 
 ![][Movies_My_playlist]
 
@@ -68,8 +68,8 @@ __Name:__ Joshua Miron
 
 #### Enhanced Movie Details
 
-> Re-laid out the information and added some data points.  Enabled the user to tag the movie as favourite or playlist here in the same manner as on the cards.  
-
+> Re-laid out the information and added some data points.
+> Enabled the user to tag the movie as favourite or playlist here in the same manner as on the cards.  
 > Included a conditionally displayed home page link that opens a new browser tab, appended to the overview if the endpoint returns a homepage.
 
 ![][Movie_details]
@@ -103,11 +103,7 @@ __Name:__ Joshua Miron
 
 #### People List Sorting & Filtering
 
-> People can be filtering by name or sorted alphabetically or by popularity.
-
-![][People_Filtering]
-
-> People can be filtering by name or sorted alphabetically or by popularity.
+> People can be filtered by name or sorted alphabetically or by popularity.
 
 ![][People_Filtering]
 

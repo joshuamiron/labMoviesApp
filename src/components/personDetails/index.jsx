@@ -8,6 +8,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StarRate from "@mui/icons-material/StarRate";
 import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import CakeIcon from '@mui/icons-material/Cake';
+import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 
 import {formatDate} from "../../util";
 
@@ -32,6 +33,7 @@ const PersonDetails = ( {person}) => {
 
   return (
     <>
+      <AddToFavouritePeopleIcon person={person}></AddToFavouritePeopleIcon>
       <Paper component="ul" sx={styles.chipSet}>
         <Typography variant="h6" component="h3">
           Biography
