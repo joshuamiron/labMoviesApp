@@ -171,7 +171,7 @@ __Name:__ Joshua Miron
 #### Revised loading
 ![][Storybook_loading]
 
-## Authentication.
+## Authentication (Routing, Parameterization).
 
 + /movies - List of 20  movies from the Discover/Movies endpoint, paginating to 100 pages
 + /movies/upcoming - List of 20 movies from the Movies/Upcoming endpoint, paginating to 100 pages
@@ -180,13 +180,17 @@ __Name:__ Joshua Miron
 + /movies/favourites - Array of movies tagged as favorites
 + /movies/myplaylist - Array of movies tagged as my playlist
 + /movies/mymadeupmovies - Array of user created data via a webform
-+ /people/trending - List of 20 movies from the Trending/Person endpoint, paginating to 100 pages
-+ /people/favourites - Array of people tagged as favorites
-+ /people/{person_id} - Detailed information on a specific person
 + /movies/{movie_id} - Detailed information on a specific movie
 + /reviews/{review_id} - The full text of a movie review
 
-## Deployment (if relevant).
++ /people/trending - List of 20 movies from the Trending/Person endpoint, paginating to 100 pages
++ /people/favourites - Array of people tagged as favorites
++ /people/{person_id} - Detailed information on a specific person
+
++ /tv/shows - List of 20  movies from the Discover/TV endpoint, paginating to 100 pages
++ /tv/{tv_id} - Detailed information on a specific TV show
+
+## Deployment.
 
 Vercel: https://lab-movies-app-omega.vercel.app/
 
