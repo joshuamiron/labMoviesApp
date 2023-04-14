@@ -6,7 +6,7 @@ import {getMovieCast} from "../../api/tmdb-api";
 import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 import Paper from "@mui/material/Paper";
 
-const MovieCredits = ( {movie}) => {
+const MovieCast = ( {movie}) => {
   const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
@@ -39,4 +39,4 @@ const MovieCredits = ( {movie}) => {
     </>
   );
 };
-export default MovieCredits ;
+export default MovieCast ;

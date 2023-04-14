@@ -234,14 +234,15 @@ export const getPersonImages = ({queryKey}) => {
   });
 };
 
-export const getPersonMovieCredits = (id) => {
+export const getPersonCredits = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.results);
-      return json.results;
+      console.log(`getPersonCredits called for person ID ${id}`);
+      console.log(json.cast);
+      return json.cast;
     });
 };
 

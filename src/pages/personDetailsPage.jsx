@@ -1,13 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+
 import PersonDetails from "../components/personDetails";
+import PersonCredits from "../components/personCredits";
+import AllPersonPhotos from "../components/personAllPhotos"
+
 import PageTemplate from "../components/templatePersonPage";
 //import usePerson from "../hooks/usePerson";
 import {getPerson} from '../api/tmdb-api'
 import {useQuery} from "react-query";
 import Spinner from '../components/spinner';
-//import PersonMovieCredits from "../components/personMovieCredits";
-import AllPersonPhotos from "../components/personAllPhotos"
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
@@ -34,6 +36,8 @@ if (isError) {
             <PersonDetails person={person} />
             <br></br>
             <AllPersonPhotos person={person}/>
+            <br></br>
+            <PersonCredits person={person}/>
           </PageTemplate>
         </>
       ) : (
