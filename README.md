@@ -183,6 +183,7 @@ __Name:__ Joshua Miron
 + /movies/{movie_id} - Detailed information on a specific movie
 + /reviews/{review_id} - The full text of a movie review
 
++ /people/popular - List of 20 movies from the Person/Popular endpoint, paginating to 100 pages
 + /people/trending - List of 20 movies from the Trending/Person endpoint, paginating to 100 pages
 + /people/favourites - Array of people tagged as favorites
 + /people/{person_id} - Detailed information on a specific person
