@@ -10,10 +10,15 @@ __Name:__ Joshua Miron
     + Tagging / untagging functionality for both Favourites and My Playlist across all pages.
     + Pagination for all list views
 + Enhanced Details views :
-    + Added a horizontally scrolling strip of "Similar Movies" to Movies. Movies are represented by smaller versions of movie cards and can be tagged or clicked for a details page.
     + Added a horizontally scrolling strip of posters to Movies.  Posters can be clicked to be enlarged.
-    + Added Person Details view, also with a horizontally scrolling strip of additional profile pictures. Pictures can be clicked to be enlarged.
-+ Additional data hyperlinking includes Similar Movies, homepages appended to the movie overview or person bio, with logic to only show hyperlink if a homepage exists.
+    + Added a horizontally scrolling strip of movie's cast to Movies, using a small version of the person card. Card lists the actor's name and role in the movie, and can be tagged as favourite and links to the person's detail page.
+    + Added a horizontally scrolling strip of "Similar Movies" to Movies, using a small version of the movie card.  Movie be tagged for Playlist or clicked for a details page.
+    + Added Person Details view, also with a horizontally scrolling strip of additional profile pictures and the person's movie roles. Pictures can be clicked to be enlarged, and movies can be added to Playlist and link to the movie's detail page.
++ Additional data hyperlinking includes
+    + Similar Movies from Movie Details page
+    + Movie cast from Movie Details page
+    + Person credits from Person Details page
+    + External homepages appended to the movie overview or person bio, with logic to only show hyperlink if a homepage exists.
 + Enhanced filtering and sorting:
     + Added filtering by year and sorting by either title or user rating to movies.
     + Added filtering by name and sorting by either name or popularity to people.
@@ -77,6 +82,12 @@ __Name:__ Joshua Miron
 
 ![][Movie_details]
 
+#### Similar Movies and Movie Cast
+
+> Added parameterized components that display similar movies and the movie's cast as a horizontal strip of small cards.
+
+![][Movie_details_Cast]
+
 #### Made Up Movie Form and Page
 
 > Used the drawer pattern we established for sorting and view reviews to contain the webform for creating a made up movie.  
@@ -122,6 +133,12 @@ __Name:__ Joshua Miron
 > If the endpoint returns a homepage for the person, it is appended as a link to the end of the Overview, opening the page in a new browser tab.
 
 ![][Person_Details]
+
+#### Person Credits
+
+> Added a parameterized component that displays the person's movie credits as a horizontal strip of small cards.
+
+![][Person_details_Credits]
 
 #### TV Show List
 
@@ -200,7 +217,10 @@ I don't believe it requires credentials.
 ## Additional Information.
 
 + I separated the site header into two versions of the lists, keeping mobile as a flat list since it collapses under a hamburger menu, while desktop has a series of drop-down menus.
-+ In addition to the routes listed above, I nested a movies/similar view within the details page.  This seemed to make more sense to me from a user experience perspective - seeing the list of similar movies within the same context as the movie they are associated with rather than going to a new page.
++ In addition to the routes listed above, I created some parameterized components that I nest in a page:
+    + I nested a movies/similar view within the movie details page.  This seemed to make more sense to me from a user experience perspective - seeing the list of similar movies within the same context as the movie they are associated with rather than going to a new page.
+    + I nested a movies/cast page within the movie details page.
+    + I nested a person/credits page within the person details page.
 + I included empty state pages for Favorite Movies and People, My Playlist and My Made Up Movies, along with relevant call-to-actions for the user.
 + I added a date formatting function to utils to make release years and first air dates and birth dates formatted nicely, displaying Apr 14, 2023 instead of 2023-14-04.
 
@@ -221,6 +241,7 @@ I don't believe it requires credentials.
 [People_Filtering]: ./images/People_Filtering.png
 [People_Favourite]: ./images/People_Favourite.png
 [Person_Details]: ./images/Person_Details.png
+[Person_details_Credits]: ./images/Person_details_Credits
 
 [Movies_Upcoming]: ./images/Movies_Upcoming.png
 [Movies_Trending]: ./images/Movies_Trending_with_some_tagged.png
@@ -230,6 +251,7 @@ I don't believe it requires credentials.
 [Movies_My_playlist]: ./images/Movies_My_playlist.png
 [Movies_filtering_1]: ./images/Movies_filtering_by_year.png
 [Movie_details]: ./images/Movie_details_tagged.png
+[Movie_details_Cast]: ./images/Movie_details_Cast.png
 [Made_up_movie_page]: ./images/Made_up_movie_page.png
 [Made_up_movie_form]: ./images/Made_up_movie_form.png
 [Empty_state_Playlist]: ./images/Empty_state_Playlist.png
