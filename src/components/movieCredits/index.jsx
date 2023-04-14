@@ -29,7 +29,7 @@ const MovieCredits = ( {movie}) => {
                 <div style={{width: 200}}>
                 <PersonCardSmall action={(person) => {
                         return <AddToFavouritePeopleIcon person={person}></AddToFavouritePeopleIcon>
-                        }} person={castMember}  />
+                        }} person={castMember} character={castMember.character} />
                   </div>
                 </Grid>
             ))}

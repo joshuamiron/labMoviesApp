@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import img from '../../images/film-poster-placeholder.png'
@@ -13,7 +14,7 @@ const styles = {
   media: { height: 250 },
 };
 
-export default function PersonCardSmall({person, action}) {
+export default function PersonCardSmall({person, action, character}) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -32,6 +33,12 @@ export default function PersonCardSmall({person, action}) {
           </Typography>
         }
       />
+      <CardContent>
+        <Typography variant="subtitle2" component="p">
+          As: <strong>{character}</strong>
+        </Typography>
+      </CardContent>
+
       <CardActions disableSpacing>
       {action(person)}
         <Link to={`/people/${person.id}`}>
