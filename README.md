@@ -197,6 +197,7 @@ I don't believe it requires credentials.
 + I separated the site header into two versions of the lists, keeping mobile as a flat list since it collapses under a hamburger menu, while desktop has a series of drop-down menus.
 + In addition to the routes listed above, I nested a movies/similar view within the details page.  This seemed to make more sense to me from a user experience perspective - seeing the list of similar movies within the same context as the movie they are associated with rather than going to a new page.
 + I included empty state pages for Favorite Movies and People, My Playlist and My Made Up Movies, along with relevant call-to-actions for the user.
++ I added a date formatting function to utils to make release years and first air dates and birth dates formatted nicely, displaying Apr 14, 2023 instead of 2023-14-04.
 
 [Storybook_Small_movie_card]: ./images/Storybook_Small_movie_card.png
 [Storybook_Similar_movies_strip]: ./images/Storybook_Similar_movies_strip.png
