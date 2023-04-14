@@ -241,7 +241,7 @@ I don't believe it requires credentials.
 [People_Filtering]: ./images/People_Filtering.png
 [People_Favourite]: ./images/People_Favourite.png
 [Person_Details]: ./images/Person_Details.png
-[Person_details_Credits]: ./images/Person_details_Credits
+[Person_details_Credits]: ./images/Person_details_Credits.png
 
 [Movies_Upcoming]: ./images/Movies_Upcoming.png
 [Movies_Trending]: ./images/Movies_Trending_with_some_tagged.png
