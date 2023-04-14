@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Grid from '@mui/material/Grid';
 import PersonCardSmall from "../personCardSmall";
-import {getMovieCredits} from "../../api/tmdb-api";
+import {getMovieCast} from "../../api/tmdb-api";
+import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 import Paper from "@mui/material/Paper";
 
-const MovieCredits = ( {person}) => {
-  const [movieCredits, setMovieCredits] = useState([]);
+const MovieCredits = ( {movie}) => {
+  const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
-    getMovieCredits(person.id).then((people) => {
-      setMovieCredits(people);
+    getMovieCast(movie.id).then((cast) => {
+      setMovieCast(cast);
     });
-  }, [person.id]);
+  }, [movie.id]);
 
   return (
     <>
@@ -23,11 +24,13 @@ const MovieCredits = ( {person}) => {
         <br></br>
         <div style={{overflowX: "scroll", whiteSpace: "nowrap"}}>
             <Grid container sx={{ display: "inline-flex", flexWrap: "nowrap" }}>
-            {movieCredits.map((person) => (
-                <Grid item key={person.id} sx={{flex: "0 0 auto"}}>
+            {movieCast.map((castMember) => (
+                <Grid item key={castMember.id} sx={{flex: "0 0 auto"}}>
                 <div style={{width: 200}}>
-                <PersonCardSmall person={person}  />
-                    </div>
+                <PersonCardSmall action={(person) => {
+                        return <AddToFavouritePeopleIcon person={person}></AddToFavouritePeopleIcon>
+                        }} person={castMember}  />
+                  </div>
                 </Grid>
             ))}
             </Grid>

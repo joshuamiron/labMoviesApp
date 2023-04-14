@@ -2,23 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import img from '../../images/film-poster-placeholder.png'
 
 const styles = {
   card: { maxWidth: 180 },
   media: { height: 250 },
-  avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
-  },
 };
 
-export default function PersonCardSmall({person}) {
+export default function PersonCardSmall({person, action}) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -37,15 +32,10 @@ export default function PersonCardSmall({person}) {
           </Typography>
         }
       />
-      <CardContent>
-        <Typography variant="h6" component="p">
-          <TrendingUpIcon fontSize="small" />
-              {"  "} {person.popularity}{" "}
-        </Typography>
-      </CardContent>
       <CardActions disableSpacing>
+      {action(person)}
         <Link to={`/people/${person.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="text" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>

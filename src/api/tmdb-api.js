@@ -93,14 +93,15 @@ export const getUpcomingMovies = (page = 1) => {
   });
 };
 
-export const getMovieCredits = (id) => {
+export const getMovieCast = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.results);
-      return json.results;
+      console.log(`getMovieCast called for movie ID ${id}`);
+      console.log(json.cast);
+      return json.cast;
     });
 };
 
