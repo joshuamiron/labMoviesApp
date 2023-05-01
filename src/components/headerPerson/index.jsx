@@ -3,7 +3,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
 const styles = {
-    root: {  
+  root: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",

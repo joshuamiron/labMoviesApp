@@ -65,21 +65,21 @@ export default function FilterTVShowsCard(props) {
 
   return (
     <>
-    <Card sx={styles.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          Search by movie title
-        </Typography>
-        <TextField
-          sx={styles.formControl}
-          id="filled-search"
-          label="Name"
-          type="search"
-          value={props.nameFilter}
-          variant="filled"
-          onChange={handleNameTextChange}
-        />
-        {/*<Typography variant="h5" component="h1">
+      <Card sx={styles.root} variant="outlined">
+        <CardContent>
+          <Typography variant="h5" component="h1">
+            Search by movie title
+          </Typography>
+          <TextField
+            sx={styles.formControl}
+            id="filled-search"
+            label="Name"
+            type="search"
+            value={props.nameFilter}
+            variant="filled"
+            onChange={handleNameTextChange}
+          />
+          {/*<Typography variant="h5" component="h1">
           Filter by genre
         </Typography>
         <FormControl sx={styles.formControl}>
@@ -113,28 +113,28 @@ export default function FilterTVShowsCard(props) {
           onChange={handleFirstAirDateChange}
         />*/}
 
-        <Typography variant="h5" component="h1">
-          Sort the TV shows
-        </Typography>
-        <FormControl sx={styles.formControl}>
-          <InputLabel id="sort-label">Sort by</InputLabel>
-          <Select
-            labelId="sort-label"
-            id="sort-select"
-            value={props.sortOrder}
-            onChange={handleSortChange}
-          >
-            <MenuItem value={"name-asc"}>Name - A to Z</MenuItem>
-            <MenuItem value={"name-desc"}>Name - Z to A</MenuItem>
-            <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
-            <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
-            {/* <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
+          <Typography variant="h5" component="h1">
+            Sort the TV shows
+          </Typography>
+          <FormControl sx={styles.formControl}>
+            <InputLabel id="sort-label">Sort by</InputLabel>
+            <Select
+              labelId="sort-label"
+              id="sort-select"
+              value={props.sortOrder}
+              onChange={handleSortChange}
+            >
+              <MenuItem value={"name-asc"}>Name - A to Z</MenuItem>
+              <MenuItem value={"name-desc"}>Name - Z to A</MenuItem>
+              <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
+              <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
+              {/* <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
             <MenuItem value={"release_date-asc"}>Release date - oldest first</MenuItem> */}
-          </Select>
-        </FormControl>
+            </Select>
+          </FormControl>
 
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
     </>
   );
 }

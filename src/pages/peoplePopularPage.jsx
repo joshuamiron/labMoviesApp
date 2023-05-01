@@ -7,7 +7,7 @@ import PageTemplate from "../components/templatePeopleListPage";
 import Spinner from "../components/spinner";
 import { getPopularPeople } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
-import PersonFilterUI, {nameFilter} from "../components/personFilterUI";
+import PersonFilterUI, { nameFilter } from "../components/personFilterUI";
 import AddToFavouritePeopleIcon from '../components/cardIcons/addToFavouritePeople'
 
 const styles = {
@@ -20,25 +20,25 @@ const styles = {
 };
 
 const nameFiltering = {
-name: "name",
-value: "",
-condition: nameFilter,
+  name: "name",
+  value: "",
+  condition: nameFilter,
 };
 
 const PeoplePopularPage = () => {
-  
+
   //---- Set initial page
   const [page, setPage] = useState(1);
 
   //---- Pass page to getPopularPeople API endpoint
   const { data, error, isLoading, isError } = useQuery(["popularpeople", page], () =>
-  getPopularPeople(page)
+    getPopularPeople(page)
   );
-  
-   const { filterValues, setFilterValues, filterFunction } = useFiltering(
+
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [nameFiltering]
-  ); 
+  );
 
   //---- Set the initial sort to nothing
   const [sortOrder, setSortOrder] = useState("");
@@ -51,7 +51,7 @@ const PeoplePopularPage = () => {
     return <h1>{error.message}</h1>;
   }
 
-    const changeFilterValues = (type, value) => {
+  const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
 
     const updatedFilterSet =
@@ -67,36 +67,35 @@ const PeoplePopularPage = () => {
 
   const sort_by = (field, reverse, primer) => {
     const key = primer ?
-      function(x) {
+      function (x) {
         return primer(x[field])
       } :
-      function(x) {
+      function (x) {
         return x[field]
-        
+
       };
-  
+
     reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
+
+    return function (a, b) {
       return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
   const sortPeople = (value, personList) => {
-    switch(value)
-    {
-    case "title-asc":
-      personList.sort(sort_by('name', false, (a) => a.toUpperCase()) );
-      break;
-    case "title-desc":
-      personList.sort(sort_by('name', true, (a) => a.toUpperCase()) );
-      break;
-    case "popularity-asc":
-      personList.sort(sort_by('popularity', false, parseFloat) );
-      break;
-    case "popularity-desc":
-      personList.sort(sort_by('popularity', true, parseFloat) );
-      break;    
+    switch (value) {
+      case "title-asc":
+        personList.sort(sort_by('name', false, (a) => a.toUpperCase()));
+        break;
+      case "title-desc":
+        personList.sort(sort_by('name', true, (a) => a.toUpperCase()));
+        break;
+      case "popularity-asc":
+        personList.sort(sort_by('popularity', false, parseFloat));
+        break;
+      case "popularity-desc":
+        personList.sort(sort_by('popularity', true, parseFloat));
+        break;
     }
   };
 

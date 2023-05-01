@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {getPerson} from '../api/tmdb-api'
+import { getPerson } from '../api/tmdb-api'
 
 const usePerson = id => {
   const [person, setPerson] = useState(null);

@@ -10,7 +10,7 @@ import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 import CakeIcon from '@mui/icons-material/Cake';
 import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 
-import {formatDate} from "../../util";
+import { formatDate } from "../../util";
 
 const styles = {
   chipSet: {
@@ -28,7 +28,7 @@ const styles = {
   },
 };
 
-const PersonDetails = ( {person}) => {
+const PersonDetails = ({ person }) => {
   const formattedDate = formatDate(person.birthday);
 
   return (
@@ -41,24 +41,24 @@ const PersonDetails = ( {person}) => {
         <Typography variant="body2" component="p">
           {person.biography}
           {person.homepage ? (
-          <a href={person.homepage} target="_blank">
-          <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
-            {`Visit ${person.name}'s hompage`}
-          </Button>
-          </a>
-        ) : null }
+            <a href={person.homepage} target="_blank">
+              <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
+                {`Visit ${person.name}'s hompage`}
+              </Button>
+            </a>
+          ) : null}
         </Typography>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
             <Chip
               icon={<StarRate />}
-              label={`Popularity: ${person.popularity*10}`} sx={styles.chipLabel}/>
+              label={`Popularity: ${person.popularity * 10}`} sx={styles.chipLabel} />
             <Chip
               icon={<PsychologyAltIcon />}
-              label={`Known for: ${person.known_for_department}`} sx={styles.chipLabel}/>
-          <Chip
-              icon={<CakeIcon></CakeIcon>} 
-            label={`Birthday: ${formattedDate}`} sx={styles.chipLabel} />
+              label={`Known for: ${person.known_for_department}`} sx={styles.chipLabel} />
+            <Chip
+              icon={<CakeIcon></CakeIcon>}
+              label={`Birthday: ${formattedDate}`} sx={styles.chipLabel} />
           </Grid>
         </Grid>
       </Paper>
@@ -66,4 +66,4 @@ const PersonDetails = ( {person}) => {
   );
 };
 
-export default  PersonDetails;
+export default PersonDetails;

@@ -12,7 +12,7 @@ const styles = {
 
 function TVShowListPageTemplate({ tvShows, title, action }) {
 
-return (
+  return (
     <Grid container sx={styles.root}>
       <Grid item xs={12}>
         <Header title={title} />
@@ -23,7 +23,7 @@ return (
           tvShows={tvShows}
         />
       </Grid>
-    </Grid> 
+    </Grid>
   );
 }
 export default TVShowListPageTemplate;

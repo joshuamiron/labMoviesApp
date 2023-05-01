@@ -14,7 +14,7 @@ import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 
 import MovieReviews from '../movieReviews'
-import {formatDate} from "../../util";
+import { formatDate } from "../../util";
 import AddToFavouritesIcon from '../cardIcons/addToFavourites'
 import PlaylistAddIcon from '../cardIcons/addToPlaylist'
 
@@ -40,7 +40,7 @@ const styles = {
   },
 };
 
-const MovieDetails = ( {movie}) => {
+const MovieDetails = ({ movie }) => {
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   const formattedDate = formatDate(movie.release_date);
 
@@ -56,16 +56,16 @@ const MovieDetails = ( {movie}) => {
           {movie.overview}
           {movie.homepage ? (
             <a href={movie.homepage} target="_blank">
-          <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
-            {`Visit ${movie.title}'s hompage`}
-          </Button>
-          </a>
-          ) : null }
+              <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
+                {`Visit ${movie.title}'s hompage`}
+              </Button>
+            </a>
+          ) : null}
         </Typography>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
             <Typography sx={styles.chipLabel} >Genres:</Typography>
-              {movie.genres.map((g) => (
+            {movie.genres.map((g) => (
               <li key={g.name}>
                 <Chip label={g.name} sx={styles.chipLabel} />
               </li>
@@ -74,8 +74,8 @@ const MovieDetails = ( {movie}) => {
         </Grid>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
-            <Chip 
-              icon={<AccessTimeFilledIcon />} 
+            <Chip
+              icon={<AccessTimeFilledIcon />}
               label={`Runtime: ${movie.runtime} min.`} sx={styles.chipLabel} />
             <Chip
               icon={<MonetizationIcon />}
@@ -83,24 +83,24 @@ const MovieDetails = ( {movie}) => {
             />
             <Chip
               icon={<TrendingUpIcon />}
-              label={`User rating: ${movie.vote_average*10}%`} sx={styles.chipLabel}
+              label={`User rating: ${movie.vote_average * 10}%`} sx={styles.chipLabel}
             />
             <Chip
-              icon={<TheatersIcon></TheatersIcon>} 
-            label={`Released: ${formattedDate}`} sx={styles.chipLabel} />
+              icon={<TheatersIcon></TheatersIcon>}
+              label={`Released: ${formattedDate}`} sx={styles.chipLabel} />
           </Grid>
         </Grid>
       </Paper>
-      <Fab    
+      <Fab
         color="secondary"
         variant="extended"
-        onClick={() =>setDrawerOpen(true)}
+        onClick={() => setDrawerOpen(true)}
         sx={styles.fab}
       >
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer 
+      <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}>

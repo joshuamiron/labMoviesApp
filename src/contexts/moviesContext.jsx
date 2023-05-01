@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
-  const [myReviews, setMyReviews] = useState( {} );
+  const [myReviews, setMyReviews] = useState({});
   const [favourites, setFavourites] = useState([]);
   const [playlist, setPlaylist] = useState([]);
   const [madeupMovies, setMyMadeupMovies] = useState([]);
@@ -46,24 +46,24 @@ const MoviesContextProvider = (props) => {
     }
     setPlaylist(updatedPlaylist);
   };
-  
+
   const addReview = (movie, review) => {
-    setMyReviews( {...myReviews, [movie.id]: review } )
+    setMyReviews({ ...myReviews, [movie.id]: review })
   };
 
-   const addMadeupMovie = (movie) => {
+  const addMadeupMovie = (movie) => {
     const newId = madeupMovies.length + 1;
-    const newMovie = { ...movie, id: newId};
-    madeupMovies.push( newMovie );
-    setMyMadeupMovies( madeupMovies );
-  }; 
+    const newMovie = { ...movie, id: newId };
+    madeupMovies.push(newMovie);
+    setMyMadeupMovies(madeupMovies);
+  };
 
   const deleteMadeupMovie = (movieId) => {
     const updatedMadeupMovies = madeupMovies.filter(movie => movie.id !== movieId);
     setMyMadeupMovies(updatedMadeupMovies);
   };
-  
-  
+
+
   return (
     <MoviesContext.Provider
       value={{

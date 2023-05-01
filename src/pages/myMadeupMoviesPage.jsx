@@ -73,13 +73,13 @@ const MyMadeupMoviesPage = () => {
   const handleDelete = (madeupMovie) => {
     context.deleteMadeupMovie(madeupMovie.id);
   };
-  
+
   //------ If there are no made up movies in the array in moviesContext
   if (madeupMovies.length === 0) {
     return (
       <>
         <Grid>
-          <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+          <Typography variant="h4" style={{ textAlign: "center", marginTop: "250px" }}>
             Select Create Movie to start adding some made up movies.
           </Typography>
         </Grid>
@@ -89,7 +89,7 @@ const MyMadeupMoviesPage = () => {
           onClick={() => setDrawerOpen(true)}
           sx={styles.fab}
         >
-        Create movie
+          Create movie
         </Fab>
         <Drawer
           anchor="left"
@@ -113,46 +113,46 @@ const MyMadeupMoviesPage = () => {
         <List sx={styles.list} >
           {madeupMovies.map(movie => (
             <React.Fragment key={movie.id}>
-            <ListItem alignItems="flex-start" secondaryAction={
-              <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(movie)} >
-                <DeleteIcon color="secondary" />
-              </IconButton>
-            }>
-            <ListItemAvatar >
-              <Avatar >
-                <LocalMoviesIcon color="primary"/>
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={movie.title}
-              secondary={
-                <React.Fragment>
-                  <Grid container spacing={1} component="span">
-                    <Grid item xs={12} sx={styles.details} component="span">
-                      <Typography  sx={styles.detailLabel} component="span">
-                        {getGenreName(movie.genre)}
-                      </Typography>
-                      <Typography sx={styles.detailLabel} component="span">
-                        {getProductionCompanyName(movie.productionCompany)}
-                      </Typography>
-                      <Typography sx={styles.detailLabel} component="span">
-                        {`${movie.runtime} min.`}
-                      </Typography>
-                      <Typography sx={styles.detailLabel} component="span">
-                        {`Releases ${new Date(movie.releasedate).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}`}
-                      </Typography>
-                     </Grid>
-                  </Grid>
-                  {` ${movie.overview}`}
-                </React.Fragment>
-              }
-            />
-            </ListItem>
-            <Divider variant="inset" component="li" />
+              <ListItem alignItems="flex-start" secondaryAction={
+                <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(movie)} >
+                  <DeleteIcon color="secondary" />
+                </IconButton>
+              }>
+                <ListItemAvatar >
+                  <Avatar >
+                    <LocalMoviesIcon color="primary" />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={movie.title}
+                  secondary={
+                    <React.Fragment>
+                      <Grid container spacing={1} component="span">
+                        <Grid item xs={12} sx={styles.details} component="span">
+                          <Typography sx={styles.detailLabel} component="span">
+                            {getGenreName(movie.genre)}
+                          </Typography>
+                          <Typography sx={styles.detailLabel} component="span">
+                            {getProductionCompanyName(movie.productionCompany)}
+                          </Typography>
+                          <Typography sx={styles.detailLabel} component="span">
+                            {`${movie.runtime} min.`}
+                          </Typography>
+                          <Typography sx={styles.detailLabel} component="span">
+                            {`Releases ${new Date(movie.releasedate).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                      {` ${movie.overview}`}
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
             </React.Fragment>
           ))}
         </List>
-      </Grid> 
+      </Grid>
       <Fab
         color="secondary"
         variant="extended"
@@ -166,8 +166,8 @@ const MyMadeupMoviesPage = () => {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <div style={{ overlowY: 'auto'}}>
-          <MyMadeupMoviesForm style={{ overlowY: 'auto'}}>
+        <div style={{ overlowY: 'auto' }}>
+          <MyMadeupMoviesForm style={{ overlowY: 'auto' }}>
           </MyMadeupMoviesForm>
         </div>
       </Drawer>

@@ -9,16 +9,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import img from '../../images/film-poster-placeholder.png'
-import {formatDate} from "../../util";
+import { formatDate } from "../../util";
 
 const styles = {
- // card: { maxWidth: 400 },
+  // card: { maxWidth: 400 },
   card: { width: "auto", height: "auto" },
   media: { height: 500, width: "100%" },
   button: { marginLeft: 1 },
 };
 
-export default function TVShowCard({tv, action}) {
+export default function TVShowCard({ tv, action }) {
   const formattedDate = formatDate(tv.first_air_date);
 
   return (
@@ -31,11 +31,11 @@ export default function TVShowCard({tv, action}) {
             : img
         }
       />
-      
+
       <CardHeader
         sx={styles.header}
         title={
-          <Typography variant="h5" component="p" sx={{ maxWidth: "100%"}}>
+          <Typography variant="h5" component="p" sx={{ maxWidth: "100%" }}>
             {tv.name}{" "}
           </Typography>
         }
@@ -44,12 +44,12 @@ export default function TVShowCard({tv, action}) {
       <CardContent>
         <Typography variant="subtitle1" component="p">
           First air date: <strong>{formattedDate}</strong>
-      </Typography>
+        </Typography>
         <Typography variant="subtitle1" component="p">
-            User rating: <strong>{tv.vote_average*10}%</strong>
+          User rating: <strong>{tv.vote_average * 10}%</strong>
         </Typography>
       </CardContent>
-      
+
       <CardActions disableSpacing>
         {action(tv)}
         <Link to={`/tv/${tv.id}`}>

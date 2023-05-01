@@ -14,7 +14,7 @@ const styles = {
   media: { height: 250 },
 };
 
-export default function PersonCardSmall({person, action, character}) {
+export default function PersonCardSmall({ person, action, character }) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -40,7 +40,7 @@ export default function PersonCardSmall({person, action, character}) {
       </CardContent>
 
       <CardActions disableSpacing>
-      {action(person)}
+        {action(person)}
         <Link to={`/people/${person.id}`}>
           <Button variant="text" size="medium" color="primary">
             More Info ...

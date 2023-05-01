@@ -42,7 +42,7 @@ const releaseYearFiltering = {
 const MoviesFavouritePage = () => {
   const { favourites: movieIds } = useContext(MoviesContext);
   console.log(movieIds);
-  
+
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
@@ -73,7 +73,7 @@ const MoviesFavouritePage = () => {
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
 
-    switch(type) {
+    switch (type) {
       case "title":
         console.log("title");
         console.log(filterValues[1]);
@@ -89,7 +89,7 @@ const MoviesFavouritePage = () => {
         console.log(changedFilter);
         setFilterValues([filterValues[0], filterValues[1], changedFilter]);
         break;
-    } 
+    }
   };
 
   /*  const updatedFilterSet =
@@ -102,17 +102,17 @@ const MoviesFavouritePage = () => {
   if (allFavourites.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+        <Typography variant="h4" style={{ textAlign: "center", marginTop: "250px" }}>
           There are no movies in your favourites list.
         </Typography>
-        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+        <Grid style={{ textAlign: "center", marginTop: "50px" }}>
           <Link to={`/`}>
-          <Button variant="outlined" size="medium" color="primary">
-            Add some movies
-          </Button>
-        </Link>
+            <Button variant="outlined" size="medium" color="primary">
+              Add some movies
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
-    </Grid>
     );
   }
 

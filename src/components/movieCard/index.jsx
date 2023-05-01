@@ -9,15 +9,15 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import img from '../../images/film-poster-placeholder.png'
-import {formatDate} from "../../util";
+import { formatDate } from "../../util";
 
 const styles = {
- // card: { maxWidth: 400 },
+  // card: { maxWidth: 400 },
   card: { width: "auto", height: "auto" },
   media: { height: 500, width: "100%" },
 };
 
-export default function MovieCard({movie, action}) {
+export default function MovieCard({ movie, action }) {
   const formattedDate = formatDate(movie.release_date);
 
   return (
@@ -30,11 +30,11 @@ export default function MovieCard({movie, action}) {
             : img
         }
       />
-      
+
       <CardHeader
         sx={styles.header}
         title={
-          <Typography variant="h5" component="p" sx={{ maxWidth: "100%"}}>
+          <Typography variant="h5" component="p" sx={{ maxWidth: "100%" }}>
             {movie.title}{" "}
           </Typography>
         }
@@ -45,10 +45,10 @@ export default function MovieCard({movie, action}) {
           Release date: <strong>{formattedDate}</strong>
         </Typography>
         <Typography variant="subtitle1" component="p">
-            User rating: <strong>{movie.vote_average*10}%</strong>
+          User rating: <strong>{movie.vote_average * 10}%</strong>
         </Typography>
       </CardContent>
-      
+
       <CardActions disableSpacing>
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>

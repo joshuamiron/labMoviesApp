@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { useQuery } from "react-query";
 import Grid from "@mui/material/Grid";
 
@@ -19,8 +19,8 @@ const styles = {
 };
 
 const TemplateTVShowPage = ({ tv, children }) => {
-  const {data, error, isLoading, isError} = useQuery(
-    ["images", {id: tv.id}],
+  const { data, error, isLoading, isError } = useQuery(
+    ["images", { id: tv.id }],
     getTVShowImages
   );
 
@@ -42,7 +42,7 @@ const TemplateTVShowPage = ({ tv, children }) => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
             alt={images.poster_path}
-            style={{maxWidth: "100%"}}
+            style={{ maxWidth: "100%" }}
           />
         </Grid>
         <Grid item xs={9}>

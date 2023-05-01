@@ -12,10 +12,10 @@ const AddToFavouriteTVShowsIcon = ({ tv }) => {
     context.addToFavouriteTVShows(tv);
   };
 
-    //---- Check if the show is already in the favourites list
+  //---- Check if the show is already in the favourites list
   const isShowFavourited = context.favouriteShows.includes(tv.id);
 
-    //---- If the show is in the favourites list, show the remove button. Otherwise show the add button.
+  //---- If the show is in the favourites list, show the remove button. Otherwise show the add button.
   return (
     <IconButton aria-label="add to favorites" onClick={onUserSelect}>
       {isShowFavourited ? (

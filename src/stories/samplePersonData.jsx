@@ -16,4 +16,3 @@ export default {
   popularity: 115.621,
   profile_path: "/lldeQ91GwIVff43JBrpdbAAeYWj.jpg",
 };
-  

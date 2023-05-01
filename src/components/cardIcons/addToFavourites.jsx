@@ -12,10 +12,10 @@ const AddToFavouritesIcon = ({ movie }) => {
     context.addToFavourites(movie);
   };
 
-    //---- Check if the movie is already in the favourites list
+  //---- Check if the movie is already in the favourites list
   const isMovieFavourited = context.favourites.includes(movie.id);
 
-    //---- If the movie is in the favourites list, show the remove button. Otherwise show the add button.
+  //---- If the movie is in the favourites list, show the remove button. Otherwise show the add button.
   return (
     <IconButton aria-label="add to favorites" onClick={onUserSelect}>
       {isMovieFavourited ? (

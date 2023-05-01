@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import { MoviesContext } from "../../contexts/moviesContext";
 
 const styles = {
-    root: {  
+  root: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
@@ -17,8 +17,8 @@ const styles = {
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  
-  const {favourites} = useContext(MoviesContext);
+
+  const { favourites } = useContext(MoviesContext);
 
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -30,10 +30,10 @@ const MovieHeader = (props) => {
   return (
     <Paper component="div" sx={styles.root}>
       <Grid>
-        <Typography variant="h4" component="h3" style={{textAlign: "center"}}>
+        <Typography variant="h4" component="h3" style={{ textAlign: "center" }}>
           {movie.title}
         </Typography>
-        <Typography style={{textAlign: "center"}}>
+        <Typography style={{ textAlign: "center" }}>
           {`${movie.tagline}`}
         </Typography>
       </Grid>

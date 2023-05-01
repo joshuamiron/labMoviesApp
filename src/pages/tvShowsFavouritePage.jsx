@@ -14,7 +14,7 @@ import TVShowFilterUI, { tvShowNameFilter } from "../components/tvShowFilterUI";
 import AddToFavouriteTVShowsIcon from '../components/cardIcons/addToFavouriteTVShows'
 import TVPlaylistAddIcon from '../components/cardIcons/addToPlaylistTVShows'
 
- const nameFiltering = {
+const nameFiltering = {
   name: "name",
   value: "",
   condition: tvShowNameFilter,
@@ -51,40 +51,40 @@ const TVShowFavouritePage = () => {
   const displayTVShows = allFavouriteTVShows
     ? filterFunction(allFavouriteTVShows)
     : [];
-  
+
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
 
-  //-------- The original filter   --------//
+    //-------- The original filter   --------//
     /* const updatedFilterSet =
     type === "title"
       ? [changedFilter, filterValues[1]]
       : [filterValues[0], changedFilter];
     setFilterValues(updatedFilterSet);
   };  */
-  //-------------------------------------//
+    //-------------------------------------//
 
-     switch(type) {
+    switch (type) {
       case "name":
         setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
         break;
-    } 
+    }
   };
 
   if (allFavouriteTVShows.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+        <Typography variant="h4" style={{ textAlign: "center", marginTop: "250px" }}>
           There are no TV shows in your favourites list.
         </Typography>
-        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+        <Grid style={{ textAlign: "center", marginTop: "50px" }}>
           <Link to={`/tv/shows`}>
-          <Button variant="outlined" size="medium" color="primary">
-            Add some TV shows
-          </Button>
-        </Link>
+            <Button variant="outlined" size="medium" color="primary">
+              Add some TV shows
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
-    </Grid>
     );
   }
 

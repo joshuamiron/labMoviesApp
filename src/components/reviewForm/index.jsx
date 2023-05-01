@@ -20,7 +20,7 @@ const ReviewForm = ({ movie }) => {
     agree: false,
     rating: "3",
   };
-  
+
   const {
     control,
     formState: { errors },

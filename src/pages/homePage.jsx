@@ -5,7 +5,7 @@ import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from '../components/templateMovieListPage'
 import Spinner from "../components/spinner";
-import {getMovies} from "../api/tmdb-api";
+import { getMovies } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
@@ -46,12 +46,12 @@ const HomePage = () => {
   const { data, error, isLoading, isError } = useQuery(["discover", page], () =>
     getMovies(page)
   );
-  
-  const {filterValues, setFilterValues, filterFunction } = useFiltering(
+
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
   );
- 
+
   //---- Set the initial sort to nothing
   const [sortOrder, setSortOrder] = useState("");
 
@@ -62,11 +62,11 @@ const HomePage = () => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  
+
   const changeFilterValues = (type, value) => {
-  const changedFilter = { name: type, value: value };
-    
-   switch(type) {
+    const changedFilter = { name: type, value: value };
+
+    switch (type) {
       case "title":
         console.log("title");
         console.log(changedFilter);
@@ -83,7 +83,7 @@ const HomePage = () => {
         setFilterValues([filterValues[0], filterValues[1], changedFilter]);
         break;
 
-    } 
+    }
   };
 
   function changeSortOrder(value) {
@@ -92,50 +92,49 @@ const HomePage = () => {
 
   const sort_by = (field, reverse, primer) => {
     const key = primer ?
-      function(x) {
+      function (x) {
         return primer(x[field])
       } :
-      function(x) {
+      function (x) {
         return x[field]
-        
+
       };
-  
+
     reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
+
+    return function (a, b) {
       return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
   const sortMovies = (value, movieList) => {
-    switch(value)
-    {
-    case "title-asc":
-      movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-      break;
-    case "title-desc":
-      movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-      break;
-    case "vote_average-asc":
-      movieList.sort(sort_by('vote_average', false, parseFloat) );
-      break;
-    case "vote_average-desc":
-      movieList.sort(sort_by('vote_average', true, parseFloat) );
-      break;    
+    switch (value) {
+      case "title-asc":
+        movieList.sort(sort_by('title', false, (a) => a.toUpperCase()));
+        break;
+      case "title-desc":
+        movieList.sort(sort_by('title', true, (a) => a.toUpperCase()));
+        break;
+      case "vote_average-asc":
+        movieList.sort(sort_by('vote_average', false, parseFloat));
+        break;
+      case "vote_average-desc":
+        movieList.sort(sort_by('vote_average', true, parseFloat));
+        break;
     }
   };
 
   //-------- The original filter   --------//
-      /* const updatedFilterSet =
-      type === "title"
-        ? [changedFilter, filterValues[1]]
-        : [filterValues[0], changedFilter];
-    setFilterValues(updatedFilterSet);
-  };  */
+  /* const updatedFilterSet =
+  type === "title"
+    ? [changedFilter, filterValues[1]]
+    : [filterValues[0], changedFilter];
+setFilterValues(updatedFilterSet);
+};  */
   //-------------------------------------//
 
   const movies = data ? data.results : [];
-  
+
   const displayedMovies = filterFunction(movies);
 
   sortMovies(sortOrder, displayedMovies);

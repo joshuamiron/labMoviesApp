@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const WriteReviewIcon = ({ movie }) => {
   return (
     <IconButton aria-label="write review">
-        <Link to={'/reviews/form'} state={{movieId: movie.id,}}>
-          <RateReviewIcon color="primary" fontSize="medium" />
-       </Link>
+      <Link to={'/reviews/form'} state={{ movieId: movie.id, }}>
+        <RateReviewIcon color="primary" fontSize="medium" />
+      </Link>
     </IconButton>
   );
 };
 
-export default  WriteReviewIcon;
+export default WriteReviewIcon;

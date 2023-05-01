@@ -5,7 +5,7 @@ import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
-import {getPopularMovies} from "../api/tmdb-api";
+import { getPopularMovies } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
@@ -40,14 +40,14 @@ const releaseYearFiltering = {
 
 const MoviesPopularPage = () => {
 
-   //---- Set initial page
-   const [page, setPage] = useState(1);
+  //---- Set initial page
+  const [page, setPage] = useState(1);
 
-   //---- Pass page to getMovies API endpoint
-   const { data, error, isLoading, isError } = useQuery(["popular", page], () =>
+  //---- Pass page to getMovies API endpoint
+  const { data, error, isLoading, isError } = useQuery(["popular", page], () =>
     getPopularMovies(page)
-   );
-  
+  );
+
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering, releaseYearFiltering]
@@ -65,25 +65,25 @@ const MoviesPopularPage = () => {
   }
 
   const changeFilterValues = (type, value) => {
-  const changedFilter = { name: type, value: value };
+    const changedFilter = { name: type, value: value };
 
-  switch(type) {
-    case "title":
-      console.log("title");
-      console.log(filterValues[1]);
-      setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
-      break;
-    case "genre":
-      console.log("genre");
-      console.log(filterValues[0]);
-      setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
-      break;
-    case "releaseYear":
-      console.log("release year");
-      console.log(changedFilter);
-      setFilterValues([filterValues[0], filterValues[1], changedFilter]);
-      break;
-    } 
+    switch (type) {
+      case "title":
+        console.log("title");
+        console.log(filterValues[1]);
+        setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
+        break;
+      case "genre":
+        console.log("genre");
+        console.log(filterValues[0]);
+        setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
+        break;
+      case "releaseYear":
+        console.log("release year");
+        console.log(changedFilter);
+        setFilterValues([filterValues[0], filterValues[1], changedFilter]);
+        break;
+    }
   };
 
   function changeSortOrder(value) {
@@ -93,45 +93,44 @@ const MoviesPopularPage = () => {
   const sort_by = (field, reverse, primer) => {
 
     const key = primer ?
-      function(x) {
+      function (x) {
         return primer(x[field])
       } :
-      function(x) {
+      function (x) {
         return x[field]
       };
-  
+
     reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
+
+    return function (a, b) {
       return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
   const sortMovies = (value, movieList) => {
-    switch(value)
-    {
-    case "title-asc":
-      movieList.sort(sort_by('title', false, (a) => a.toUpperCase()) );
-      break;
-    case "title-desc":
-      movieList.sort(sort_by('title', true, (a) => a.toUpperCase()) );
-      break;
-    case "vote_average-asc":
-      movieList.sort(sort_by('vote_average', false, parseFloat) );
-      break;
-    case "vote_average-desc":
-      movieList.sort(sort_by('vote_average', true, parseFloat) );
-      break;    
+    switch (value) {
+      case "title-asc":
+        movieList.sort(sort_by('title', false, (a) => a.toUpperCase()));
+        break;
+      case "title-desc":
+        movieList.sort(sort_by('title', true, (a) => a.toUpperCase()));
+        break;
+      case "vote_average-asc":
+        movieList.sort(sort_by('vote_average', false, parseFloat));
+        break;
+      case "vote_average-desc":
+        movieList.sort(sort_by('vote_average', true, parseFloat));
+        break;
     }
   };
 
   //-------- The original filter   --------//
-      /* const updatedFilterSet =
-      type === "title"
-        ? [changedFilter, filterValues[1]]
-        : [filterValues[0], changedFilter];
-    setFilterValues(updatedFilterSet);
-  };  */
+  /* const updatedFilterSet =
+  type === "title"
+    ? [changedFilter, filterValues[1]]
+    : [filterValues[0], changedFilter];
+setFilterValues(updatedFilterSet);
+};  */
   //-------------------------------------//
 
   const movies = data ? data.results : [];
@@ -147,10 +146,10 @@ const MoviesPopularPage = () => {
         movies={displayedMovies}
         action={(movie) => {
           return (
-          <>
-            <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
-            <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
-          </>
+            <>
+              <AddToFavouritesIcon movie={movie}></AddToFavouritesIcon>
+              <PlaylistAddIcon movie={movie}></PlaylistAddIcon>
+            </>
           );
         }}
       />

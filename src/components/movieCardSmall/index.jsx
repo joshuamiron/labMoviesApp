@@ -13,7 +13,7 @@ const styles = {
   media: { height: 250 },
 };
 
-export default function MovieCardSmall({movie, action}) {
+export default function MovieCardSmall({ movie, action }) {
   return (
     <Card sx={styles.card}>
       <CardMedia

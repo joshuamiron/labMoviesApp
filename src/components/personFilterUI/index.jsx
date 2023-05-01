@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-const PersonFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange}) => {
+const PersonFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (

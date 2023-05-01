@@ -6,7 +6,7 @@ import { getMovieCast } from "../../api/tmdb-api";
 import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 import Paper from "@mui/material/Paper";
 
-const MovieCast = ( {movie}) => {
+const MovieCast = ({ movie }) => {
   const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
@@ -19,24 +19,24 @@ const MovieCast = ( {movie}) => {
     <>
       <Paper>
         <Typography variant="h6" component="h3">
-            Cast
+          Cast
         </Typography>
         <br></br>
-        <div style={{overflowX: "scroll", whiteSpace: "nowrap"}}>
-            <Grid container sx={{ display: "inline-flex", flexWrap: "nowrap" }}>
+        <div style={{ overflowX: "scroll", whiteSpace: "nowrap" }}>
+          <Grid container sx={{ display: "inline-flex", flexWrap: "nowrap" }}>
             {movieCast.map((castMember) => (
-                <Grid item key={castMember.id} sx={{flex: "0 0 auto"}}>
-                <div style={{width: 200}}>
-                <PersonCardSmall action={(person) => {
-                        return <AddToFavouritePeopleIcon person={person}></AddToFavouritePeopleIcon>
-                        }} person={castMember} character={castMember.character} />
-                  </div>
-                </Grid>
+              <Grid item key={castMember.id} sx={{ flex: "0 0 auto" }}>
+                <div style={{ width: 200 }}>
+                  <PersonCardSmall action={(person) => {
+                    return <AddToFavouritePeopleIcon person={person}></AddToFavouritePeopleIcon>
+                  }} person={castMember} character={castMember.character} />
+                </div>
+              </Grid>
             ))}
-            </Grid>
+          </Grid>
         </div>
       </Paper>
     </>
   );
 };
-export default MovieCast ;
+export default MovieCast;

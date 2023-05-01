@@ -15,7 +15,7 @@ const styles = {
   media: { height: 500 },
 };
 
-export default function PersonCard({person, action}) {
+export default function PersonCard({ person, action }) {
   return (
     <Card sx={styles.card}>
       <CardMedia
@@ -34,7 +34,7 @@ export default function PersonCard({person, action}) {
           </Typography>
         }
       />
-      
+
       <CardContent>
         <Typography variant="subtitle1" component="p">
           Popularity: <strong>{person.popularity}</strong>
@@ -45,9 +45,9 @@ export default function PersonCard({person, action}) {
       </CardContent>
 
       <CardActions disableSpacing>
-      {action(person)}
+        {action(person)}
         <Link to={`/people/${person.id}`}>
-          <Button variant="text" size="medium" color="primary"  sx={styles.button}>
+          <Button variant="text" size="medium" color="primary" sx={styles.button}>
             More Info
           </Button>
         </Link>

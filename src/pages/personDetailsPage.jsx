@@ -7,26 +7,26 @@ import AllPersonPhotos from "../components/personAllPhotos"
 
 import PageTemplate from "../components/templatePersonPage";
 //import usePerson from "../hooks/usePerson";
-import {getPerson} from '../api/tmdb-api'
-import {useQuery} from "react-query";
+import { getPerson } from '../api/tmdb-api'
+import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
-//  const [person] = usePerson(id);
+  //  const [person] = usePerson(id);
 
-const {data: person, error, isLoading, isError} = useQuery (
-  ["person", {id: id}],
-  getPerson
-);
+  const { data: person, error, isLoading, isError } = useQuery(
+    ["person", { id: id }],
+    getPerson
+  );
 
-if (isLoading) {
-  return <Spinner></Spinner>;
-}
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
 
-if (isError) {
-  return <h1>{error.message}</h1>;
-}
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
 
   return (
     <>
@@ -35,9 +35,9 @@ if (isError) {
           <PageTemplate person={person}>
             <PersonDetails person={person} />
             <br></br>
-            <AllPersonPhotos person={person}/>
+            <AllPersonPhotos person={person} />
             <br></br>
-            <PersonCredits person={person}/>
+            <PersonCredits person={person} />
           </PageTemplate>
         </>
       ) : (

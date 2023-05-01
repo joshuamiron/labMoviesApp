@@ -68,27 +68,27 @@ const MyPlaylistPage = () => {
     : [];
 
   const changeFilterValues = (type, value) => {
-  const changedFilter = { name: type, value: value };
+    const changedFilter = { name: type, value: value };
 
-  switch(type) {
-    case "title":
-      console.log("title");
-      console.log(filterValues[1]);
-      setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
-      break;
-    case "genre":
-      console.log("genre");
-      console.log(filterValues[0]);
-      setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
-      break;
-    case "releaseYear":
-      console.log("release year");
-      console.log(changedFilter);
-      setFilterValues([filterValues[0], filterValues[1], changedFilter]);
-      break;
-  } 
-};
-    
+    switch (type) {
+      case "title":
+        console.log("title");
+        console.log(filterValues[1]);
+        setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
+        break;
+      case "genre":
+        console.log("genre");
+        console.log(filterValues[0]);
+        setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
+        break;
+      case "releaseYear":
+        console.log("release year");
+        console.log(changedFilter);
+        setFilterValues([filterValues[0], filterValues[1], changedFilter]);
+        break;
+    }
+  };
+
   /* const updatedFilterSet =
       type === "title"
         ? [changedFilter, filterValues[1]]
@@ -99,17 +99,17 @@ const MyPlaylistPage = () => {
   if (allPlaylist.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+        <Typography variant="h4" style={{ textAlign: "center", marginTop: "250px" }}>
           There are no movies in your playlist.
         </Typography>
-        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+        <Grid style={{ textAlign: "center", marginTop: "50px" }}>
           <Link to={`/movies/upcoming`}>
-          <Button variant="outlined" size="medium" color="primary">
-            Browse upcoming movies
-          </Button>
-        </Link>
+            <Button variant="outlined" size="medium" color="primary">
+              Browse upcoming movies
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
-    </Grid>
     );
   }
 

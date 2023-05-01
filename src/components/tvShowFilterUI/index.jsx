@@ -33,8 +33,8 @@ const styles = {
 };
 
 //const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, genreFilter, firstAirDateFilter, sortOrder, onSortOrderChange }) => {
-  const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange }) => {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+const TVShowFilterUI = ({ onFilterValuesChange, nameFilter, sortOrder, onSortOrderChange }) => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <>

@@ -10,14 +10,14 @@ import { MoviesContext } from "../contexts/moviesContext";
 import { getPerson } from '../api/tmdb-api'
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
-import PersonFilterUI, {nameFilter} from "../components/personFilterUI";
+import PersonFilterUI, { nameFilter } from "../components/personFilterUI";
 import AddToFavouritePeopleIcon from '../components/cardIcons/addToFavouritePeople'
 
 const nameFiltering = {
   name: "name",
   value: "",
   condition: nameFilter,
-  };
+};
 
 const PeopleFavouritePage = () => {
   const { favouritePeople: personIds } = useContext(MoviesContext);
@@ -37,14 +37,14 @@ const PeopleFavouritePage = () => {
       };
     })
   );
- console.log(personIds);
+  console.log(personIds);
 
   // Check if any of the parallel queries is still loading.
   const isLoading = favouritePeopleQueries.find((p) => p.isLoading === true);
 
   //---- Set the initial sort to nothing
   //const [sortOrder, setSortOrder] = useState("");
-  
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -56,12 +56,12 @@ const PeopleFavouritePage = () => {
 
   const changeFilterValues = (type, value) => {
     const changedFilter = { name: type, value: value };
-  
-    switch(type) {
+
+    switch (type) {
       case "name":
         setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
         break;
-    } 
+    }
   };
 
   /*  const updatedFilterSet =
@@ -74,17 +74,17 @@ const PeopleFavouritePage = () => {
   if (allFavouritePeople.length === 0) {
     return (
       <Grid>
-        <Typography variant="h4" style={{textAlign: "center", marginTop: "250px"}}>
+        <Typography variant="h4" style={{ textAlign: "center", marginTop: "250px" }}>
           There are no people in your favourites list.
         </Typography>
-        <Grid style={{textAlign: "center", marginTop: "50px"}}>
+        <Grid style={{ textAlign: "center", marginTop: "50px" }}>
           <Link to={`/people/trending`}>
-          <Button variant="outlined" size="medium" color="primary">
-            Add some people
-          </Button>
-        </Link>
+            <Button variant="outlined" size="medium" color="primary">
+              Add some people
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
-    </Grid>
     );
   }
 

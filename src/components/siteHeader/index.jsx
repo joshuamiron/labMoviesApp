@@ -33,7 +33,7 @@ const SiteHeader = () => {
   const [myStuffAnchorEl, setMyStuffAnchorEl] = useState(null);
   const [tvAnchorEl, setTVAnchorEl] = useState(null);
   const [peopleAnchorEl, setPeopleAnchorEl] = useState(null);
-  
+
   const open = Boolean(anchorEl);
   const movieOpen = Boolean(movieAnchorEl);
   const myStuffOpen = Boolean(myStuffAnchorEl);
@@ -51,7 +51,7 @@ const SiteHeader = () => {
   //----- All menu items displayed as a flat list for mobile
   const mobileMenuOptions = [
     { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming"},
+    { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Favorites", path: "/movies/favourites" },
     { label: "My Playlist", path: "/movies/myplaylist" },
     { label: "Popular Movies", path: "/movies/popular" },
@@ -61,12 +61,12 @@ const SiteHeader = () => {
     { label: "Trending People", path: "/people/trending" },
     { label: "Favourite People", path: "/people/favourites" },
     { label: "TV Shows", path: "/tv/shows" },
-  ]; 
+  ];
 
   //----- Menu items nexted by category into drop down menus
   const movieMenuOptions = [
     { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming"},
+    { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Popular Movies", path: "/movies/popular" },
     { label: "Trending Movies", path: "/movies/trending" },
   ];
@@ -190,7 +190,7 @@ const SiteHeader = () => {
               <Grid>
                 <Button
                   onClick={handleMovieClick} color="inherit">
-                    Movies
+                  Movies
                 </Button>
                 <Menu
                   anchorEl={movieAnchorEl}
@@ -198,7 +198,7 @@ const SiteHeader = () => {
                   onClose={handleMovieClose}
                 >
                   {movieMenuOptions.map((opt) => (
-                    <MenuItem 
+                    <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
                     >
@@ -208,7 +208,7 @@ const SiteHeader = () => {
                 </Menu>
                 <Button
                   onClick={handleMyStuffClick} color="inherit">
-                    My Stuff
+                  My Stuff
                 </Button>
                 <Menu
                   anchorEl={myStuffAnchorEl}
@@ -216,16 +216,16 @@ const SiteHeader = () => {
                   onClose={handleMyStuffClose}
                 >
                   {myStuffMenuOptions.map((opt) => (
-                    <MenuItem 
+                    <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}>
-                        {opt.label}
+                      {opt.label}
                     </MenuItem>
                   ))}
-                  </Menu>
+                </Menu>
                 <Button
                   onClick={handleTVClick} color="inherit">
-                    TV Shows
+                  TV Shows
                 </Button>
                 <Menu
                   anchorEl={tvAnchorEl}
@@ -233,16 +233,16 @@ const SiteHeader = () => {
                   onClose={handleTVClose}
                 >
                   {tvMenuOptions.map((opt) => (
-                    <MenuItem 
+                    <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}>
-                        {opt.label}
+                      {opt.label}
                     </MenuItem>
                   ))}
-                  </Menu>
+                </Menu>
                 <Button
                   onClick={handlePeopleClick} color="inherit">
-                    People
+                  People
                 </Button>
                 <Menu
                   anchorEl={peopleAnchorEl}
@@ -250,10 +250,10 @@ const SiteHeader = () => {
                   onClose={handlePeopleClose}
                 >
                   {peopleMenuOptions.map((opt) => (
-                    <MenuItem 
+                    <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}>
-                        {opt.label}
+                      {opt.label}
                     </MenuItem>
                   ))}
                 </Menu>

@@ -33,7 +33,7 @@ const MadeupMoviesForm = () => {
   //---------- Set initial values for the form
   const defaultValues = {
     id: "",
-    overview: "",    
+    overview: "",
     agree: false,
     releasedate: "",
     runtime: "",
@@ -44,36 +44,36 @@ const MadeupMoviesForm = () => {
     formState: { errors },
     handleSubmit,
     reset,
-    } = useForm(defaultValues);
+  } = useForm(defaultValues);
 
-    const navigate = useNavigate();
-    const context = useContext(MoviesContext);
-    const [genre, setGenre] = useState(3);
-    const [productionCompany, setProductionCompany] = useState(3);
+  const navigate = useNavigate();
+  const context = useContext(MoviesContext);
+  const [genre, setGenre] = useState(3);
+  const [productionCompany, setProductionCompany] = useState(3);
 
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const handleGenreChange = (event) => {
-      setGenre(event.target.value);
-    };
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value);
+  };
 
-    const handleProductionCompanyChange = (event) => {
-      setProductionCompany(event.target.value);
-    };
+  const handleProductionCompanyChange = (event) => {
+    setProductionCompany(event.target.value);
+  };
 
-    const handleSnackClose = (event) => {
-      setOpen(false);
-      navigate("/movies/mymadeupmoviespage");
-    };
+  const handleSnackClose = (event) => {
+    setOpen(false);
+    navigate("/movies/mymadeupmoviespage");
+  };
 
-    const onSubmit = (madeupMovie) => {
-      madeupMovie.genre = genre;
-      madeupMovie.productionCompany = productionCompany;
-      context.addMadeupMovie(madeupMovie);
-      console.log("Form page says: ");
-      console.log(madeupMovie);
-      setOpen(true);
-    };
+  const onSubmit = (madeupMovie) => {
+    madeupMovie.genre = genre;
+    madeupMovie.productionCompany = productionCompany;
+    context.addMadeupMovie(madeupMovie);
+    console.log("Form page says: ");
+    console.log(madeupMovie);
+    setOpen(true);
+  };
 
   return (
     <Card sx={styles.root} variant="outlined">
@@ -119,7 +119,7 @@ const MadeupMoviesForm = () => {
             )}
           />
           {errors.title && (
-            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
+            <Typography variant="subtitle2" component="p" style={{ color: "red" }}>
               {errors.title.message}
             </Typography>
           )}
@@ -148,7 +148,7 @@ const MadeupMoviesForm = () => {
           />
           <br></br>
           {errors.overview && (
-            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
+            <Typography variant="subtitle2" component="p" style={{ color: "red" }}>
               {errors.overview.message}
             </Typography>
           )}
@@ -193,13 +193,13 @@ const MadeupMoviesForm = () => {
                 id="runtime"
                 label="Runtime"
                 helperText="In minutes, numbers only please"
-                inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
               />
             )}
           />
           <br></br>
           {errors.runtime && (
-            <Typography variant="subtitle2" component="p" style={{color: "red"}}>
+            <Typography variant="subtitle2" component="p" style={{ color: "red" }}>
               {errors.runtime.message}
             </Typography>
           )}
@@ -249,37 +249,37 @@ const MadeupMoviesForm = () => {
             )}
           />
           <br></br>
-        {errors.releasedate && (
-          <Typography variant="subtitle2" component="p" style={{color: "red"}}>
-            {errors.releasedate.message}
-          </Typography>
-        )}
-        <br></br>
-        <Box sx={styles.buttons}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={styles.submit}
-          >
-            Submit
-          </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="secondary"
-            sx={styles.submit}
-            onClick={() => {
-              reset({
-                title: "",
-                content: "",
-              });
-            }}
-          >
-            Reset
-          </Button>
-        </Box>
-      </form>
+          {errors.releasedate && (
+            <Typography variant="subtitle2" component="p" style={{ color: "red" }}>
+              {errors.releasedate.message}
+            </Typography>
+          )}
+          <br></br>
+          <Box sx={styles.buttons}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={styles.submit}
+            >
+              Submit
+            </Button>
+            <Button
+              type="reset"
+              variant="contained"
+              color="secondary"
+              sx={styles.submit}
+              onClick={() => {
+                reset({
+                  title: "",
+                  content: "",
+                });
+              }}
+            >
+              Reset
+            </Button>
+          </Box>
+        </form>
       </CardContent>
     </Card>
   );

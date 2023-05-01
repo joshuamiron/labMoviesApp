@@ -27,13 +27,13 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 360000,
-      refetchInterval: 360000, 
+      refetchInterval: 360000,
       refetchOnWindowFocus: false
     },
   },
 });
 
-const App = ( {children} ) => {
+const App = ({ children }) => {
   return (
 
     <QueryClientProvider client={queryClient}>
@@ -48,7 +48,7 @@ const App = ( {children} ) => {
             <Route path="/movies/upcoming" element={<MoviesUpcomingPage />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
             <Route path="/movies/popular" element={<MoviesPopularPage />} />
-            <Route path="/reviews/:id" element={<MovieReviewPage/>} />
+            <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route path="/movies/favourites" element={<MoviesFavouritePage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/movies/trending" element={<MoviesTrendingPage />} />

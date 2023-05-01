@@ -19,7 +19,7 @@ const PlaylistAddIcon = ({ movie }) => {
   return (
     <IconButton aria-label="add to playlist" onClick={onUserSelect}>
       {isMovieInPlaylist ? (
-          <RemoveFromPlaylistIcon color="secondary" fontSize="medium" />
+        <RemoveFromPlaylistIcon color="secondary" fontSize="medium" />
       ) : (
         <AddToPlaylistIcon color="primary" fontSize="medium" />
       )}

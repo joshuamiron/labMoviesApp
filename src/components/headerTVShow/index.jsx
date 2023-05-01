@@ -1,10 +1,10 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
 const styles = {
-    root: {  
+  root: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
@@ -20,10 +20,10 @@ const TVShowHeader = (props) => {
   return (
     <Paper component="div" sx={styles.root}>
       <Grid>
-        <Typography variant="h4" component="h3" style={{textAlign: "center"}}>
+        <Typography variant="h4" component="h3" style={{ textAlign: "center" }}>
           {tv.name}
         </Typography>
-        <Typography style={{textAlign: "center"}}>
+        <Typography style={{ textAlign: "center" }}>
           {`${tv.tagline}`}
         </Typography>
       </Grid>

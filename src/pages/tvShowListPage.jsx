@@ -45,15 +45,15 @@ const TVShowListPage = () => {
 
   //---- Pass page to getTVShows API endpoint
   const { data, error, isLoading, isError } = useQuery(["discover tv", page], () =>
-  getTVShows(page)
+    getTVShows(page)
   );
-  
-  const {filterValues, setFilterValues, filterFunction } = useFiltering(
+
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     //[nameFiltering, genreFiltering, firstAirDateFiltering]
     [nameFiltering]
   );
- 
+
   //---- Set the initial sort to nothing
   const [sortOrder, setSortOrder] = useState("");
 
@@ -64,10 +64,10 @@ const TVShowListPage = () => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  
+
   const changeFilterValues = (type, value) => {
-  const changedFilter = { name: type, value: value };
-   
+    const changedFilter = { name: type, value: value };
+
 
     const updatedFilterSet =
       type === "name"
@@ -76,24 +76,24 @@ const TVShowListPage = () => {
     setFilterValues(updatedFilterSet);
   };
 
-   /*switch(type) {
-      case "name":
-        console.log("name");
-        console.log(changedFilter);
-        setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
-        break;
-      case "genre":
-        console.log("genre");
-        console.log(changedFilter);
-        setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
-        break;
-      case "firstAireDate":
-        console.log("first air date");
-        console.log(changedFilter);
-        setFilterValues([filterValues[0], filterValues[1], changedFilter]);
-        break;
-    } 
-  };*/
+  /*switch(type) {
+     case "name":
+       console.log("name");
+       console.log(changedFilter);
+       setFilterValues([changedFilter, filterValues[1], filterValues[2]]);
+       break;
+     case "genre":
+       console.log("genre");
+       console.log(changedFilter);
+       setFilterValues([filterValues[0], changedFilter, filterValues[2]]);
+       break;
+     case "firstAireDate":
+       console.log("first air date");
+       console.log(changedFilter);
+       setFilterValues([filterValues[0], filterValues[1], changedFilter]);
+       break;
+   } 
+ };*/
 
   function changeSortOrder(value) {
     setSortOrder(value);
@@ -101,41 +101,40 @@ const TVShowListPage = () => {
 
   const sort_by = (field, reverse, primer) => {
     const key = primer ?
-      function(x) {
+      function (x) {
         return primer(x[field])
       } :
-      function(x) {
+      function (x) {
         return x[field]
-        
+
       };
-  
+
     reverse = !reverse ? 1 : -1;
-  
-    return function(a, b) {
+
+    return function (a, b) {
       return reverse * (key(a) > key(b) ? 1 : -1);
     }
   }
 
   const sortTVShows = (value, tvShowList) => {
-    switch(value)
-    {
-    case "name-asc":
-        tvShowList.sort(sort_by('name', false, (a) => a.toUpperCase()) );
-      break;
-    case "name-desc":
-        tvShowList.sort(sort_by('name', true, (a) => a.toUpperCase()) );
-      break;
-    case "vote_average-asc":
-        tvShowList.sort(sort_by('vote_average', false, parseFloat) );
-      break;
-    case "vote_average-desc":
-        tvShowList.sort(sort_by('vote_average', true, parseFloat) );
-      break;    
+    switch (value) {
+      case "name-asc":
+        tvShowList.sort(sort_by('name', false, (a) => a.toUpperCase()));
+        break;
+      case "name-desc":
+        tvShowList.sort(sort_by('name', true, (a) => a.toUpperCase()));
+        break;
+      case "vote_average-asc":
+        tvShowList.sort(sort_by('vote_average', false, parseFloat));
+        break;
+      case "vote_average-desc":
+        tvShowList.sort(sort_by('vote_average', true, parseFloat));
+        break;
     }
   };
 
   const tvShows = data ? data.results : [];
-  
+
   const displayedTVShows = filterFunction(tvShows);
 
   sortTVShows(sortOrder, displayedTVShows);

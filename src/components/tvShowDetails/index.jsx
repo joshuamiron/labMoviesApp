@@ -10,8 +10,8 @@ import TodayIcon from '@mui/icons-material/Today';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import PublicIcon from '@mui/icons-material/Public';
 
-import {formatDate} from "../../util";
-import {getCountryName} from "../../util";
+import { formatDate } from "../../util";
+import { getCountryName } from "../../util";
 
 import AddToFavouritesIcon from '../cardIcons/addToFavourites'
 import PlaylistAddIcon from '../cardIcons/addToPlaylist'
@@ -38,7 +38,7 @@ const styles = {
   },
 };
 
-const TVShowDetails = ( {tv}) => {
+const TVShowDetails = ({ tv }) => {
   const formattedStartDate = formatDate(tv.first_air_date);
   const formattedEndDate = formatDate(tv.last_air_date);
   const formattedCountryName = getCountryName(tv.origin_country);
@@ -55,16 +55,16 @@ const TVShowDetails = ( {tv}) => {
           {tv.overview}
           {tv.homepage ? (
             <a href={tv.homepage} target="_blank">
-          <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
-            {`Visit ${tv.name}'s hompage`}
-          </Button>
-          </a>
-          ) : null }
+              <Button variant="text" size="medium" color="primary" endIcon={<OpenInNewIcon />} >
+                {`Visit ${tv.name}'s hompage`}
+              </Button>
+            </a>
+          ) : null}
         </Typography>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
             <Typography sx={styles.chipLabel} >Genres:</Typography>
-              {tv.genres.map((g) => (
+            {tv.genres.map((g) => (
               <li key={g.name}>
                 <Chip label={g.name} sx={styles.chipLabel} />
               </li>
@@ -74,7 +74,7 @@ const TVShowDetails = ( {tv}) => {
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
             <Typography sx={styles.chipLabel} >Languages:</Typography>
-              {tv.languages.map((l) => (
+            {tv.languages.map((l) => (
               <li key={l}>
                 <Chip label={l} sx={styles.chipLabel} />
               </li>
@@ -83,15 +83,15 @@ const TVShowDetails = ( {tv}) => {
         </Grid>
         <Grid container spacing={1}>
           <Grid item xs={12} sx={styles.chipSet}>
-            <Chip 
-              icon={<PublicIcon />} 
+            <Chip
+              icon={<PublicIcon />}
               label={`Origin: ${formattedCountryName}`} sx={styles.chipLabel} />
             <Chip
               icon={<TrendingUpIcon />}
-              label={`User rating: ${tv.vote_average*10}%`} sx={styles.chipLabel}
+              label={`User rating: ${tv.vote_average * 10}%`} sx={styles.chipLabel}
             />
             <Chip
-              icon={<TodayIcon />} 
+              icon={<TodayIcon />}
               label={`First air date: ${formattedStartDate}`} sx={styles.chipLabel} />
             <Chip
               icon={<EventBusyIcon />}

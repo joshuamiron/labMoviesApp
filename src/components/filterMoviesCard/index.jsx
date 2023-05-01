@@ -26,7 +26,7 @@ const styles = {
 };
 
 export default function FilterMoviesCard(props) {
-  const {data, error, isLoading, isError} = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
 
   if (isLoading) {
     return <Spinner />;
@@ -35,7 +35,7 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  
+
   const genres = data.genres;
   if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
@@ -65,76 +65,76 @@ export default function FilterMoviesCard(props) {
 
   return (
     <>
-    <Card sx={styles.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          Search by movie title
-        </Typography>
-        <TextField
-          sx={styles.formControl}
-          id="filled-search"
-          label="Title"
-          type="search"
-          value={props.titleFilter}
-          variant="filled"
-          onChange={handleTitleTextChange}
-        />
-        <Typography variant="h5" component="h1">
-          Filter by genre
-        </Typography>
-        <FormControl sx={styles.formControl}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-            labelId="genre-label"
-            id="genre-select"
-            value={props.genreFilter}
-            onChange={handleGenreChange}
-          >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+      <Card sx={styles.root} variant="outlined">
+        <CardContent>
+          <Typography variant="h5" component="h1">
+            Search by movie title
+          </Typography>
+          <TextField
+            sx={styles.formControl}
+            id="filled-search"
+            label="Title"
+            type="search"
+            value={props.titleFilter}
+            variant="filled"
+            onChange={handleTitleTextChange}
+          />
+          <Typography variant="h5" component="h1">
+            Filter by genre
+          </Typography>
+          <FormControl sx={styles.formControl}>
+            <InputLabel id="genre-label">Genre</InputLabel>
+            <Select
+              labelId="genre-label"
+              id="genre-select"
+              value={props.genreFilter}
+              onChange={handleGenreChange}
+            >
+              {genres.map((genre) => {
+                return (
+                  <MenuItem key={genre.id} value={genre.id}>
+                    {genre.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
 
-        <Typography variant="h5" component="h1">
-          Search by release year
-        </Typography>
-        <TextField
-          sx={styles.formControl}
-          id="filled-search-year"
-          label="YYYY"
-          type="search"
-          value={props.releaseYearFilter}
-          variant="filled"
-          onChange={handleReleaseYearChange}
-        />
+          <Typography variant="h5" component="h1">
+            Search by release year
+          </Typography>
+          <TextField
+            sx={styles.formControl}
+            id="filled-search-year"
+            label="YYYY"
+            type="search"
+            value={props.releaseYearFilter}
+            variant="filled"
+            onChange={handleReleaseYearChange}
+          />
 
-        <Typography variant="h5" component="h1">
-          Sort the movies
-        </Typography>
-        <FormControl sx={styles.formControl}>
-          <InputLabel id="sort-label">Sort by</InputLabel>
-          <Select
-            labelId="sort-label"
-            id="sort-select"
-            value={props.sortOrder}
-            onChange={handleSortChange}
-          >
-            <MenuItem value={"title-asc"}>Title - A to Z</MenuItem>
-            <MenuItem value={"title-desc"}>Title - Z to A</MenuItem>
-            <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
-            <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
-            {/* <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
+          <Typography variant="h5" component="h1">
+            Sort the movies
+          </Typography>
+          <FormControl sx={styles.formControl}>
+            <InputLabel id="sort-label">Sort by</InputLabel>
+            <Select
+              labelId="sort-label"
+              id="sort-select"
+              value={props.sortOrder}
+              onChange={handleSortChange}
+            >
+              <MenuItem value={"title-asc"}>Title - A to Z</MenuItem>
+              <MenuItem value={"title-desc"}>Title - Z to A</MenuItem>
+              <MenuItem value={"vote_average-asc"}>User rating ↑</MenuItem>
+              <MenuItem value={"vote_average-desc"}>User rating ↓</MenuItem>
+              {/* <MenuItem value={"release_date-desc"}>Release date - newest first</MenuItem>
             <MenuItem value={"release_date-asc"}>Release date - oldest first</MenuItem> */}
-          </Select>
-        </FormControl>
+            </Select>
+          </FormControl>
 
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
     </>
   );
 }
