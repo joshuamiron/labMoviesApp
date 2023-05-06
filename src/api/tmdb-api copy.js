@@ -2,31 +2,43 @@
 //---------- Movies ----------//
 //----------------------------//
 
-  export const getMovies = () => {
-    return fetch(
-      `/api/movies`, { // --- Get from my API
-      headers: {
-        'Authorization': window.localStorage.getItem('token')
-      }
+export const getMovies = async (page = 1) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
     }
-    ).then((res) => res.json());
-  };
+    const data = await response.json();
+    console.log("getMovies called");
+    console.log(data); // log the response data
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 
-export const getMovie = (args) => {
+export const getMovie = async (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
-  return fetch(
-    `/api/movies/${id}`, { // --- Get from my API
-    headers: {
-      'Authorization': window.localStorage.getItem('token')
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
     }
+    return await response.json();
+  } catch (error) {
+    throw error;
   }
-  ).then((res) => res.json());
-}; 
+};
 
-export const getGenres = () => {
+
+ export const getGenres = () => {
   return fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US` // --- Get directly from TMDB
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -36,7 +48,7 @@ export const getGenres = () => {
     .catch((error) => {
       throw error
     });
-};
+}; 
 
 export const getMovieImages = ({ queryKey }) => {
   const [, idPart] = queryKey;
@@ -65,16 +77,18 @@ export const getMovieReviews = (id) => {
     });
 };
 
-
-export const getUpcomingMovies = async () => {
-  const res = await fetch(
-    `/api/movies/upcoming`, { // --- Get from my API
-    headers: {
-      'Authorization': window.localStorage.getItem('token')
+ export const getUpcomingMovies = (page = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(response.json().message);
     }
-  }
-  );
-  return await res.json();
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
 };
 
 export const getMovieCast = (id) => {
