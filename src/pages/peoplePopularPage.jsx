@@ -5,7 +5,7 @@ import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from "../components/templatePeopleListPage";
 import Spinner from "../components/spinner";
-import { getPopularPeople } from "../api/tmdb-api";
+import { getPopularPeople } from "../api/api";
 import useFiltering from "../hooks/useFiltering";
 import PersonFilterUI, { nameFilter } from "../components/personFilterUI";
 import AddToFavouritePeopleIcon from '../components/cardIcons/addToFavouritePeople'

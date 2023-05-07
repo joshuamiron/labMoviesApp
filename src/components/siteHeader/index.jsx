@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
+import AuthContext from "../../contexts/authContext";
+
 
 const styles = {
   title: {
@@ -27,18 +29,21 @@ const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = () => {
   const navigate = useNavigate();
+  //const { isAuthenticated } = useContext(AuthContext); 
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [movieAnchorEl, setMovieAnchorEl] = useState(null);
   const [myStuffAnchorEl, setMyStuffAnchorEl] = useState(null);
   const [tvAnchorEl, setTVAnchorEl] = useState(null);
   const [peopleAnchorEl, setPeopleAnchorEl] = useState(null);
+  const [myAccountAnchorEl, setMyAccountAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
   const movieOpen = Boolean(movieAnchorEl);
   const myStuffOpen = Boolean(myStuffAnchorEl);
   const tvOpen = Boolean(tvAnchorEl);
   const peopleOpen = Boolean(peopleAnchorEl);
+  const myAccountOpen = Boolean(myAccountAnchorEl);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
@@ -88,6 +93,24 @@ const SiteHeader = () => {
     { label: "Popular People", path: "/people/popular" },
   ];
 
+   const myAccountMenuOptions = [
+    //{ label: "Home", path: "/" },
+    { label: "Log In", path: "/login" },
+    { label: "Log Out", path: "/logout" },
+    { label: "Update Account", path: "/edit" },
+    { label: "Create New Account", path: "/signup" },
+  ]; 
+
+  /*const myAccountMenuOptions = isAuthenticated ?
+    [
+      { label: "Log Out", path: "/accounts/logout" },
+      { label: "Update Account", path: "/accounts/edit" },
+    ]
+    : [
+      { label: "Log In", path: "/account/login" },
+      { label: "Create New Account", path: "/accounts/signup" },
+    ];*/
+
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
   };
@@ -126,6 +149,14 @@ const SiteHeader = () => {
   };
   const handlePeopleClose = () => {
     setPeopleAnchorEl(null);
+  };
+
+  //------ handleClick for MyAccount
+  const handleMyAccountClick = (event) => {
+    setMyAccountAnchorEl(event.currentTarget);
+  };
+  const handleMyAccountClose = () => {
+    setMyAccountAnchorEl(null);
   };
 
   return (
@@ -250,6 +281,23 @@ const SiteHeader = () => {
                   onClose={handlePeopleClose}
                 >
                   {peopleMenuOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}>
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+                </Menu>
+                <Button
+                  onClick={handleMyAccountClick} color="inherit">
+                  My Account
+                </Button>
+                <Menu
+                  anchorEl={myAccountAnchorEl}
+                  open={myAccountOpen}
+                  onClose={handleMyAccountClose}
+                >
+                  {myAccountMenuOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}>

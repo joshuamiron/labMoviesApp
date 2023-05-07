@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Paper from "@mui/material/Paper";
 import { useQuery } from "react-query";
 
-import { getMovieImages } from "../../api/tmdb-api";
+import { getMovieImages } from "../../api/api";
 
 const styles = {
   media: {

@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useQuery } from "react-query";
 
-import { getGenres } from "../../api/tmdb-api";
+import { getGenres } from "../../api/api";
 import Spinner from '../spinner'
 
 const styles = {

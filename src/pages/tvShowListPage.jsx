@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from '../components/templateTVShowListPage'
-import { getTVShows } from "../api/tmdb-api";
+import { getTVShows } from "../api/api";
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 //import TVShowFilterUI, { nameFilter, genreFilter, firstAirDateFilter } from "../components/tvShowFilterUI";

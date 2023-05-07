@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 import MovieHeader from "../headerMovie";
 import Spinner from '../spinner'
-import { getMovieImages } from "../../api/tmdb-api";
+import { getMovieImages } from "../../api/api";
 
 const styles = {
   gridListRoot: {

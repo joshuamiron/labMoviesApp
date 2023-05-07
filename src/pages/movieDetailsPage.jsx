@@ -7,7 +7,7 @@ import MovieCredits from "../components/movieCredits";
 import AllMoviePosters from "../components/movieAllPosters"
 import PageTemplate from "../components/templateMoviePage";
 //import useMovie from "../hooks/useMovie";
-import { getMovie } from '../api/tmdb-api'
+import { getMovie } from '../api/api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
