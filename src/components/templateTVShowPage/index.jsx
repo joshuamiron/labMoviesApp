@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 import TVShowHeader from "../headerTVShow";
 import Spinner from '../spinner'
-import { getTVShowImages } from "../../api/tmdb-api";
+import { getTVShowImages } from "../../api/api";
 
 const styles = {
   gridListRoot: {

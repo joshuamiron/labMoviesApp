@@ -5,7 +5,7 @@ import Pagination from '@mui/material/Pagination';
 
 import PageTemplate from "../components/templateMovieListPage";
 import Spinner from "../components/spinner";
-import { getPopularMovies } from "../api/tmdb-api";
+import { getPopularMovies } from "../api/api";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
