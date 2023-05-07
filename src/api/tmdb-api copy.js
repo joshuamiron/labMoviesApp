@@ -36,7 +36,7 @@ export const getMovie = async (args) => {
 };
 
 
-export const getGenres = () => {
+ export const getGenres = () => {
   return fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US`
   ).then((response) => {
@@ -48,7 +48,7 @@ export const getGenres = () => {
     .catch((error) => {
       throw error
     });
-};
+}; 
 
 export const getMovieImages = ({ queryKey }) => {
   const [, idPart] = queryKey;
@@ -77,7 +77,7 @@ export const getMovieReviews = (id) => {
     });
 };
 
-export const getUpcomingMovies = (page = 1) => {
+ export const getUpcomingMovies = (page = 1) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`
   ).then((response) => {
