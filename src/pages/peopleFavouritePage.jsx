@@ -7,7 +7,7 @@ import { useQueries } from "react-query";
 
 import PageTemplate from "../components/templatePeopleListPage";
 import { MoviesContext } from "../contexts/moviesContext";
-import { getPerson } from '../api/tmdb-api'
+import { getPerson } from '../api/api'
 import Spinner from "../components/spinner";
 import useFiltering from "../hooks/useFiltering";
 import PersonFilterUI, { nameFilter } from "../components/personFilterUI";

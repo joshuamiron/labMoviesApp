@@ -11,7 +11,7 @@ import Spinner from "../components/spinner";
 import MovieFilterUI, { titleFilter, genreFilter, releaseYearFilter } from "../components/movieFilterUI";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
-import { getMovie } from "../api/tmdb-api";
+import { getMovie } from "../api/api";
 import useFiltering from "../hooks/useFiltering";
 import { MoviesContext } from "../contexts/moviesContext";
 

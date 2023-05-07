@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Grid from '@mui/material/Grid';
 import PersonCardSmall from "../personCardSmall";
-import { getMovieCast } from "../../api/tmdb-api";
+import { getMovieCast } from "../../api/api";
 import AddToFavouritePeopleIcon from '../cardIcons/addToFavouritePeople'
 import Paper from "@mui/material/Paper";
 

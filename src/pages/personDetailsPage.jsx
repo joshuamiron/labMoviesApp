@@ -7,7 +7,7 @@ import AllPersonPhotos from "../components/personAllPhotos"
 
 import PageTemplate from "../components/templatePersonPage";
 //import usePerson from "../hooks/usePerson";
-import { getPerson } from '../api/tmdb-api'
+import { getPerson } from '../api/api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 

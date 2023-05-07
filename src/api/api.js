@@ -2,15 +2,16 @@
 //---------- Movies ----------//
 //----------------------------//
 
-  export const getMovies = () => {
-    return fetch(
-      `/api/movies`, { // --- Get from my API
-      headers: {
-        'Authorization': window.localStorage.getItem('token')
-      }
+export const getMovies = () => {
+  return fetch(
+    `/api/movies`, { // --- Get from my API
+    headers: {
+      'Authorization': window.localStorage.getItem('token')
     }
-    ).then((res) => res.json());
-  };
+  }
+  )
+    .then((res) => res.json());
+};
 
 export const getMovie = (args) => {
   const [, idPart] = args.queryKey;
@@ -19,10 +20,9 @@ export const getMovie = (args) => {
     `/api/movies/${id}`, { // --- Get from my API
     headers: {
       'Authorization': window.localStorage.getItem('token')
-    }
-  }
+    }}
   ).then((res) => res.json());
-}; 
+};
 
 export const getGenres = () => {
   return fetch(
@@ -54,6 +54,18 @@ export const getMovieImages = ({ queryKey }) => {
     });
 };
 
+/*export const getMovieReviews = (args) => {
+  const [, idPart] = args.queryKey;
+  const { id } = idPart;
+  return fetch(
+    `/api/movies/${id}/reviews`, { // --- Get from my API
+    headers: {
+      'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  ).then((res) => res.json());
+};*/
+
 export const getMovieReviews = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_KEY}`
@@ -64,7 +76,6 @@ export const getMovieReviews = (id) => {
       return json.results;
     });
 };
-
 
 export const getUpcomingMovies = async () => {
   const res = await fetch(
@@ -290,4 +301,28 @@ export const getTVShowImages = ({ queryKey }) => {
     .catch((error) => {
       throw error
     });
+};
+
+//----------------------------//
+//--------- Accounts ---------//
+//----------------------------//
+
+export const signup = (email, password, firstName, lastName) => {
+  return fetch('/api/accounts', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ email: email, password: password, firstName: firstName, lastName: lastName })
+  }).then(res => res.json())
+};
+
+export const login = (email, password) => {
+  return fetch('/api/accounts/security/token', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ email: email, password: password })
+  }).then(res => res.json())
 };
