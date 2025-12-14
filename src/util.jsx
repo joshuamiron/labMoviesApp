@@ -14,10 +14,6 @@ export function formatDate(dateString) {
   return date.toLocaleDateString("en-US", options);
 }
 
-/*export function getCountryName(countryCode) {
-  return countries[props.countryCode].name;
-}*/
-
 export function getCountryName(countryCode) {
   if (Array.isArray(countryCode)) {
     return countryCode.map((code) => countries[code]?.name || code).join(", ");
